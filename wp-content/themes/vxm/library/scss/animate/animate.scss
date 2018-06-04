@@ -1,0 +1,157 @@
+// INDEX OF ANIMATIONS
+// This is a port of Den Eden's Animate.css, converted for SASS.
+// Source: https://daneden.me/animate/
+//
+// @import this index into your project.
+// Comment out categories below to remove them from your project.
+// Or, @import specific partials (e.g. @import "_attention/_bounce.scss";
+//
+//-----------------------------------------------------------------------
+
+// Always required
+@import
+"_properties";
+
+// Import the animations
+@import
+//"_attention-seekers/attention-seekers.scss",
+"_bouncing-entrances/bouncing-entrances.scss",
+//"_bouncing-exits/bouncing-exits.scss",
+"_fading-entrances/fading-entrances.scss",
+//"_fading-exits/fading-exits.scss",
+"_flippers/flippers.scss",
+//"_lightspeed/lightspeed.scss",
+//"_rotating-entrances/rotating-entrances.scss",
+//"_rotating-exits/rotating-exits.scss",
+"_sliding-entrances/sliding-entrances.scss",
+"_sliding-exits/sliding-exits.scss",
+"_specials/specials.scss",
+"_zooming-entrances/zooming-entrances.scss",
+"_zooming-exits/zooming-exits.scss";
+
+
+
+// Classes
+.animated {
+	&.shake {
+		//@include shake();
+	}
+	&.pulse {
+		//@include pulse();
+	}
+	&.bounceIn {
+		@include bounceIn();
+	}
+	&.bounceInLeft {
+		@include bounceInLeft();
+	}
+	&.bounceInRight {
+		@include bounceInRight();
+	}
+	&.bounceInUp {
+		@include bounceInUp();
+	}
+	&.bounceInDown {
+		@include bounceInDown();
+	}
+	&.zoomIn {
+		@include zoomIn();
+	}
+	&.fadeIn {
+		@include fadeIn();
+	}
+	&.fadeInUp {
+		@include fadeInUp();
+	}
+	&.fadeInDown {
+		@include fadeInDown();
+	}
+	&.fadeInLeft {
+		@include fadeInLeft();
+	}
+	&.fadeInRight {
+		@include fadeInRight();
+	}
+	&.slideInDown {
+		@include slideInDown();
+	}
+	&.slideInUp {
+		@include slideInUp();
+	}
+	&.slideInLeft {
+		@include slideInLeft();
+	}
+	&.slideInRight {
+		@include slideInRight();
+	}
+	&.flipInX {
+		@include flipInX();
+	}
+	&.flipInY {
+		@include flipInY();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+// Up and Down
+@-moz-keyframes abounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -moz-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -moz-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+@-webkit-keyframes abounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+@keyframes abounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -moz-transform: translateY(-30px);
+    -ms-transform: translateY(-30px);
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -moz-transform: translateY(-15px);
+    -ms-transform: translateY(-15px);
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+.abounce {
+  -moz-animation: abounce 2s infinite;
+  -webkit-animation: abounce 2s infinite;
+  animation: abounce 2s infinite;
+}

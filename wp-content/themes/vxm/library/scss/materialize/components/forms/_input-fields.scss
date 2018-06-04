@@ -1,0 +1,402 @@
+/* Text Inputs + Textarea
+   ========================================================================== */
+
+/* Style Placeholders */
+
+::-webkit-input-placeholder {
+  color: $placeholder-text-color;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: $placeholder-text-color;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: $placeholder-text-color;
+}
+
+:-ms-input-placeholder {
+  color: $placeholder-text-color;
+}
+
+/* Text inputs */
+
+input:not([type]),
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=time],
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=tel],
+input[type=number],
+input[type=search],
+textarea.materialize-textarea {
+
+  // General Styles
+  background-color: $white;
+  border: none;
+  border-bottom: $input-border;
+  border-radius: 0;
+  outline: none;
+  height: $input-height;
+  width: 100%;
+  font-size: $input-font-size;
+  margin: $input-margin;
+  padding: $input-padding;
+  padding-left: 5px;
+  box-shadow: none;
+  //box-sizing: content-box;
+  transition: $input-transition;
+
+  // Disabled input style
+  &:disabled,
+  &[readonly="readonly"] {
+    color: $input-disabled-color;
+    border-bottom: $input-disabled-border;
+  }
+
+  // Disabled label style
+  &:disabled+label,
+  &[readonly="readonly"]+label {
+    color: $input-disabled-color;
+  }
+
+  // Focused input style
+  &:focus:not([readonly]) {
+    border-bottom: 1px solid $input-focus-color;
+    box-shadow: 0 1px 0 0 $input-focus-color;
+  }
+
+  // Focused label style
+  &:focus:not([readonly])+label {
+    color: $input-focus-color;
+  }
+
+  // Valid Input Style
+  &.valid,
+  &:focus.valid {
+    border-bottom: 1px solid $input-success-color;
+    box-shadow: 0 1px 0 0 $input-success-color;
+  }
+
+  // Custom Success Message
+  &.valid + label:after,
+  &:focus.valid + label:after {
+    content: attr(data-success);
+    color: $input-success-color;
+    opacity: 1;
+  }
+
+  // Invalid Input Style
+  &.invalid,
+  &:focus.invalid {
+    border-bottom: $input-invalid-border;
+    box-shadow: 0 1px 0 0 $input-error-color;
+  }
+
+  // Custom Error message
+  &.invalid + label:after,
+  &:focus.invalid + label:after {
+    content: attr(data-error);
+    color: $input-error-color;
+    opacity: 1;
+  }
+
+  // Full width label when using validate for error messages
+  &.validate + label {
+    width: 100%;
+    pointer-events: none;
+  }
+
+  // Form Message Shared Styles
+  & + label:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 65px;
+    opacity: 0;
+    transition: .2s opacity ease-out, .2s color ease-out;
+  }
+}
+
+// Styling for input field wrapper
+.input-field {
+  position: relative;
+  margin-top: 1rem;
+
+  label {
+    color: $primary-color;//$input-border-color;
+    position: absolute;
+    top: 0.8rem;
+    left: $gutter-width / 2;
+    font-size: 1rem;
+    cursor: text;
+    transition: .2s ease-out;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  label.active {
+    //font-size: $label-font-size;
+    //transform: translateY(-140%);
+    opacity: 0;
+    transform: translateX(-10%);
+  }
+
+  // Prefix Icons
+  .prefix {
+    position: absolute;
+    width: $input-height/1.5;
+    font-size: 1.5rem;
+    transition: .2s;
+
+    line-height: 45px;
+    text-align: center;
+
+    &.active { 
+      color: $input-focus-color;
+      transform: translateX(5px);
+    }
+  }
+
+  .prefix ~ input,
+  .prefix ~ textarea {
+    //margin-left: 3rem;
+    //width: 92%;
+    //width: calc(100% - 3rem);
+    padding-left: 3rem;
+  }
+
+  .prefix ~ textarea { padding-top: .8rem; }
+  .prefix ~ label { margin-left: 3rem; }
+
+  @media #{$medium-and-down} {
+    .prefix ~ input {
+      //width: 86%;
+      //width: calc(100% - 3rem);
+    }
+  }
+
+  @media #{$small-and-down} {
+    .prefix ~ input {
+      //width: 80%;
+      //width: calc(100% - 3rem);
+    }
+  }
+}
+
+
+// Search Field //
+
+.input-field input[type=search] {
+  display: block;
+  line-height: inherit;
+  padding-left: 4rem;
+  width: calc(100% - 4rem);
+
+  &:focus {
+    background-color: $input-background;
+    border: 0;
+    box-shadow: none;
+    color: #444;
+
+    & + label i,
+    & ~ .mdi-navigation-close,
+    & ~ .material-icons {
+      color: #444;
+    }
+  }
+
+  & + label {
+    left: 1rem;
+  }
+
+  & ~ .mdi-navigation-close,
+  & ~ .material-icons {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    color: transparent;
+    cursor: pointer;
+    font-size: 2rem;
+    transition: .3s color;
+  }
+}
+
+
+// Textarea //
+
+// Default textarea
+textarea {
+  width: 100%;
+  height: $input-height * 2;
+  background-color: transparent;
+  outline: 0;
+  border: $input-border;
+
+  &.materialize-textarea {
+    overflow-y: hidden; /* prevents scroll bar flash */
+    padding: 1rem; /* prevents text jump on Enter keypress */
+    resize: none;
+    min-height: $input-height;
+  }
+}
+
+// For textarea autoresize
+.hiddendiv {
+  display: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word; /* future version of deprecated 'word-wrap' */
+  padding-top: 1.2rem; /* prevents text jump on Enter keypress */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* tympanus Text Input Fields */
+.input {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 1em;
+  //max-width: 350px;
+  //width: calc(100% - 2em);
+  width: 100%;
+  vertical-align: top;
+}
+
+.input__field {
+  position: relative;
+  display: block;
+  float: right;
+  padding: 0.8em;
+  width: 60%;
+  border: none;
+  border-radius: 0;
+  background: $bg;
+  color: $text-color;
+  font-weight: 500;
+  -webkit-appearance: none; /* for box shadows to show on iOS */
+  transition: background 0.1s 0s ease-in-out;
+}
+
+.input__field:focus {
+  outline: none;
+  background: $white;
+  color: darken($secondary-color, 10);
+  transition: background 0.5s 0.15s ease-in-out;
+}
+
+.input__label {
+  display: inline-block;
+  float: right;
+  padding: 0;
+  width: 40%;
+  color: $white;
+  font-weight: 600;
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.input__label-content {
+  position: relative;
+  display: block;
+  padding: 0.8em 0;
+  width: 100%;
+}
+
+.graphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: none;
+}
+
+.icon {
+  color: $gray;
+  font-size: 150%;
+}
+
+/* Madoka */
+.input--madoka {
+  margin: 0 0 1.75em;
+}
+
+.input__field--madoka {
+  width: 100%;
+  background: transparent;
+  color: $white;
+}
+
+.input__label--madoka {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: $white;
+  text-align: left;
+  cursor: text;
+}
+
+.input__label-content--madoka {
+  -webkit-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+}
+
+.graphic--madoka {
+  -webkit-transform: scale3d(1, -1, 1);
+  transform: scale3d(1, -1, 1);
+  -webkit-transition: stroke-dashoffset 0.3s;
+  transition: stroke-dashoffset 0.3s;
+  pointer-events: none;
+
+  stroke: $white;
+  stroke-width: 4px;
+  stroke-dasharray: 962;
+  stroke-dashoffset: 558;
+}
+
+.input__field--madoka:focus + .input__label--madoka,
+.input--filled .input__label--madoka {
+  cursor: default;
+  pointer-events: none;
+}
+
+.input__field--madoka:focus + .input__label--madoka .graphic--madoka,
+.input--filled .graphic--madoka {
+  stroke-dashoffset: 0;
+}
+
+.input__field--madoka:focus + .input__label--madoka .input__label-content--madoka,
+.input--filled .input__label-content--madoka {
+  opacity: 0.5;
+  -webkit-transform: scale3d(0.81, 0.81, 1) translate3d(0, 3em, 0);
+  transform: scale3d(0.81, 0.81, 1) translate3d(0, 3em, 0);
+}

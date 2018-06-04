@@ -1,0 +1,2163 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: corredor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-07 12:47-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: aioweb <info@aioweb.net>\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.7\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: .sass-cache\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
+
+#: 404.php:13
+msgid "Epic 404 - Article Not Found"
+msgstr "Épico 404 - Artículo no encontrado"
+
+#: archive-cursos.php:46 library/custom-post-type.php:322
+#: library/custom-post-type.php:323 library/custom-post-type.php:324
+#: page-inicio.php:118
+msgid "Intended for"
+msgstr "Dirigidos a"
+
+#: archive-cursos.php:89 page-inicio.php:168 taxonomy-dirigido-a.php:58
+msgid "View more"
+msgstr "Ver más"
+
+#: archive.php:27 post-formats/format-aside.php:10
+#: post-formats/format-audio.php:10 post-formats/format-chat.php:10
+#: post-formats/format-gallery.php:10 post-formats/format-image.php:10
+#: post-formats/format-link.php:10 post-formats/format-quote.php:10
+#: post-formats/format-status.php:10 post-formats/format-video.php:10
+msgid "Posted"
+msgstr "Posted"
+
+#: archive.php:31 post-formats/format-aside.php:14
+#: post-formats/format-audio.php:14 post-formats/format-chat.php:14
+#: post-formats/format-gallery.php:14 post-formats/format-image.php:14
+#: post-formats/format-link.php:14 post-formats/format-quote.php:14
+#: post-formats/format-status.php:14 post-formats/format-video.php:14
+msgid "by"
+msgstr "por"
+
+#: archive.php:59 index.php:73 index.php:154 index.php:234 single-cursos.php:96
+#: single.php:33 taxonomy-dirigido-a.php:74
+msgid "Oops, Post Not Found!"
+msgstr "Oops, No se encontró éste artículo!"
+
+#: archive.php:62 index.php:76 index.php:157 index.php:237 single-cursos.php:99
+#: single.php:36 taxonomy-dirigido-a.php:77
+msgid "Uh Oh. Something is missing. Try double checking things."
+msgstr "Algo está faltando, intente revisar bien las cosas."
+
+#: archive.php:65
+msgid "This is the error message in the archive.php template."
+msgstr "Este mensaje de error ocurrió en el archivo."
+
+#: comments.php:17
+msgid "<span>No</span> Comments"
+msgstr ""
+
+#: comments.php:17
+msgid "<span>One</span> Comment"
+msgstr ""
+
+#: comments.php:17
+msgid "<span>%</span> Comments"
+msgstr ""
+
+#: comments.php:27 community/activity/comment.php:39
+#: community/groups/single/forum/edit.php:23
+#: community/groups/single/forum/topic.php:191
+msgid "Reply"
+msgstr ""
+
+#: comments.php:38
+msgid "&larr; Previous Comments"
+msgstr ""
+
+#: comments.php:39
+msgid "More Comments &rarr;"
+msgstr ""
+
+#: comments.php:44
+msgid "Comments are closed."
+msgstr "Los comentarios están cerrados."
+
+#: community/activity/activity-loop.php:33
+msgid "Load More"
+msgstr ""
+
+#: community/activity/activity-loop.php:47
+msgid "Sorry, there was no activity found. Please try a different filter."
+msgstr ""
+
+#: community/activity/comment.php:29
+#, php-format
+msgid ""
+"<a href=\"%1$s\">%2$s</a> replied <a href=\"%3$s\" class=\"activity-time-"
+"since\"><span class=\"time-since\">%4$s</span></a>"
+msgstr ""
+
+#: community/activity/comment.php:45
+#: community/members/single/messages/messages-loop.php:142
+#: community/members/single/messages/single.php:44
+msgid "Delete"
+msgstr ""
+
+#: community/activity/entry.php:59
+msgid "View Conversation"
+msgstr ""
+
+#: community/activity/entry.php:67
+#, php-format
+msgid "Comment %s"
+msgstr ""
+
+#: community/activity/entry.php:75
+msgid "Favorite"
+msgstr ""
+
+#: community/activity/entry.php:79
+msgid "Remove Favorite"
+msgstr ""
+
+#: community/activity/entry.php:125
+msgid "Comment"
+msgstr ""
+
+#: community/activity/entry.php:129
+msgid "Cancel"
+msgstr ""
+
+#: community/activity/index.php:55 community/members/index.php:62
+#, php-format
+msgid "All Members %s"
+msgstr ""
+
+#: community/activity/index.php:72 community/members/index.php:65
+#, php-format
+msgid "My Friends %s"
+msgstr ""
+
+#: community/activity/index.php:91 community/groups/index.php:52
+#, php-format
+msgid "My Groups %s"
+msgstr ""
+
+#: community/activity/index.php:108
+#, php-format
+msgid "My Favorites %s"
+msgstr ""
+
+#: community/activity/index.php:123
+msgid "Mentions"
+msgstr ""
+
+#: community/activity/index.php:142 community/groups/single/activity.php:12
+msgid "RSS"
+msgstr ""
+
+#: community/activity/index.php:154 community/groups/single/activity.php:24
+#: community/members/single/activity.php:17
+msgid "Show:"
+msgstr ""
+
+#: community/activity/index.php:156 community/groups/single/activity.php:26
+#: community/members/single/activity.php:19
+msgid "&mdash; Everything &mdash;"
+msgstr ""
+
+#: community/activity/post-form.php:29
+#, php-format
+msgid "What's new in %s, %s?"
+msgstr ""
+
+#: community/activity/post-form.php:31
+#, php-format
+msgid "What's new, %s?"
+msgstr ""
+
+#: community/activity/post-form.php:38
+msgid "Post what's new"
+msgstr ""
+
+#: community/activity/post-form.php:54 community/activity/post-form.php:58
+msgid "Post in"
+msgstr ""
+
+#: community/activity/post-form.php:61
+#: community/members/single/profile/profile-wp.php:28
+msgid "My Profile"
+msgstr ""
+
+#: community/assets/_attachments/avatars/index.php:37
+#: community/members/single/profile/change-avatar.php:44
+msgid ""
+"If you'd like to delete your current profile photo but not upload a new one, "
+"please use the delete profile photo button."
+msgstr ""
+
+#: community/assets/_attachments/avatars/index.php:40
+#: community/groups/single/admin.php:181
+msgid ""
+"If you'd like to remove the existing group profile photo but not upload a "
+"new one, please use the delete group profile photo button."
+msgstr ""
+
+#: community/assets/_attachments/cover-images/index.php:26
+msgid ""
+"If you'd like to delete your current cover image but not upload a new one, "
+"please use the delete Cover Image button."
+msgstr ""
+
+#: community/assets/_attachments/cover-images/index.php:29
+msgid ""
+"If you'd like to remove the existing group cover image but not upload a new "
+"one, please use the delete group cover image button."
+msgstr ""
+
+#: community/blogs/blogs-loop.php:120
+msgid "Sorry, there were no sites found."
+msgstr ""
+
+#: community/blogs/create.php:37
+msgid "Site registration is currently disabled"
+msgstr ""
+
+#: community/blogs/index.php:53
+#, php-format
+msgid "All Sites %s"
+msgstr ""
+
+#: community/blogs/index.php:57
+#, php-format
+msgid "My Sites %s"
+msgstr ""
+
+#: community/blogs/index.php:87 community/forums/index.php:86
+#: community/groups/index.php:80 community/groups/single/forum.php:50
+#: community/members/index.php:92 community/members/single/blogs.php:18
+#: community/members/single/forums.php:17
+#: community/members/single/friends.php:19
+#: community/members/single/groups.php:19
+msgid "Order By:"
+msgstr ""
+
+#: community/blogs/index.php:89 community/forums/index.php:88
+#: community/groups/index.php:83 community/groups/single/forum.php:52
+#: community/members/index.php:94 community/members/single/blogs.php:20
+#: community/members/single/forums.php:19
+#: community/members/single/friends.php:21
+#: community/members/single/groups.php:21
+msgid "Last Active"
+msgstr ""
+
+#: community/blogs/index.php:90 community/members/single/blogs.php:21
+msgid "Newest"
+msgstr ""
+
+#: community/blogs/index.php:91 community/groups/index.php:86
+#: community/members/index.php:98 community/members/single/blogs.php:22
+#: community/members/single/friends.php:23
+#: community/members/single/groups.php:24
+msgid "Alphabetical"
+msgstr ""
+
+#: community/forums/forums-loop.php:52
+msgid "Topic"
+msgstr ""
+
+#: community/forums/forums-loop.php:53
+msgid "Posts"
+msgstr ""
+
+#: community/forums/forums-loop.php:54
+msgid "Freshness"
+msgstr ""
+
+#: community/forums/forums-loop.php:81
+#, php-format
+msgid "Started by %1$s"
+msgstr ""
+
+#: community/forums/forums-loop.php:92
+#, php-format
+msgid "in %1$s"
+msgstr ""
+
+#: community/forums/forums-loop.php:163
+msgid "Sorry, there were no forum topics found."
+msgstr ""
+
+#: community/forums/index.php:52
+#, php-format
+msgid "All Topics %s"
+msgstr ""
+
+#: community/forums/index.php:56
+#, php-format
+msgid "My Topics %s"
+msgstr ""
+
+#: community/forums/index.php:89 community/groups/single/forum.php:53
+#: community/members/single/forums.php:20
+msgid "Most Posts"
+msgstr ""
+
+#: community/forums/index.php:90 community/groups/single/forum.php:54
+#: community/members/single/forums.php:21
+msgid "Unreplied"
+msgstr ""
+
+#: community/forums/index.php:161
+msgid "Create New Topic:"
+msgstr ""
+
+#: community/forums/index.php:168 community/groups/single/forum.php:106
+#: community/groups/single/forum/edit.php:74 library/plugins.php:229
+msgid "Title:"
+msgstr "Título:"
+
+#: community/forums/index.php:171 community/groups/single/forum.php:109
+#: community/groups/single/forum/edit.php:77
+msgid "Content:"
+msgstr ""
+
+#: community/forums/index.php:174 community/groups/single/forum.php:112
+#: community/groups/single/forum/edit.php:80
+msgid "Tags (comma separated):"
+msgstr ""
+
+#: community/forums/index.php:177
+msgid "Post In Group Forum:"
+msgstr ""
+
+#: community/forums/index.php:180
+msgid "----"
+msgstr ""
+
+#: community/forums/index.php:216
+#, php-format
+msgid ""
+"You are not a member of any groups so you don't have any group forums you "
+"can post in. To start posting, first find a group that matches the topic "
+"subject you'd like to start. If this group does not exist, why not <a "
+"href='%s'>create a new group</a>? Once you have joined or created the group "
+"you can post your topic in that group's forum."
+msgstr ""
+
+#: community/groups/create.php:66 community/groups/single/admin.php:39
+msgid "Group Name (required)"
+msgstr ""
+
+#: community/groups/create.php:71 community/groups/single/admin.php:42
+msgid "Group Description (required)"
+msgstr ""
+
+#: community/groups/create.php:101 community/groups/single/admin.php:100
+msgid "Privacy Options"
+msgstr ""
+
+#: community/groups/create.php:105 community/groups/single/admin.php:104
+msgid "This is a public group"
+msgstr ""
+
+#: community/groups/create.php:108 community/groups/single/admin.php:107
+msgid "Any site member can join this group."
+msgstr ""
+
+#: community/groups/create.php:109 community/groups/create.php:118
+#: community/groups/single/admin.php:108 community/groups/single/admin.php:116
+msgid ""
+"This group will be listed in the groups directory and in search results."
+msgstr ""
+
+#: community/groups/create.php:110 community/groups/single/admin.php:109
+msgid "Group content and activity will be visible to any site member."
+msgstr ""
+
+#: community/groups/create.php:114 community/groups/single/admin.php:112
+msgid "This is a private group"
+msgstr ""
+
+#: community/groups/create.php:117 community/groups/single/admin.php:115
+msgid "Only users who request membership and are accepted can join the group."
+msgstr ""
+
+#: community/groups/create.php:119 community/groups/create.php:128
+#: community/groups/single/admin.php:117 community/groups/single/admin.php:125
+msgid ""
+"Group content and activity will only be visible to members of the group."
+msgstr ""
+
+#: community/groups/create.php:123 community/groups/single/admin.php:120
+msgid "This is a hidden group"
+msgstr ""
+
+#: community/groups/create.php:126 community/groups/single/admin.php:123
+msgid "Only users who are invited can join the group."
+msgstr ""
+
+#: community/groups/create.php:127 community/groups/single/admin.php:124
+msgid ""
+"This group will not be listed in the groups directory or search results."
+msgstr ""
+
+#: community/groups/create.php:133 community/groups/single/admin.php:132
+msgid "Group Invitations"
+msgstr ""
+
+#: community/groups/create.php:135 community/groups/single/admin.php:134
+msgid "Which members of this group are allowed to invite others?"
+msgstr ""
+
+#: community/groups/create.php:139 community/groups/single/admin.php:138
+msgid "All group members"
+msgstr ""
+
+#: community/groups/create.php:141 community/groups/single/admin.php:140
+msgid "Group admins and mods only"
+msgstr ""
+
+#: community/groups/create.php:143 community/groups/single/admin.php:142
+msgid "Group admins only"
+msgstr ""
+
+#: community/groups/create.php:149
+msgid "Group Forums"
+msgstr ""
+
+#: community/groups/create.php:153
+msgid "Should this group have a forum?"
+msgstr ""
+
+#: community/groups/create.php:156 community/groups/single/admin.php:91
+msgid "Enable discussion forum"
+msgstr ""
+
+#: community/groups/create.php:160
+#, php-format
+msgid ""
+"<strong>Attention Site Admin:</strong> Group forums require the <a href=\"%s"
+"\">correct setup and configuration</a> of a bbPress installation."
+msgstr ""
+
+#: community/groups/create.php:200 community/groups/single/admin.php:167
+msgid ""
+"Upload an image to use as a profile photo for this group. The image will be "
+"shown on the main group page, and in search results."
+msgstr ""
+
+#: community/groups/create.php:205 community/groups/single/admin.php:172
+#: community/members/single/profile/change-avatar.php:36
+msgid "Select an image"
+msgstr ""
+
+#: community/groups/create.php:212
+msgid ""
+"To skip the group profile photo upload process, hit the \"Next Step\" button."
+msgstr ""
+
+#: community/groups/create.php:227
+msgid "Crop Group Profile Photo"
+msgstr ""
+
+#: community/groups/create.php:273 community/groups/single/admin.php:237
+msgid "The Cover Image will be used to customize the header of your group."
+msgstr ""
+
+#: community/groups/create.php:319
+msgid "Select people to invite from your friends list."
+msgstr ""
+
+#: community/groups/create.php:337 community/groups/single/invites-loop.php:74
+msgid "Remove Invite"
+msgstr ""
+
+#: community/groups/create.php:354
+msgid ""
+"Once you have built up friend connections you will be able to invite others "
+"to your group."
+msgstr ""
+
+#: community/groups/groups-loop.php:62
+#: community/groups/single/cover-image-header.php:62
+#: community/groups/single/group-header.php:71
+#, php-format
+msgid "active %s"
+msgstr ""
+
+#: community/groups/groups-loop.php:131
+msgid "There were no groups found."
+msgstr ""
+
+#: community/groups/index.php:49
+#, php-format
+msgid "All Groups %s"
+msgstr ""
+
+#: community/groups/index.php:84 community/members/single/groups.php:22
+msgid "Most Members"
+msgstr ""
+
+#: community/groups/index.php:85 community/members/single/groups.php:23
+msgid "Newly Created"
+msgstr ""
+
+#: community/groups/single/admin.php:56
+msgid "Notify group members of these changes via email"
+msgstr ""
+
+#: community/groups/single/admin.php:183
+msgid "Delete Group Profile Photo"
+msgstr ""
+
+#: community/groups/single/admin.php:201
+msgid "Crop Profile Photo"
+msgstr ""
+
+#: community/groups/single/admin.php:226
+#: community/members/single/profile/change-cover-image.php:11
+msgid "Change Cover Image"
+msgstr ""
+
+#: community/groups/single/admin.php:265
+msgid "Administrators"
+msgstr ""
+
+#: community/groups/single/admin.php:273 community/groups/single/admin.php:300
+#, php-format
+msgid "Profile picture of %s"
+msgstr ""
+
+#: community/groups/single/admin.php:278 community/groups/single/admin.php:305
+msgid "Demote to Member"
+msgstr ""
+
+#: community/groups/single/admin.php:293
+msgid "Moderators"
+msgstr ""
+
+#: community/groups/single/admin.php:304 community/groups/single/admin.php:360
+msgid "Promote to Admin"
+msgstr ""
+
+#: community/groups/single/admin.php:319
+msgid "Members"
+msgstr ""
+
+#: community/groups/single/admin.php:348
+msgid "(banned)"
+msgstr ""
+
+#: community/groups/single/admin.php:354
+msgid "Remove Ban"
+msgstr ""
+
+#: community/groups/single/admin.php:358
+msgid "Kick &amp; Ban"
+msgstr ""
+
+#: community/groups/single/admin.php:359
+msgid "Promote to Mod"
+msgstr ""
+
+#: community/groups/single/admin.php:364
+msgid "Remove from group"
+msgstr ""
+
+#: community/groups/single/admin.php:401
+msgid "This group has no members."
+msgstr ""
+
+#: community/groups/single/admin.php:472
+msgid ""
+"WARNING: Deleting this group will completely remove ALL content associated "
+"with it. There is no way back, please be careful with this option."
+msgstr ""
+
+#: community/groups/single/admin.php:475
+msgid "I understand the consequences of deleting this group."
+msgstr ""
+
+#: community/groups/single/cover-image-header.php:73
+#: community/groups/single/group-header.php:22
+msgid "Group Admins"
+msgstr ""
+
+#: community/groups/single/cover-image-header.php:93
+#: community/groups/single/group-header.php:42
+msgid "Group Mods"
+msgstr ""
+
+#: community/groups/single/forum.php:30
+msgid "New Topic"
+msgstr ""
+
+#: community/groups/single/forum.php:38
+#: community/groups/single/forum/edit.php:29
+#: community/groups/single/forum/topic.php:30
+msgid "Forum Directory"
+msgstr ""
+
+#: community/groups/single/forum.php:100
+msgid "You will auto join this group when you start a new topic."
+msgstr ""
+
+#: community/groups/single/forum.php:104
+msgid "Post a New Topic:"
+msgstr ""
+
+#: community/groups/single/forum/edit.php:38
+msgid "Edit:"
+msgstr ""
+
+#: community/groups/single/forum/edit.php:113
+msgid "Edit text"
+msgstr ""
+
+#: community/groups/single/forum/edit.php:139
+msgid "This topic does not exist."
+msgstr ""
+
+#: community/groups/single/forum/topic.php:22
+msgid "New Reply"
+msgstr ""
+
+#: community/groups/single/forum/topic.php:45
+msgid "Topic tags:"
+msgstr ""
+
+#: community/groups/single/forum/topic.php:108
+#, php-format
+msgid "%1$s said %2$s:"
+msgstr ""
+
+#: community/groups/single/forum/topic.php:160
+msgid "There are no posts for this topic."
+msgstr ""
+
+#: community/groups/single/forum/topic.php:175
+msgid "You will auto join this group when you reply to this topic."
+msgstr ""
+
+#: community/groups/single/forum/topic.php:187
+msgid "Add a reply:"
+msgstr ""
+
+#: community/groups/single/forum/topic.php:214
+msgid "This topic is closed, replies are no longer accepted."
+msgstr ""
+
+#: community/groups/single/invites-loop.php:110
+msgid "Select friends to invite."
+msgstr ""
+
+#: community/groups/single/members.php:131
+msgid "No members were found."
+msgstr ""
+
+#: community/groups/single/request-membership.php:17
+#, php-format
+msgid "You are requesting to become a member of the group '%s'."
+msgstr ""
+
+#: community/groups/single/request-membership.php:20
+msgid "Comments (optional)"
+msgstr ""
+
+#: community/groups/single/requests-loop.php:57
+#: community/members/single/friends/requests.php:57
+#: community/members/single/groups/invites.php:45
+msgid "Accept"
+msgstr ""
+
+#: community/groups/single/requests-loop.php:59
+#: community/members/single/friends/requests.php:58
+#: community/members/single/groups/invites.php:46
+msgid "Reject"
+msgstr ""
+
+#: community/groups/single/requests-loop.php:95
+msgid "There are no pending membership requests."
+msgstr ""
+
+#: community/groups/single/send-invites.php:43
+msgid "Group invitations can only be extended to friends."
+msgstr ""
+
+#: community/groups/single/send-invites.php:44
+msgid ""
+"Once you've made some friendships, you'll be able to invite those members to "
+"this group."
+msgstr ""
+
+#: community/groups/single/send-invites.php:52
+msgid "All of your friends already belong to this group."
+msgstr ""
+
+#: community/members/activate.php:41
+msgid ""
+"Your account was activated successfully! Your account details have been sent "
+"to you in a separate email."
+msgstr ""
+
+#: community/members/activate.php:43
+#, php-format
+msgid ""
+"Your account was activated successfully! You can now <a href=\"%s\">log in</"
+"a> with the username and password you provided when you signed up."
+msgstr ""
+
+#: community/members/activate.php:48
+msgid "Please provide a valid activation key."
+msgstr ""
+
+#: community/members/activate.php:52
+msgid "Activation Key:"
+msgstr ""
+
+#: community/members/index.php:95 community/members/single/friends.php:22
+msgid "Newest Registered"
+msgstr ""
+
+#: community/members/members-loop.php:142
+msgid "Sorry, no members were found."
+msgstr ""
+
+#: community/members/register.php:40
+msgid "User registration is currently not allowed."
+msgstr ""
+
+#: community/members/register.php:59
+msgid ""
+"Registering for this site is easy. Just fill in the fields below, and we'll "
+"get a new account set up for you in no time."
+msgstr ""
+
+#: community/members/register.php:74
+msgid "Account Details"
+msgstr ""
+
+#: community/members/register.php:76
+msgid "Username"
+msgstr ""
+
+#: community/members/register.php:76 community/members/register.php:87
+#: community/members/register.php:98 community/members/register.php:110
+#: community/members/register.php:270 community/members/register.php:286
+msgid "(required)"
+msgstr "(requerido)"
+
+#: community/members/register.php:87
+msgid "Email Address"
+msgstr ""
+
+#: community/members/register.php:98
+msgid "Choose a Password"
+msgstr ""
+
+#: community/members/register.php:110
+msgid "Confirm Password"
+msgstr ""
+
+#: community/members/register.php:156
+msgid "Profile Details"
+msgstr ""
+
+#: community/members/register.php:180 community/members/register.php:201
+#: community/members/single/profile/edit.php:58
+#: community/members/single/profile/edit.php:78
+#, php-format
+msgid "This field can be seen by: %s"
+msgstr ""
+
+#: community/members/register.php:189
+#: community/members/single/profile/edit.php:67
+msgid "Who can see this field?"
+msgstr ""
+
+#: community/members/register.php:194
+#: community/members/single/profile/edit.php:72
+msgid "Close"
+msgstr ""
+
+#: community/members/register.php:264
+msgid "Blog Details"
+msgstr ""
+
+#: community/members/register.php:266
+msgid "Yes, I'd like to create a new site"
+msgstr ""
+
+#: community/members/register.php:270
+msgid "Blog URL"
+msgstr ""
+
+#: community/members/register.php:286 library/customizer.php:38
+msgid "Site Title"
+msgstr "Titulo del Sitio"
+
+#: community/members/register.php:297
+msgid ""
+"I would like my site to appear in search engines, and in public listings "
+"around this network."
+msgstr ""
+
+#: community/members/register.php:307
+msgid "Yes"
+msgstr ""
+
+#: community/members/register.php:308
+msgid "No"
+msgstr "No"
+
+#: community/members/register.php:376
+msgid ""
+"You have successfully created your account! To begin using this site you "
+"will need to activate your account via the email we have just sent to your "
+"address."
+msgstr ""
+
+#: community/members/register.php:378
+msgid ""
+"You have successfully created your account! Please log in using the username "
+"and password you have just created."
+msgstr ""
+
+#: community/members/single/friends/requests.php:102
+msgid "You have no pending friendship requests."
+msgstr ""
+
+#: community/members/single/groups/invites.php:66
+msgid "You have no outstanding group invites."
+msgstr ""
+
+#: community/members/single/messages/compose.php:21
+msgid "Send To (Username or Friend's Name)"
+msgstr ""
+
+#: community/members/single/messages/compose.php:30
+msgid "This is a notice to all users."
+msgstr ""
+
+#: community/members/single/messages/compose.php:33
+#: community/members/single/messages/messages-loop.php:59
+msgid "Subject"
+msgstr ""
+
+#: community/members/single/messages/compose.php:36
+msgid "Message"
+msgstr ""
+
+#: community/members/single/messages/messages-loop.php:56
+#: community/members/single/notifications/notifications-loop.php:17
+msgid "Select all"
+msgstr ""
+
+#: community/members/single/messages/messages-loop.php:58
+msgid "From"
+msgstr ""
+
+#: community/members/single/messages/messages-loop.php:76
+msgid "Star"
+msgstr ""
+
+#: community/members/single/messages/messages-loop.php:80
+#: community/members/single/notifications/notifications-loop.php:21
+msgid "Actions"
+msgstr ""
+
+#: community/members/single/messages/messages-loop.php:92
+msgid "Select this message"
+msgstr ""
+
+#: community/members/single/messages/messages-loop.php:99
+msgid "From:"
+msgstr ""
+
+#: community/members/single/messages/messages-loop.php:106
+msgid "To:"
+msgstr ""
+
+#: community/members/single/messages/messages-loop.php:137
+msgid "Read"
+msgstr ""
+
+#: community/members/single/messages/messages-loop.php:139
+msgid "Unread"
+msgstr ""
+
+#: community/members/single/messages/messages-loop.php:189
+msgid "Sorry, no messages were found."
+msgstr ""
+
+#: community/members/single/messages/notices-loop.php:63
+msgid "Sent:"
+msgstr ""
+
+#: community/members/single/messages/notices-loop.php:95
+msgid "Sorry, no notices were found."
+msgstr ""
+
+#: community/members/single/messages/single.php:30
+msgid "You are alone in this conversation."
+msgstr ""
+
+#: community/members/single/messages/single.php:34
+#, php-format
+msgid "Conversation between %s recipients."
+msgstr ""
+
+#: community/members/single/messages/single.php:38
+#, php-format
+msgid "Conversation between %s and you."
+msgstr ""
+
+#: community/members/single/messages/single.php:101
+msgid "Send a Reply"
+msgstr ""
+
+#: community/members/single/messages/single.php:124
+msgid "Reply to Message"
+msgstr ""
+
+#: community/members/single/notifications/feedback-no-notifications.php:16
+msgid "You have no unread notifications."
+msgstr ""
+
+#: community/members/single/notifications/feedback-no-notifications.php:20
+msgid "This member has no unread notifications."
+msgstr ""
+
+#: community/members/single/notifications/feedback-no-notifications.php:28
+msgid "You have no notifications."
+msgstr ""
+
+#: community/members/single/notifications/feedback-no-notifications.php:32
+msgid "This member has no notifications."
+msgstr ""
+
+#: community/members/single/notifications/notifications-loop.php:19
+msgid "Notification"
+msgstr ""
+
+#: community/members/single/notifications/notifications-loop.php:20
+msgid "Date Received"
+msgstr ""
+
+#: community/members/single/notifications/notifications-loop.php:33
+msgid "Select this notification"
+msgstr ""
+
+#: community/members/single/profile/change-avatar.php:11
+msgid "Change Profile Photo"
+msgstr ""
+
+#: community/members/single/profile/change-avatar.php:24
+msgid ""
+"Your profile photo will be used on your profile and throughout the site. If "
+"there is a <a href=\"http://gravatar.com\">Gravatar</a> associated with your "
+"account email we will use that, or you can upload an image from your "
+"computer."
+msgstr ""
+
+#: community/members/single/profile/change-avatar.php:31
+msgid ""
+"Click below to select a JPG, GIF or PNG format photo from your computer and "
+"then click 'Upload Image' to proceed."
+msgstr ""
+
+#: community/members/single/profile/change-avatar.php:45
+msgid "Delete My Profile Photo"
+msgstr ""
+
+#: community/members/single/profile/change-avatar.php:52
+msgid "Crop Your New Profile Photo"
+msgstr ""
+
+#: community/members/single/profile/change-avatar.php:84
+msgid ""
+"Your profile photo will be used on your profile and throughout the site. To "
+"change your profile photo, please create an account with <a href=\"http://"
+"gravatar.com\">Gravatar</a> using the same email address as you used to "
+"register with this site."
+msgstr ""
+
+#: community/members/single/profile/change-cover-image.php:22
+msgid "Your Cover Image will be used to customize the header of your profile."
+msgstr ""
+
+#: community/members/single/profile/edit.php:26
+#, php-format
+msgid "Editing '%s' Profile Group"
+msgstr ""
+
+#: community/members/single/profile/edit.php:62
+msgid "Change"
+msgstr ""
+
+#: community/members/single/profile/profile-wp.php:28
+#, php-format
+msgid "%s's Profile"
+msgstr ""
+
+#: community/members/single/profile/profile-wp.php:35
+msgid "Name"
+msgstr "Nombre"
+
+#: community/members/single/profile/profile-wp.php:44
+msgid "About Me"
+msgstr ""
+
+#: community/members/single/profile/profile-wp.php:53
+msgid "Website"
+msgstr "Sitio web"
+
+#: community/members/single/profile/profile-wp.php:62
+msgid "Jabber"
+msgstr ""
+
+#: community/members/single/profile/profile-wp.php:71
+msgid "AOL Messenger"
+msgstr ""
+
+#: community/members/single/profile/profile-wp.php:80
+msgid "Yahoo Messenger"
+msgstr ""
+
+#: community/members/single/settings/capabilities.php:25
+msgid "This user is a spammer."
+msgstr ""
+
+#: community/members/single/settings/delete-account.php:16
+msgid ""
+"Deleting your account will delete all of the content you have created. It "
+"will be completely irrecoverable."
+msgstr ""
+
+#: community/members/single/settings/delete-account.php:20
+msgid ""
+"Deleting this account will delete all of the content it has created. It will "
+"be completely irrecoverable."
+msgstr ""
+
+#: community/members/single/settings/delete-account.php:39
+msgid "I understand the consequences."
+msgstr ""
+
+#: community/members/single/settings/general.php:16
+msgid ""
+"Current Password <span>(required to update email or change current "
+"password)</span>"
+msgstr ""
+
+#: community/members/single/settings/general.php:17 wpum/helper-links.php:29
+msgid "Lost your password?"
+msgstr ""
+
+#: community/members/single/settings/general.php:21
+msgid "Account Email"
+msgstr ""
+
+#: community/members/single/settings/general.php:24
+msgid "Change Password <span>(leave blank for no change)</span>"
+msgstr ""
+
+#: community/members/single/settings/general.php:25
+msgid "New Password"
+msgstr ""
+
+#: community/members/single/settings/general.php:29
+#: community/members/single/settings/general.php:31
+msgid "Repeat New Password"
+msgstr ""
+
+#: community/members/single/settings/notifications.php:13
+msgid "Send an email notice when:"
+msgstr ""
+
+#: community/members/single/settings/profile.php:28
+msgid "Visibility"
+msgstr ""
+
+#: functions.php:194
+msgid "Sidebar 1"
+msgstr ""
+
+#: functions.php:195
+msgid "The first (primary) sidebar."
+msgstr ""
+
+#: functions.php:250
+#, php-format
+msgid "<cite class=\"fn\">%1$s</cite> %2$s"
+msgstr ""
+
+#: functions.php:250
+msgid "(Edit)"
+msgstr "(Editar)"
+
+#: functions.php:251
+msgid "F jS, Y"
+msgstr ""
+
+#: functions.php:256
+msgid "Your comment is awaiting moderation."
+msgstr "Tu comentario está pendiente de moderación"
+
+#: functions.php:275 searchform.php:3
+msgid "Search for:"
+msgstr "Buscar por:"
+
+#: header.php:75 header.php:97 header.php:148 library/bones.php:242
+msgid "The App Menu"
+msgstr ""
+
+#: header.php:83 header.php:106 library/bones.php:241
+msgid "The Main Menu"
+msgstr ""
+
+#: header.php:127 library/bones.php:243
+msgid "The Language Menu"
+msgstr ""
+
+#: index.php:38 index.php:119 index.php:200 search.php:17
+#, php-format
+msgid "Posted %1$s by %2$s"
+msgstr "Publicado el %1$s por %2$s"
+
+#: index.php:55 index.php:136 index.php:217 post-formats/format-link.php:48
+#: post-formats/format-quote.php:48 search.php:35
+#, php-format
+msgid "Filed under: %1$s"
+msgstr "Categoría: %1$s"
+
+#: index.php:58 index.php:139 index.php:220 post-formats/format-aside.php:47
+#: post-formats/format-audio.php:47 post-formats/format-chat.php:47
+#: post-formats/format-gallery.php:47 post-formats/format-image.php:47
+#: post-formats/format-link.php:50 post-formats/format-quote.php:50
+#: post-formats/format-status.php:47 post-formats/format-video.php:47
+#: search.php:38
+msgid "Tags:"
+msgstr ""
+
+#: index.php:79 index.php:160 index.php:240
+msgid "This is the error message in the index.php template."
+msgstr ""
+
+#: index.php:211 library/bones.php:328 search.php:28
+msgid "Read more &raquo;"
+msgstr "Leer más &raquo;"
+
+#: library/admin.php:82
+msgid "j F Y @ g:i a"
+msgstr ""
+
+#: library/admin.php:94
+msgid "Recently on Themble (Customize on admin.php)"
+msgstr ""
+
+#: library/admin.php:141
+msgid ""
+"<span id=\"footer-thankyou\">Desarrollado por <a href=\"http://aioweb.net\" "
+"target=\"_blank\">AIOWEB</a></span>."
+msgstr ""
+
+#: library/bones.php:78 library/extras.php:67
+#, php-format
+msgid "Page %s"
+msgstr "Página %s"
+
+#: library/bones.php:245
+msgid "Footer Links"
+msgstr ""
+
+#: library/bones.php:283
+msgid "No Related Posts Yet!"
+msgstr "No hay Artículos Relacionados"
+
+#: library/bones.php:328
+msgid "Read "
+msgstr "Leer"
+
+#: library/custom-post-status.php:10
+msgid "Preventa"
+msgstr ""
+
+#: library/custom-post-status.php:63
+msgid "Venta"
+msgstr ""
+
+#: library/custom-post-status.php:121
+msgid "Ultimas Casas"
+msgstr ""
+
+#: library/custom-post-status.php:185
+msgid "Vendido"
+msgstr ""
+
+#: library/custom-post-type.php:43 library/custom-post-type.php:45
+#: library/custom-post-type.php:46
+msgid "Alumnos"
+msgstr ""
+
+#: library/custom-post-type.php:44 library/custom-post-type.php:70
+msgid "Alumno"
+msgstr ""
+
+#: library/custom-post-type.php:47 library/custom-post-type.php:121
+#: library/custom-post-type.php:182 library/custom-post-type.php:396
+msgid "Item Archives"
+msgstr ""
+
+#: library/custom-post-type.php:48 library/custom-post-type.php:122
+#: library/custom-post-type.php:184 library/custom-post-type.php:239
+#: library/custom-post-type.php:283 library/custom-post-type.php:327
+#: library/custom-post-type.php:398
+msgid "Parent Item:"
+msgstr ""
+
+#: library/custom-post-type.php:49
+msgid "Todos los Alumnos"
+msgstr ""
+
+#: library/custom-post-type.php:50
+msgid "Añadir Nuevo Alumno"
+msgstr ""
+
+#: library/custom-post-type.php:51
+msgid "Añadir Nuevo"
+msgstr ""
+
+#: library/custom-post-type.php:52
+msgid "Nuevo Alumno"
+msgstr ""
+
+#: library/custom-post-type.php:53
+msgid "Editar Alumno"
+msgstr ""
+
+#: library/custom-post-type.php:54
+msgid "Actualizar Alumno"
+msgstr ""
+
+#: library/custom-post-type.php:55
+msgid "Ver Alumno"
+msgstr ""
+
+#: library/custom-post-type.php:56
+msgid "Buscar Alumno"
+msgstr ""
+
+#: library/custom-post-type.php:57
+msgid "No se encontró"
+msgstr ""
+
+#: library/custom-post-type.php:58
+msgid "No se encontró en la Papelera"
+msgstr ""
+
+#: library/custom-post-type.php:59
+msgid "Imágen de Perfil"
+msgstr ""
+
+#: library/custom-post-type.php:60
+msgid "Asignar imágen de perfil"
+msgstr ""
+
+#: library/custom-post-type.php:61
+msgid "Eliminar imágen de perfil"
+msgstr ""
+
+#: library/custom-post-type.php:62
+msgid "Usar como imágen de perfil"
+msgstr ""
+
+#: library/custom-post-type.php:63
+msgid "Insertar en el elemento"
+msgstr ""
+
+#: library/custom-post-type.php:64
+msgid "Subido a este elemento"
+msgstr ""
+
+#: library/custom-post-type.php:65
+msgid "Lista de elemnetos"
+msgstr ""
+
+#: library/custom-post-type.php:66
+msgid "Lista de elementos de navegación"
+msgstr ""
+
+#: library/custom-post-type.php:67
+msgid "Filtrar elementos"
+msgstr ""
+
+#: library/custom-post-type.php:117 library/custom-post-type.php:119
+#: library/custom-post-type.php:120
+msgid "Aspirantes"
+msgstr ""
+
+#: library/custom-post-type.php:118 library/custom-post-type.php:144
+msgid "Aspirante"
+msgstr ""
+
+#: library/custom-post-type.php:123 library/custom-post-type.php:185
+#: library/custom-post-type.php:237 library/custom-post-type.php:281
+#: library/custom-post-type.php:325 library/custom-post-type.php:399
+msgid "All Items"
+msgstr ""
+
+#: library/custom-post-type.php:124 library/custom-post-type.php:186
+#: library/custom-post-type.php:241 library/custom-post-type.php:285
+#: library/custom-post-type.php:329 library/custom-post-type.php:400
+msgid "Add New Item"
+msgstr ""
+
+#: library/custom-post-type.php:125 library/custom-post-type.php:187
+#: library/custom-post-type.php:401
+msgid "Add New"
+msgstr "Añadir Nuevo"
+
+#: library/custom-post-type.php:126 library/custom-post-type.php:188
+#: library/custom-post-type.php:402
+msgid "New Item"
+msgstr ""
+
+#: library/custom-post-type.php:127 library/custom-post-type.php:189
+#: library/custom-post-type.php:242 library/custom-post-type.php:286
+#: library/custom-post-type.php:330 library/custom-post-type.php:403
+msgid "Edit Item"
+msgstr ""
+
+#: library/custom-post-type.php:128 library/custom-post-type.php:190
+#: library/custom-post-type.php:243 library/custom-post-type.php:287
+#: library/custom-post-type.php:331 library/custom-post-type.php:404
+msgid "Update Item"
+msgstr ""
+
+#: library/custom-post-type.php:129 library/custom-post-type.php:191
+#: library/custom-post-type.php:244 library/custom-post-type.php:288
+#: library/custom-post-type.php:332 library/custom-post-type.php:405
+msgid "View Item"
+msgstr ""
+
+#: library/custom-post-type.php:130 library/custom-post-type.php:193
+#: library/custom-post-type.php:407
+msgid "Search Item"
+msgstr ""
+
+#: library/custom-post-type.php:131 library/custom-post-type.php:194
+#: library/custom-post-type.php:408
+msgid "Not found"
+msgstr ""
+
+#: library/custom-post-type.php:132 library/custom-post-type.php:195
+#: library/custom-post-type.php:409
+msgid "Not found in Trash"
+msgstr ""
+
+#: library/custom-post-type.php:133 library/custom-post-type.php:196
+#: library/custom-post-type.php:410
+msgid "Featured Image"
+msgstr ""
+
+#: library/custom-post-type.php:134 library/custom-post-type.php:197
+#: library/custom-post-type.php:411
+msgid "Set featured image"
+msgstr ""
+
+#: library/custom-post-type.php:135 library/custom-post-type.php:198
+#: library/custom-post-type.php:412
+msgid "Remove featured image"
+msgstr ""
+
+#: library/custom-post-type.php:136 library/custom-post-type.php:199
+#: library/custom-post-type.php:413
+msgid "Use as featured image"
+msgstr ""
+
+#: library/custom-post-type.php:137 library/custom-post-type.php:200
+#: library/custom-post-type.php:414
+msgid "Insert into item"
+msgstr ""
+
+#: library/custom-post-type.php:138 library/custom-post-type.php:201
+#: library/custom-post-type.php:415
+msgid "Uploaded to this item"
+msgstr ""
+
+#: library/custom-post-type.php:139 library/custom-post-type.php:202
+#: library/custom-post-type.php:252 library/custom-post-type.php:296
+#: library/custom-post-type.php:340 library/custom-post-type.php:416
+msgid "Items list"
+msgstr ""
+
+#: library/custom-post-type.php:140 library/custom-post-type.php:203
+#: library/custom-post-type.php:253 library/custom-post-type.php:297
+#: library/custom-post-type.php:341 library/custom-post-type.php:417
+msgid "Items list navigation"
+msgstr ""
+
+#: library/custom-post-type.php:141 library/custom-post-type.php:204
+#: library/custom-post-type.php:418
+msgid "Filter items list"
+msgstr ""
+
+#: library/custom-post-type.php:145
+msgid "Post Type Description"
+msgstr ""
+
+#: library/custom-post-type.php:178 library/custom-post-type.php:180
+#: library/custom-post-type.php:181
+msgid "Cursos"
+msgstr ""
+
+#: library/custom-post-type.php:179 library/custom-post-type.php:207
+msgid "Curso"
+msgstr ""
+
+#: library/custom-post-type.php:183 library/custom-post-type.php:397
+msgid "Item Attributes"
+msgstr ""
+
+#: library/custom-post-type.php:192 library/custom-post-type.php:406
+msgid "View Items"
+msgstr ""
+
+#: library/custom-post-type.php:234
+msgid "Ubicaciones"
+msgstr ""
+
+#: library/custom-post-type.php:235
+msgid "Ubicacion"
+msgstr ""
+
+#: library/custom-post-type.php:236
+msgid "Locations"
+msgstr ""
+
+#: library/custom-post-type.php:238 library/custom-post-type.php:282
+#: library/custom-post-type.php:326
+msgid "Parent Item"
+msgstr ""
+
+#: library/custom-post-type.php:240 library/custom-post-type.php:284
+#: library/custom-post-type.php:328
+msgid "New Item Name"
+msgstr ""
+
+#: library/custom-post-type.php:245 library/custom-post-type.php:289
+#: library/custom-post-type.php:333
+msgid "Separate items with commas"
+msgstr ""
+
+#: library/custom-post-type.php:246 library/custom-post-type.php:290
+#: library/custom-post-type.php:334
+msgid "Add or remove items"
+msgstr ""
+
+#: library/custom-post-type.php:247 library/custom-post-type.php:291
+#: library/custom-post-type.php:335
+msgid "Choose from the most used"
+msgstr ""
+
+#: library/custom-post-type.php:248 library/custom-post-type.php:292
+#: library/custom-post-type.php:336
+msgid "Popular Items"
+msgstr ""
+
+#: library/custom-post-type.php:249 library/custom-post-type.php:293
+#: library/custom-post-type.php:337
+msgid "Search Items"
+msgstr ""
+
+#: library/custom-post-type.php:250 library/custom-post-type.php:294
+#: library/custom-post-type.php:338
+msgid "Not Found"
+msgstr "No encontrado"
+
+#: library/custom-post-type.php:251 library/custom-post-type.php:295
+#: library/custom-post-type.php:339
+msgid "No items"
+msgstr ""
+
+#: library/custom-post-type.php:278
+msgid "Types"
+msgstr "Tipos"
+
+#: library/custom-post-type.php:279
+msgid "Type"
+msgstr ""
+
+#: library/custom-post-type.php:280
+msgid "Course Type"
+msgstr "Tipo de Curso"
+
+#: library/custom-post-type.php:392 library/custom-post-type.php:394
+msgid "Testimonios"
+msgstr ""
+
+#: library/custom-post-type.php:393 library/custom-post-type.php:395
+#: library/custom-post-type.php:421
+msgid "Testimonio"
+msgstr ""
+
+#: library/customizer.php:22 library/customizer.php:39
+msgid "Site Logo"
+msgstr "Logotipo"
+
+#: library/customizer.php:34
+msgid "Display as"
+msgstr "Mostrar como"
+
+#: library/customizer.php:40
+msgid "Logo & Title"
+msgstr "Logo y Título"
+
+#: library/customizer.php:50
+msgid "Show Site Description as Slogan"
+msgstr "Mostrar la Descripción del Sitio como Eslógan"
+
+#: library/customizer.php:77
+msgid "Google Analytics"
+msgstr ""
+
+#: library/customizer.php:87
+msgid "Tracking Code ID (UA-000...)"
+msgstr ""
+
+#: library/customizer.php:97
+msgid "Display Network Features"
+msgstr ""
+
+#: library/customizer.php:110
+msgid "Extra Code"
+msgstr ""
+
+#: library/customizer.php:117
+msgid "Social & Contact"
+msgstr ""
+
+#: library/customizer.php:128
+msgid "Phone Number"
+msgstr "Teléfono"
+
+#: library/customizer.php:140
+msgid "Facebook"
+msgstr ""
+
+#: library/customizer.php:152
+msgid "Twitter"
+msgstr ""
+
+#: library/customizer.php:164
+msgid "Google +"
+msgstr ""
+
+#: library/customizer.php:176
+msgid "Instagram"
+msgstr ""
+
+#: library/customizer.php:188
+msgid "Spotify"
+msgstr ""
+
+#: library/customizer.php:200
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: library/customs.php:899
+msgid "VEO Instructor ID"
+msgstr ""
+
+#: library/customs.php:900 library/customs.php:944
+msgid "Status"
+msgstr ""
+
+#: library/customs.php:1235
+msgid "Change User Status to 00"
+msgstr ""
+
+#: library/customs.php:1261
+msgid "Change User Status to 05"
+msgstr ""
+
+#: library/customs.php:1288
+msgid "Change User Status to 08"
+msgstr ""
+
+#: library/customs.php:1317
+msgid "Change User Status to 10"
+msgstr ""
+
+#: library/customs.php:1346
+msgid "Change User Status to 20"
+msgstr ""
+
+#: library/customs.php:1373
+msgid "Change User Status to 30"
+msgstr ""
+
+#: library/customs.php:1400
+msgid "Change User Status to 50"
+msgstr ""
+
+#: library/extras.php:89
+#, php-format
+msgid ""
+"<span class=\"posted-on\"><i class=\"fa fa-clock-o\"> </i> %1$s</span> <span "
+"class=\"byline\"> <i class=\"fa fa-user\"> </i> %2$s</span>"
+msgstr ""
+
+#: library/plugins.php:127
+msgid "Recomendado"
+msgstr ""
+
+#: library/plugins.php:235
+msgid "Post Type:"
+msgstr ""
+
+#: library/plugins.php:246
+msgid "Number To show:"
+msgstr ""
+
+#: page-certificadores-aiosearch.php:58 page-instructores-aiosearch.php:60
+#: page-ofa.php:98 page-ofa.php:222 page-ofa.php:302 page-ofc.php:227
+#: page-ofcs.php:156 page-ofi.php:113 searchform.php:6
+msgid "Search"
+msgstr "Buscar"
+
+#: page-ofa.php:417 page-ofc.php:292 page-ofcs.php:212 page-ofi.php:206
+#: single-alumnos.php:36 single-aspirantes.php:28
+msgid "Post updated"
+msgstr ""
+
+#: page-ofa.php:418 page-ofc.php:293 page-ofcs.php:213
+msgid "Alta de Aspirante"
+msgstr ""
+
+#: page-ofi.php:207
+msgid "Alta de Alumno"
+msgstr ""
+
+#: post-formats/format-aside.php:38 post-formats/format-audio.php:38
+#: post-formats/format-chat.php:38 post-formats/format-gallery.php:38
+#: post-formats/format-image.php:38 post-formats/format-link.php:38
+#: post-formats/format-quote.php:38 post-formats/format-status.php:38
+#: post-formats/format-video.php:38
+msgid "Pages:"
+msgstr ""
+
+#: search.php:6
+msgid "Search Results for:"
+msgstr "Resultados de búsqueda de:"
+
+#: search.php:52
+msgid "Sorry, No Results."
+msgstr "Lo sentimos, No hay Resultados."
+
+#: search.php:55
+msgid "Try your search again."
+msgstr "Intenta una búsqueda de nuevo."
+
+#: search.php:58
+msgid "This is the error message in the search.php template."
+msgstr ""
+
+#: sidebar.php:31 sidebar.php:44
+msgid "Followers"
+msgstr ""
+
+#: single-alumnos.php:37 single-aspirantes.php:29
+msgid "Grabar Cambios"
+msgstr ""
+
+#: single-cursos.php:102 single.php:39
+msgid "This is the error message in the single.php template."
+msgstr ""
+
+#: wpum/account.php:38 wpum/profile/profile-tabs.php:60
+msgid "Content not found."
+msgstr ""
+
+#: wpum/already-logged-in.php:21
+#, php-format
+msgid "You are currently logged in as %s. <a href=\"%s\">Logout &raquo;</a>"
+msgstr ""
+
+#: wpum/directory/single-user.php:14 wpum/profile-card.php:28
+msgid "View Profile"
+msgstr ""
+
+#: wpum/directory/single-user.php:27
+msgid "This user has not provided a description yet."
+msgstr ""
+
+#: wpum/directory/single-user.php:36 wpum/profile-card.php:31
+#: wpum/profile/profile-links.php:17
+msgid "Send Email"
+msgstr ""
+
+#: wpum/directory/single-user.php:42
+msgid "Visit Website"
+msgstr ""
+
+#: wpum/directory/single-user.php:44
+msgid "Registered:"
+msgstr ""
+
+#: wpum/directory/top-bar.php:20
+#, php-format
+msgid "Found %s users."
+msgstr ""
+
+#: wpum/directory/top-bar.php:27
+msgid "Sort by:"
+msgstr ""
+
+#: wpum/directory/top-bar.php:34
+msgid "Results per page:"
+msgstr ""
+
+#: wpum/form-fields/file-field.php:69
+msgid "remove"
+msgstr ""
+
+#: wpum/form-fields/file-field.php:95
+#, php-format
+msgid "Maximum file size: %s."
+msgstr ""
+
+#: wpum/forms/account-form.php:42
+msgid "Update Profile"
+msgstr ""
+
+#: wpum/forms/password-form.php:36
+msgid "Your password has been reset."
+msgstr ""
+
+#: wpum/forms/password-form.php:49
+msgid "Enter a new password below."
+msgstr ""
+
+#: wpum/forms/password-form.php:66
+msgid ""
+"Lost your password? Please enter your username or email address. You will "
+"receive a link to create a new password via email."
+msgstr ""
+
+#: wpum/forms/password-form.php:91
+msgid "Reset Password"
+msgstr ""
+
+#: wpum/forms/password-update-form.php:39
+msgid "Update Password"
+msgstr ""
+
+#: wpum/forms/registration-form.php:38
+msgid "Register"
+msgstr ""
+
+#: wpum/helper-links.php:16
+#, php-format
+msgid "Already have an account? <a href=\"%s\">Sign In &raquo;</a>"
+msgstr ""
+
+#: wpum/helper-links.php:22
+#, php-format
+msgid "Don't have an account? <a href=\"%s\">Signup Now &raquo;</a>"
+msgstr ""
+
+#: wpum/profile.php:17
+msgid "User not found."
+msgstr ""
+
+#: wpum/profile/profile-comments.php:43
+#, php-format
+msgid "\"%s\" on <a href=\"%s\">%s</a>, %s."
+msgstr ""
+
+#: wpum/profile/profile-comments.php:55
+#, php-format
+msgid "%s has not made any comment yet."
+msgstr ""
+
+#: wpum/profile/profile-links.php:21
+msgid "Visit website"
+msgstr ""
+
+#: wpum/profile/profile-posts.php:33
+msgid "Posted on:"
+msgstr ""
+
+#: wpum/profile/profile-posts.php:37
+msgid "Comments:"
+msgstr ""
+
+#: wpum/profile/profile-posts.php:38
+msgid "No Comments"
+msgstr ""
+
+#: wpum/profile/profile-posts.php:38
+msgid "1 Comment"
+msgstr ""
+
+#: wpum/profile/profile-posts.php:38
+msgid "% Comments"
+msgstr ""
+
+#: wpum/profile/profile-posts.php:52
+#, php-format
+msgid "%s did not submit any posts yet."
+msgstr ""
+
+#: wpum/recently-registered.php:41
+msgid "No user has been found."
+msgstr ""
+
+#: wpum/user-directory.php:39
+msgid "No users have been found"
+msgstr ""
+
+#: wpum/user-overview.php:26
+msgid "Edit Account"
+msgstr ""
+
+#: wpum/user-overview.php:28
+msgid "Logout"
+msgstr ""
+
+#~ msgid "Carriers"
+#~ msgstr "Transportistas"
+
+#~ msgid "Carrier"
+#~ msgstr "Transportista"
+
+#~ msgid "Carrier Archives"
+#~ msgstr "Archivo de Trasportistas"
+
+#~ msgid "All Carriers"
+#~ msgstr "Todos los Transportistas"
+
+#~ msgid "Add New Carrier"
+#~ msgstr "Añadir Nuevo Transportista"
+
+#~ msgid "Clients"
+#~ msgstr "Clientes"
+
+#~ msgid "Client"
+#~ msgstr "Cliente"
+
+#~ msgid "Add New Client"
+#~ msgstr "Añadir Nuevo Cliente"
+
+#~ msgid "Add New Flete"
+#~ msgstr "Añadir Nuevo Flete"
+
+#~ msgid "Posts Categorized:"
+#~ msgstr "Archivos de categoría:"
+
+#~ msgid ""
+#~ "Posted <time class=\"updated\" datetime=\"%1$s\" itemprop=\"datePublished"
+#~ "\">%2$s</time> by <span class=\"author\">%3$s</span> <span class=\"amp"
+#~ "\">&</span> filed under %4$s."
+#~ msgstr ""
+#~ "Publicado el <time class=\"updated\" datetime=\"%1$s\" itemprop="
+#~ "\"datePublished\">%2$s</time> por <span class=\"author\">%3$s</span> "
+#~ "<span class=\"amp\">&</span> archivado en %4$s."
+
+#~ msgid "Read More &raquo;"
+#~ msgstr "Leer Más &raquo;"
+
+#~ msgid ""
+#~ "The article you were looking for was not found, but maybe try looking "
+#~ "again!"
+#~ msgstr ""
+#~ "¡El artículo que estás buscando no ha sido encontrado, pero puedes "
+#~ "intentarlo más adelante!"
+
+#~ msgid ""
+#~ "Posted <time class=\"updated\" datetime=\"%1$s\" itemprop=\"datePublished"
+#~ "\">%2$s</time> by <span class=\"author\">%3$s</span>"
+#~ msgstr ""
+#~ "Publicado el <time class=\"updated\" datetime=\"%1$s\" itemprop="
+#~ "\"datePublished\">%2$s</time> por <span class=\"author\">%3$s</span>"
+
+#~ msgid "Albums"
+#~ msgstr "Álbumes"
+
+#~ msgid "Album"
+#~ msgstr "Álbum"
+
+#~ msgid "Parent Album:"
+#~ msgstr "Álbum Superior:"
+
+#~ msgid "All Albums"
+#~ msgstr "Todos los Álbumes"
+
+#~ msgid "Add New Album"
+#~ msgstr "ñadir Nuevo Álbum"
+
+#~ msgid "New Album"
+#~ msgstr "Nuevo Álbum"
+
+#~ msgid "Edit Album"
+#~ msgstr "Editar Álbum"
+
+#~ msgid "Update Album"
+#~ msgstr "Actualizar Álbum"
+
+#~ msgid "View Album"
+#~ msgstr "Ver Álbum"
+
+#~ msgid "Search Album"
+#~ msgstr "Buscar Álbum"
+
+#~ msgid "Albumes de Fotos"
+#~ msgstr "Álbumes de Fotos"
+
+#~ msgid "Parent Event:"
+#~ msgstr "Evento Superior:"
+
+#~ msgid "All Events"
+#~ msgstr "Todos los Eventos"
+
+#~ msgid "Add New Event"
+#~ msgstr "Añadir Nuevo Evento"
+
+#~ msgid "New Event"
+#~ msgstr "Nuevo Evento"
+
+#~ msgid "Edit Event"
+#~ msgstr "Editar Evento"
+
+#~ msgid "Update Event"
+#~ msgstr "Actualizar Evento"
+
+#~ msgid "View Event"
+#~ msgstr "Ver Evento"
+
+#~ msgid "Search Event"
+#~ msgstr "Buscar Evento"
+
+#~ msgid "filed under"
+#~ msgstr "archivados en"
+
+#~ msgid ""
+#~ "This post is password protected. Enter the password to view comments."
+#~ msgstr "Esta entrada está protegida. Para verla, escribe la contraseña:"
+
+#~ msgid "Response"
+#~ msgstr "Respuesta"
+
+#~ msgid "Responses"
+#~ msgstr "Respuestas"
+
+#~ msgid "One"
+#~ msgstr "Uno"
+
+#~ msgid "to"
+#~ msgstr "para"
+
+#~ msgid "Leave a Reply"
+#~ msgstr "Deja un comentario"
+
+#~ msgid "Leave a Reply to %s"
+#~ msgstr "Responder a %s"
+
+#~ msgid "You must be"
+#~ msgstr "Debes"
+
+#~ msgid "logged in"
+#~ msgstr "iniciar sesión"
+
+#~ msgid "to post a comment"
+#~ msgstr "para escribir un comentario."
+
+#~ msgid "Logged in as"
+#~ msgstr "Identificado como"
+
+#~ msgid "Log out of this account"
+#~ msgstr "Salir de esta cuenta"
+
+#~ msgid "Log out"
+#~ msgstr "Salir"
+
+#~ msgid "Your Name"
+#~ msgstr "Tu nombre"
+
+#~ msgid "Your Email"
+#~ msgstr "Tu correo electrónico"
+
+#~ msgid "will not be published"
+#~ msgstr "no será publicado"
+
+#~ msgid "Your Website"
+#~ msgstr "Tu sitio web"
+
+#~ msgid "Your Comment Here..."
+#~ msgstr "Tu comentario aquí"
+
+#~ msgid "Submit Comment"
+#~ msgstr "Enviar comentario"
+
+#~ msgid "You can use these tags"
+#~ msgstr "Puedes usar estas etiquetas"
+
+#~ msgid "Read more"
+#~ msgstr "Leer más"
+
+#~ msgid "Search the Site..."
+#~ msgstr "Buscar en el sitio..."
+
+#~ msgid "Read more on"
+#~ msgstr "Leer más en"
+
+#~ msgid "Posts Tagged:"
+#~ msgstr "Entradas etiquetadas:"
+
+#~ msgid "Posts By:"
+#~ msgstr "Entradas de:"
+
+#~ msgid "Daily Archives:"
+#~ msgstr "Archivo dirario:"
+
+#~ msgid "Monthly Archives:"
+#~ msgstr "Archivo mensual:"
+
+#~ msgid "Yearly Archives:"
+#~ msgstr "Archivo anual:"
+
+#~ msgid "Custom Tags"
+#~ msgstr "Etiquetas personalizadas"
+
+#~ msgid "Tag"
+#~ msgstr "Etiqueta"
+
+#~ msgid "Tags"
+#~ msgstr "Etiquetas"
+
+#~ msgid "Read the rest of this entry"
+#~ msgstr "Leer el resto de esta entrada"
+
+#~ msgid "Sorry, no attachments matched your criteria."
+#~ msgstr "Lo sentimos, ningún anexo coincide con tu criterio."
+
+#~ msgid "&laquo; Older Entries"
+#~ msgstr "&laquo; Entradas más antiguas"
+
+#~ msgid "Newer Entries &raquo;"
+#~ msgstr "Entradas más modernas &raquo;"
+
+#~ msgid "is powered by"
+#~ msgstr "funciona gracias a"
+
+#~ msgid "Sorry, but the requested resource was not found on this site."
+#~ msgstr ""
+#~ "Lo sentimos pero el recurso solicitado no se encuentra disponible en este "
+#~ "sitio."
+
+#~ msgid "Please activate some Widgets."
+#~ msgstr "Por favor active algunos widgets."
+
+#~ msgid "Custom Types"
+#~ msgstr "Tipos personalizados"
+
+#~ msgid "Custom Post"
+#~ msgstr "Entrada personalizada"
+
+#~ msgid "Add New Custom Type"
+#~ msgstr "Añadir nuevo tipo personalizado"
+
+#~ msgid "Edit"
+#~ msgstr "Editar"
+
+#~ msgid "Edit Post Types"
+#~ msgstr "Editar typo de entrada"
+
+#~ msgid "New Post Type"
+#~ msgstr "Nuevo tipo de entrada"
+
+#~ msgid "View Post Type"
+#~ msgstr "Ver tipo de entrada"
+
+#~ msgid "Search Post Type"
+#~ msgstr "Buscar tipo de entrada"
+
+#~ msgid "Nothing found in the Database."
+#~ msgstr "Nada encontrado en la base de datos."
+
+#~ msgid "Nothing found in Trash"
+#~ msgstr "Nada encontrado en la papelera de reciclaje"
+
+#~ msgid "This is the example custom post type"
+#~ msgstr "Este es un ejemplo de typo de entrada personalizada"
+
+#~ msgid "Custom Categories"
+#~ msgstr "Catergorías personalizadas"
+
+#~ msgid "Custom Category"
+#~ msgstr "Categoría personalizada"
+
+#~ msgid "Search Custom Categories"
+#~ msgstr "Buscar en categorías personalizadas"
+
+#~ msgid "All Custom Categories"
+#~ msgstr "Todas las categorias personalizadas"
+
+#~ msgid "Parent Custom Category"
+#~ msgstr "Categoría personalizada padre"
+
+#~ msgid "Parent Custom Category:"
+#~ msgstr "Categoría personalizada padre:"
+
+#~ msgid "Edit Custom Category"
+#~ msgstr "Editar categoría personalizada"
+
+#~ msgid "Update Custom Category"
+#~ msgstr "Actualizar categoría personalizada"
+
+#~ msgid "Add New Custom Category"
+#~ msgstr "Añadir nueva categoría personalizada"
+
+#~ msgid "New Custom Category Name"
+#~ msgstr "Nuevo nombre de categoría personalizada"
+
+#~ msgid "Custom Tag"
+#~ msgstr "Etiqueta personalizada"
+
+#~ msgid "Search Custom Tags"
+#~ msgstr "Buscar entiqueta personalizada"
+
+#~ msgid "All Custom Tags"
+#~ msgstr "Todas las etiquetas personalizadas"
+
+#~ msgid "Parent Custom Tag"
+#~ msgstr "Etiqueta personalizada padre"
+
+#~ msgid "Parent Custom Tag:"
+#~ msgstr "Etiqueta personalizada padre"
+
+#~ msgid "Edit Custom Tag"
+#~ msgstr "Editar etiqueta personalizada"
+
+#~ msgid "Update Custom Tag"
+#~ msgstr "Actualizar etiqueta personalizada"
+
+#~ msgid "Add New Custom Tag"
+#~ msgstr "Añadir nueva etiqueta personalizada"
+
+#~ msgid "New Custom Tag Name"
+#~ msgstr "Nuevo nombre de etiqueta personalizada"

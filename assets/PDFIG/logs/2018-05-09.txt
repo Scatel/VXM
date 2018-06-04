@@ -1,0 +1,80 @@
+Method failed : PDFIG_generate
+Time stamp : 2018-05-09 05:59:07
+Message : exception 'Exception' with message 'WKHTML files don't exist.' in C:\wamp\www\vxm\wp-content\plugins\pdf-or-image-generator\lib\PDF-image-generator-class.php:158
+Stack trace:
+#0 C:\wamp\www\vxm\wp-content\plugins\pdf-or-image-generator\lib\PDF-image-generator-class.php(108): PDF_Image_Generator->PDFIG_check_WKHTML_files()
+#1 C:\wamp\www\vxm\wp-content\plugins\pdf-or-image-generator\PDF-image-generator.php(24): PDF_Image_Generator->PDFIG_generate('http://localhos...', 'TEMPLATE_PATH', 'FORMATTEST', 'PDF')
+#2 C:\wamp\www\vxm\wp-content\themes\vxm\functions.php(319): PDFIG_generate('http://localhos...', 'TEMPLATE_PATH', 'FORMATTEST', 'PDF')
+#3 C:\wamp\www\vxm\wp-content\themes\vxm\page-ofi.php(249): create_format()
+#4 C:\wamp\www\vxm\wp-includes\template-loader.php(74): include('C:\\wamp\\www\\vxm...')
+#5 C:\wamp\www\vxm\wp-blog-header.php(19): require_once('C:\\wamp\\www\\vxm...')
+#6 C:\wamp\www\vxm\index.php(17): require('C:\\wamp\\www\\vxm...')
+#7 {main}
+Parameters sent : ["http:\/\/localhost\/vxm\/wp-content\/themes\/vxmvxm-student-formats\/VXM-003.php","TEMPLATE_PATH","FORMATTEST","PDF"]
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+Response : 
+{"success":false,"message":"WKHTML files don't exist."}
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ 
+Method failed : PDFIG_generate
+Time stamp : 2018-05-09 07:09:23
+Message : exception 'Exception' with message 'WKHTML files don't exist.' in C:\wamp\www\vxm\wp-content\plugins\pdf-or-image-generator\lib\PDF-image-generator-class.php:158
+Stack trace:
+#0 C:\wamp\www\vxm\wp-content\plugins\pdf-or-image-generator\lib\PDF-image-generator-class.php(108): PDF_Image_Generator->PDFIG_check_WKHTML_files()
+#1 C:\wamp\www\vxm\wp-content\plugins\pdf-or-image-generator\PDF-image-generator.php(24): PDF_Image_Generator->PDFIG_generate('http://localhos...', 'URL', 'FORMATTEST', 'PDF')
+#2 C:\wamp\www\vxm\wp-content\themes\vxm\functions.php(319): PDFIG_generate('http://localhos...', 'URL', 'FORMATTEST', 'PDF')
+#3 C:\wamp\www\vxm\wp-content\themes\vxm\page-ofi.php(249): create_format()
+#4 C:\wamp\www\vxm\wp-includes\template-loader.php(74): include('C:\\wamp\\www\\vxm...')
+#5 C:\wamp\www\vxm\wp-blog-header.php(19): require_once('C:\\wamp\\www\\vxm...')
+#6 C:\wamp\www\vxm\index.php(17): require('C:\\wamp\\www\\vxm...')
+#7 {main}
+Parameters sent : ["http:\/\/localhost\/vxm\/wp-content\/themes\/vxmvxm-student-formats\/VXM-003.php","URL","FORMATTEST","PDF"]
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+Response : 
+{"success":false,"message":"WKHTML files don't exist."}
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ 
+Method failed : PDFIG_generate
+Time stamp : 2018-05-09 07:18:37
+Message : exception 'Exception' with message 'WKHTML files don't exist.' in C:\wamp\www\vxm\wp-content\plugins\pdf-or-image-generator\lib\PDF-image-generator-class.php:158
+Stack trace:
+#0 C:\wamp\www\vxm\wp-content\plugins\pdf-or-image-generator\lib\PDF-image-generator-class.php(108): PDF_Image_Generator->PDFIG_check_WKHTML_files()
+#1 C:\wamp\www\vxm\wp-content\plugins\pdf-or-image-generator\PDF-image-generator.php(24): PDF_Image_Generator->PDFIG_generate('http://localhos...', 'URL', 'FORMATTEST', 'PDF')
+#2 C:\wamp\www\vxm\wp-content\themes\vxm\functions.php(319): PDFIG_generate('http://localhos...', 'URL', 'FORMATTEST', 'PDF')
+#3 C:\wamp\www\vxm\wp-content\themes\vxm\page-ofi.php(249): create_format()
+#4 C:\wamp\www\vxm\wp-includes\template-loader.php(74): include('C:\\wamp\\www\\vxm...')
+#5 C:\wamp\www\vxm\wp-blog-header.php(19): require_once('C:\\wamp\\www\\vxm...')
+#6 C:\wamp\www\vxm\index.php(17): require('C:\\wamp\\www\\vxm...')
+#7 {main}
+Parameters sent : ["http:\/\/localhost\/vxm\/wp-content\/themes\/vxm\/vxm-student-formats\/VXM-003.php","URL","FORMATTEST","PDF"]
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+Response : 
+{"success":false,"message":"WKHTML files don't exist."}
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ 
+Method failed : PDFIG_generate
+Time stamp : 2018-05-09 07:23:56
+Message : exception 'Exception' with message 'WKHTML files don't exist.' in C:\wamp\www\vxm\wp-content\plugins\pdf-or-image-generator\lib\PDF-image-generator-class.php:158
+Stack trace:
+#0 C:\wamp\www\vxm\wp-content\plugins\pdf-or-image-generator\lib\PDF-image-generator-class.php(108): PDF_Image_Generator->PDFIG_check_WKHTML_files()
+#1 C:\wamp\www\vxm\wp-content\plugins\pdf-or-image-generator\PDF-image-generator.php(24): PDF_Image_Generator->PDFIG_generate('http://localhos...', 'URL', 'FORMATTEST', 'PDF')
+#2 C:\wamp\www\vxm\wp-content\themes\vxm\functions.php(319): PDFIG_generate('http://localhos...', 'URL', 'FORMATTEST', 'PDF')
+#3 C:\wamp\www\vxm\wp-content\themes\vxm\page-ofi.php(249): create_format()
+#4 C:\wamp\www\vxm\wp-includes\template-loader.php(74): include('C:\\wamp\\www\\vxm...')
+#5 C:\wamp\www\vxm\wp-blog-header.php(19): require_once('C:\\wamp\\www\\vxm...')
+#6 C:\wamp\www\vxm\index.php(17): require('C:\\wamp\\www\\vxm...')
+#7 {main}
+Parameters sent : ["http:\/\/localhost\/vxm\/wp-content\/themes\/vxm\/vxm-student-formats\/VXM-003.php","URL","FORMATTEST","PDF"]
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+Response : 
+{"success":false,"message":"WKHTML files don't exist."}
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ 

@@ -1,0 +1,58 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Admin Stylesheet
+
+If you like living on the edge, you can add some styles here to
+customize the dashboard and WordPress admin area. This stylesheet
+is empty, but you can just start dropping your styles here to
+start customizing. All admin functions are located in lib/admin/
+
+******************************************************************/
+
+.qtranxs-lang-switch-wrap {
+	margin: 1em 0;
+	position: relative;
+
+	li.qtranxs-lang-switch {
+		position: relative;
+		//border-color: #e5e5e5;
+		padding: 0.5em 0.75em;
+		cursor: pointer;
+		position: relative;
+		z-index: 2;
+		background: none;
+		margin-right: 2px;
+		line-height: 1.42857143;
+		//border: 1px solid transparent;
+		border-radius: 1px;
+		opacity: 0.5;
+		display: inline-block;
+
+		&:hover{
+			background: #e0e0e0;
+			opacity: 1;
+		}
+
+		&.active,
+		&.active:focus,
+		&.active:hover {
+			color: #555;
+			cursor: default;
+			background-color: #e0e0e0;
+			//border: 1px solid #ccc;
+			//border-bottom-color: transparent;
+			opacity: 1;
+		}
+
+		img {
+			margin-right: 4px;
+			display: none;
+		}
+	}
+}
+
+
+
+

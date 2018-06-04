@@ -1,0 +1,60 @@
+Method failed : PDFIG_generate
+Time stamp : 2018-05-29 07:22:27
+Message : exception 'Exception' with message 'WKHTML files don't exist.' in /home1/scatelco/public_html/viendopormexico/demo/wp-content/plugins/pdf-or-image-generator/lib/PDF-image-generator-class.php:158
+Stack trace:
+#0 /home1/scatelco/public_html/viendopormexico/demo/wp-content/plugins/pdf-or-image-generator/lib/PDF-image-generator-class.php(108): PDF_Image_Generator->PDFIG_check_WKHTML_files()
+#1 /home1/scatelco/public_html/viendopormexico/demo/wp-content/plugins/pdf-or-image-generator/PDF-image-generator.php(24): PDF_Image_Generator->PDFIG_generate('http://viendopo...', 'URL', 'VXM-003', 'PDF')
+#2 /home1/scatelco/public_html/viendopormexico/demo/wp-content/themes/vxm/functions.php(445): PDFIG_generate('http://viendopo...', 'URL', 'VXM-003', 'PDF')
+#3 /home1/scatelco/public_html/viendopormexico/demo/wp-content/themes/vxm/page-ofi.php(265): create_format()
+#4 /home1/scatelco/public_html/viendopormexico/demo/wp-includes/template-loader.php(74): include('/home1/scatelco...')
+#5 /home1/scatelco/public_html/viendopormexico/demo/wp-blog-header.php(19): require_once('/home1/scatelco...')
+#6 /home1/scatelco/public_html/viendopormexico/demo/index.php(17): require('/home1/scatelco...')
+#7 {main}
+Parameters sent : ["http:\/\/viendopormexico.mx\/demo\/assets\/VXM-formats-in-html\/VXM-003.html","URL","VXM-003","PDF"]
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+Response : 
+{"success":false,"message":"WKHTML files don't exist."}
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ 
+Method failed : PDFIG_generate
+Time stamp : 2018-05-29 07:27:36
+Message : exception 'Exception' with message 'WKHTML files don't exist.' in /home1/scatelco/public_html/viendopormexico/demo/wp-content/plugins/pdf-or-image-generator/lib/PDF-image-generator-class.php:158
+Stack trace:
+#0 /home1/scatelco/public_html/viendopormexico/demo/wp-content/plugins/pdf-or-image-generator/lib/PDF-image-generator-class.php(108): PDF_Image_Generator->PDFIG_check_WKHTML_files()
+#1 /home1/scatelco/public_html/viendopormexico/demo/wp-content/plugins/pdf-or-image-generator/PDF-image-generator.php(24): PDF_Image_Generator->PDFIG_generate('http://viendopo...', 'URL', 'VXM-003', 'PDF')
+#2 /home1/scatelco/public_html/viendopormexico/demo/wp-content/themes/vxm/functions.php(445): PDFIG_generate('http://viendopo...', 'URL', 'VXM-003', 'PDF')
+#3 /home1/scatelco/public_html/viendopormexico/demo/wp-content/themes/vxm/page-ofi.php(265): create_format()
+#4 /home1/scatelco/public_html/viendopormexico/demo/wp-includes/template-loader.php(74): include('/home1/scatelco...')
+#5 /home1/scatelco/public_html/viendopormexico/demo/wp-blog-header.php(19): require_once('/home1/scatelco...')
+#6 /home1/scatelco/public_html/viendopormexico/demo/index.php(17): require('/home1/scatelco...')
+#7 {main}
+Parameters sent : ["http:\/\/viendopormexico.mx\/demo\/assets\/VXM-formats-in-html\/VXM-003.html","URL","VXM-003","PDF"]
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+Response : 
+{"success":false,"message":"WKHTML files don't exist."}
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ 
+Method failed : PDFIG_generate
+Time stamp : 2018-05-29 07:27:44
+Message : exception 'Exception' with message 'WKHTML files don't exist.' in /home1/scatelco/public_html/viendopormexico/demo/wp-content/plugins/pdf-or-image-generator/lib/PDF-image-generator-class.php:158
+Stack trace:
+#0 /home1/scatelco/public_html/viendopormexico/demo/wp-content/plugins/pdf-or-image-generator/lib/PDF-image-generator-class.php(108): PDF_Image_Generator->PDFIG_check_WKHTML_files()
+#1 /home1/scatelco/public_html/viendopormexico/demo/wp-content/plugins/pdf-or-image-generator/PDF-image-generator.php(24): PDF_Image_Generator->PDFIG_generate('http://viendopo...', 'URL', 'VXM-003', 'PDF')
+#2 /home1/scatelco/public_html/viendopormexico/demo/wp-content/themes/vxm/functions.php(445): PDFIG_generate('http://viendopo...', 'URL', 'VXM-003', 'PDF')
+#3 /home1/scatelco/public_html/viendopormexico/demo/wp-content/themes/vxm/page-ofi.php(265): create_format()
+#4 /home1/scatelco/public_html/viendopormexico/demo/wp-includes/template-loader.php(74): include('/home1/scatelco...')
+#5 /home1/scatelco/public_html/viendopormexico/demo/wp-blog-header.php(19): require_once('/home1/scatelco...')
+#6 /home1/scatelco/public_html/viendopormexico/demo/index.php(17): require('/home1/scatelco...')
+#7 {main}
+Parameters sent : ["http:\/\/viendopormexico.mx\/demo\/assets\/VXM-formats-in-html\/VXM-003.html","URL","VXM-003","PDF"]
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+Response : 
+{"success":false,"message":"WKHTML files don't exist."}
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ 

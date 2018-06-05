@@ -1026,50 +1026,100 @@ function test_mailing(){
 	$query = new WP_Query( $args );
 
 
+    // Set $to as the email you want to send the test to.
+    $to = "gerarddo1234@gmail.com";
+    
+    // No need to make changes below this line.
+    
+    // Email subject and body text.
+    $subject = 'wp_mail function test';
+    $message = 'This is a test of the wp_mail function: wp_mail is working';
+    $headers = '';
 
+    // send test message using wp_mail function.
+    $sent_message = wp_mail( $to, $subject, $message, $headers );
+    //display message based on the result.
+    if ( $sent_message ) {
+        // The message was sent.
+        echo 'The test message was sent to '.$to.'. Check your email inbox.';
+    } else {
+        // The message was not sent.
+        echo 'The message was not sent!';
+    }
+    
 
-
-
-
-
-
-// Set $to as the email you want to send the test to.
-$to = "gerarddo1234@gmail.com";
- 
-// No need to make changes below this line.
- 
-// Email subject and body text.
-$subject = 'wp_mail function test';
-$message = 'This is a test of the wp_mail function: wp_mail is working';
-$headers = '';
-
-// send test message using wp_mail function.
-$sent_message = wp_mail( $to, $subject, $message, $headers );
-//display message based on the result.
-if ( $sent_message ) {
-    // The message was sent.
-    echo 'The test message was sent to '.$to.'. Check your email inbox.';
-} else {
-    // The message was not sent.
-    echo 'The message was not sent!';
-}
-   
-
-$t=time();
-echo($t . "<br>");
-echo(date("Y-m-d",$t));
+    $t=time();
+    echo($t . "<br>");
+    echo(date("Y-m-d",$t));
 
 }
 
 
+add_filter( 'hf_validate_form', 'validate_pass_reset', 10, 3 );
+function validate_pass_reset( $error_code, $form, $data ) {
+    $pass_1 =  $_POST['pass_1'];
+    $pass_2 =  $_POST['pass_2'];
+	if( $pass_1 !== $pass_2  ) {
+		$error_code = 'not_the_same'; 
+	} else {
+        // here goes the logic
+        $args = array(
+            'post_type' => 'aspirantes',
+            'numberposts' => 1,
+            'post_status'    => 'publish',
+            'meta_key' => '_userid',
+            'meta_value' => get_current_user_id()
+        );
+
+        $query = new WP_Query($args);
+        // this while is intented to have one iteration since we are only going to change the current user password
+        if ( $query->have_posts() ) {
+            while ( $query->have_posts() ) {
+                $query->the_post();
+                $pass_changed = get_post_meta( get_the_ID(), 'pass_changed', true);
+                update_post_meta(get_the_ID(), 'pass_changed', 'changed', 'not_changed');
+            }
+        }
+
+        if($pass_changed === 'not_changed'){
+            wp_set_password($pass_1, get_current_user_id());
+        }
+    }
+    return $error_code;
+}
 
 
+add_filter( 'hf_form_message_not_the_same', function( $message ) {
+    return 'Los campos no coinciden, por favor reingresa la contraseña';
+});
 
+add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
+function my_login_redirect( $redirect_to, $request, $user ) {
+    $args = array(
+        'post_type' => 'aspirantes',
+        'numberposts' => 1,
+        'post_status'    => 'publish',
+        'meta_key' => '_userid',
+        'meta_value' => $user->ID
+    );
 
+    $query = new WP_Query($args);
+    // this while is intented to have one iteration since we are only going to change the current user password
+    if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            $pass_changed = get_post_meta( get_the_ID(), 'pass_changed', true);
+        }
+    }
 
+    if($pass_changed == 'not_changed'){
+        // $redirect_to = get_permalink(2034);
+        $redirect_to = get_permalink(1817);
 
+    }
 
-
+    return $redirect_to;    
+}
 
 
 

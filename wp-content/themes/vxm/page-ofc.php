@@ -133,9 +133,10 @@ Template Name: OFC
 						'post_type'    => 'aspirantes',
 						'post_status'  => 'publish'
 					),
-					'field_groups'	=>	array('group_58083233c61be', 'group_58082fc615096', 'group_5a8b05de05701', 'group_5b0f2a4ad8df9', 'group_5a8ddba34185f'),
+					'field_groups'	=>	array('group_58083233c61be', 'group_58082fc615096', 'group_5a8b05de05701', 'group_5b0f2a4ad8df9',  'group_5b16f2ed36963', 'group_5a8ddba34185f'),
 					'html_before_fields' => '<div class="grid-bottom">',
 					'html_after_fields' => '</div>',
+					'return' => get_permalink(125),
 					'updated_message' => __("Post updated", 'acf'),
 					'submit_value' => __("Alta de Aspirante", 'bonestheme')
 				)); ?>

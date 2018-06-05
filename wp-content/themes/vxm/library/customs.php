@@ -75,22 +75,6 @@ function admin_default_page() {
 
 
 
-// Redirect user after successful login.
-function my_login_redirect( $redirect_to, $request, $user ) {
-	//is there a user to check?
-	if ( isset( $user->roles ) && is_array( $user->roles ) ) {
-		//check for admins
-		if ( in_array( 'administrator', $user->roles ) ) {
-			// redirect them to the default place
-			return $redirect_to;
-		} else {
-			return home_url();
-		}
-	} else {
-		return $redirect_to;
-	}
-}
-
 
 
 
@@ -583,8 +567,12 @@ function save_post_aspirantes( $post_id ) {
 
 	if( null == email_exists( $email ) ) {
 
+		// add state about first login password change
+		add_post_meta( $post_id, 'pass_changed', 'not_changed');
+
 		// $password = wp_generate_password( 12, false );
 		$password = get_field('initial_pass_inst', $post_id);
+		// $password = 'jambon';
 		$user_id = wp_create_user( $email, $password, $email );
 
 		wp_update_user(
@@ -610,6 +598,7 @@ function save_post_aspirantes( $post_id ) {
 
 		// asign user id to meta field of the post
 		add_post_meta( $post_id, '_userid', $user_id );
+
 
 
 	}

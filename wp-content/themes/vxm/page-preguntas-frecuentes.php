@@ -46,8 +46,6 @@ Template Name: Preguntas Frecuentes
 
 
 
-	<!-- https://stackoverflow.com/questions/46561686/wordpress-delete-posts-by-using-the-date-of-a-custom-field -->
-
 					<?php 	
 					if(current_user_can('edit_post', get_the_id())){
 						$new_faq_args = array(
@@ -56,9 +54,9 @@ Template Name: Preguntas Frecuentes
 								'post_type'    => 'faqs',
 								'post_status'  => 'publish'
 							),
-							// 'field_groups' => array('1780'),
+							'return' => get_permalink(10),
 							'field_groups' => array('1735'),
-							'submit_value' => __("Submit FAQ", 'bonestheme')
+							'submit_value' => __("Crear Pregunta", 'bonestheme')
 						);
 					
 						acf_form($new_faq_args);
@@ -69,9 +67,9 @@ Template Name: Preguntas Frecuentes
 								'post_type'    => 'faq_category_input',
 								'post_status'  => 'publish'
 							),
-							// 'field_groups' => array('1802'),
+							'return' => get_permalink(10),
 							'field_groups' => array('1750'),
-							'submit_value' => __("Submit Category", 'bonestheme')
+							'submit_value' => __("Crear Categoría", 'bonestheme')
 						);
 					
 						acf_form($new_cat_args);

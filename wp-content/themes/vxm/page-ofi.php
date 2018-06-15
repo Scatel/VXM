@@ -102,6 +102,7 @@ Template Name: OFI
 
 				</form>
 
+
 				<div id="wpas-results">
 					<div id="aio-results">
 					</div>
@@ -164,7 +165,7 @@ Template Name: OFI
 								'return' => get_permalink(92),
 								// 'field_groups' => array('1884'),
 								'field_groups' => array('1793'),
-								'submit_value' => __("Submit FAQ", 'bonestheme')
+								'submit_value' => __("Crear Pregunta", 'bonestheme')
 							);
 							$new_instructores_cat_args = array(
 								'post_id'    	=> 'new_post',
@@ -175,7 +176,7 @@ Template Name: OFI
 								'return' => get_permalink(92),
 								// 'field_groups' => array('1889'),
 								'field_groups' => array('1775'),
-								'submit_value' => __("Submit Category", 'bonestheme')
+								'submit_value' => __("Crear Categoría", 'bonestheme')
 							);
 							acf_form($new_faq_instructores_args);
 							acf_form($new_instructores_cat_args);
@@ -209,7 +210,7 @@ Template Name: OFI
 									'return' => get_permalink(92),
 									// 'field_groups' => array('1911'),
 									'field_groups' => array('1781'),
-									'submit_value' => __("Submit FAQ", 'bonestheme')
+									'submit_value' => __("Crear Entrada", 'bonestheme')
 								);
 								$new_instructores_entry_cat_args = array(
 									'post_id'    	=> 'new_post',
@@ -220,7 +221,7 @@ Template Name: OFI
 									'return' => get_permalink(92),
 									// 'field_groups' => array('1916'),
 									'field_groups' => array('1779'),
-									'submit_value' => __("Submit Category", 'bonestheme')
+									'submit_value' => __("Crear Categoría", 'bonestheme')
 								);
 								acf_form($new_entry_instructores_args);
 								acf_form($new_instructores_entry_cat_args);
@@ -245,25 +246,13 @@ Template Name: OFI
 				<p class="flow-text">
 					Te recuerdo que en la primera clase, debes entregar a los padres de familia para su debido llenado y firma los formatos:  F-VXM-001, F-VXM-003 y F-VXM-004
 				</p>
-				<p>Click en los botones para imprimir</p>
-				<button 
-					type="button" 
-					class="btn" 
-					onclick="printJS('<?php echo get_site_url().'/assets/PDF-Formats/VXM-001.pdf'?>')"> <!-- pdf file created in create_format() function-->
-   			 		F-VXM-001
-				</button>
+
 				<button 
 					type="button" 
 					class="btn" 
 					onclick="printJS('<?php echo get_site_url().'/assets/PDF-Formats/VXM-003.pdf'?>')"> <!-- pdf file created in create_format() function-->
-   			 		F-VXM-003
+   			 		Imprimir formatos
 				</button>
-				<button 
-					type="button" 
-					class="btn" 
-					onclick="printJS('<?php echo get_site_url().'/assets/PDF-Formats/VXM-004.pdf'?>')"> <!-- pdf file created in create_format() function-->
-   			 		F-VXM-004
- 				</button>
 				<a 
 					href="#0" 
 					class="btn-flat" 

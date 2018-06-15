@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Duplicator &#8211; WordPress Migration Plugin - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-10-03 19:05:08+0000\n"
+"PO-Revision-Date: 2018-05-09 15:41:36+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1413,7 +1413,7 @@ msgstr "Archivo Flush"
 
 #: views/settings/general.php:83
 msgid "Disable if issues occur when downloading installer/archive files."
-msgstr "Deshabilitar si se producen problemas al descargar el \"installer\"/archivo."
+msgstr "Desactivar si se producen problemas al descargar el \"installer\"/archivo."
 
 #: views/settings/general.php:81
 msgid "Disable .htaccess File In Storage Directory"
@@ -1522,7 +1522,7 @@ msgstr "¡Por favor inténtalo de nuevo!"
 
 #: views/packages/main/s2.scan1.php:155
 msgid "Scan Error"
-msgstr "Analizar el error"
+msgstr "Error de análisis"
 
 #: views/packages/main/s2.scan1.php:200
 msgid "Please review the details for each section by clicking on the detail title."
@@ -1673,7 +1673,7 @@ msgstr "Siguiente"
 
 #: views/packages/main/s1.setup2.php:416
 msgid "Reset"
-msgstr "Limpiar"
+msgstr "Restablecer"
 
 #: views/packages/main/s1.setup2.php:327
 msgid "The installer can have these fields pre-filled at install time."

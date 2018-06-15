@@ -647,8 +647,8 @@ function profile_update_example( $user_id ) {
 }
 
 
-
-
+// acf/update_value - filter for every field
+add_filter('acf/update_value/name=_status', 'my_acf_update_value', 10, 3);
 function my_acf_update_value( $value, $post_id, $field  ) {
 	
 	$userid = get_post_meta( $post_id, '_userid', true );
@@ -677,9 +677,6 @@ function my_acf_update_value( $value, $post_id, $field  ) {
     return $value;
     
 }
-// acf/update_value - filter for every field
-add_filter('acf/update_value/name=_status', 'my_acf_update_value', 10, 3);
-
 
 
 
@@ -1398,9 +1395,9 @@ function frontend_faqs_search(){
   	if( is_array($choices) ) {
 
 		for ($i = 0; $i < sizeof($choices); $i++) {
-			echo '<h2>'.$choices[$i].'<span style="font-weight: 300; font-size: 0.7em;">';
+			echo '<h3 class="lps-faq-cat">'.$choices[$i].'<span>';
 			wp_delete_faq_category_link('Eliminar Categoria', $IDs[$i]);
-			echo '</span></h2>';
+			echo '</span></h3>';
 			wp_display_faqs($choices[$i]);
 		} 
 
@@ -1431,19 +1428,14 @@ function wp_display_faqs($category = ''){
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			$post = get_post_meta(get_the_id());
-			echo '<h4>'.$post['faq_question']['0'].'  <span style="font-weight: 200">
-			';
+			echo '<p  class="lps-faq">'.$post['faq_question']['0'].'</span>';
 			wp_edit_post_link('Editar');
 			wp_delete_post_link('Eliminar');	
-			echo '</span></h4>';
-			echo $post['faq_answer']['0'];
+			echo '</span></p>';
+			echo  '<p style="margin: 0">'.$post['faq_answer']['0'].'</p>';	
 		}
 	}
-
-	
-
 	echo '<br><br>';
-
 }
 
 
@@ -1476,9 +1468,9 @@ function frontend_faqs_instructores_search(){
   	if( is_array($choices) ) {
 
 		for ($i = 0; $i < sizeof($choices); $i++) {
-			echo '<h2>'.$choices[$i].'<span style="font-weight: 300; font-size: 0.7em;">';
+			echo '<h3 class="lps-faq-cat">'.$choices[$i].'<span>';
 			wp_delete_faq_category_link('Eliminar Categoria', $IDs[$i], 92);
-			echo '</span></h2>';
+			echo '</span></h3>';
 			wp_display_faqs_instructores($choices[$i]);
 		} 
 
@@ -1509,7 +1501,7 @@ function wp_display_faqs_instructores($category = ''){
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			$post = get_post_meta(get_the_id());
-			echo '<p style="font-weight: 600;margin-bottom: 0">'.$post['faq_inst_question']['0'].'</span>';
+			echo '<p  class="lps-faq">'.$post['faq_inst_question']['0'].'</span>';
 			wp_edit_post_link('Editar');
 			wp_delete_post_link('Eliminar');
 			echo '</span>
@@ -1563,9 +1555,9 @@ function frontend_faqs_certificadores_search(){
   	if( is_array($choices) ) {
 
 		for ($i = 0; $i < sizeof($choices); $i++) {
-			echo '<h2>'.$choices[$i].'<span style="font-weight: 300; font-size: 0.7em;">';
+			echo '<h3 class="lps-faq-cat">'.$choices[$i].'<span>';
 			wp_delete_faq_category_link('Eliminar Categoria', $IDs[$i], 125);
-			echo '</span></h2>';
+			echo '</span></h3>';
 			wp_display_faqs_certificadores($choices[$i]);
 		} 
 
@@ -1598,7 +1590,7 @@ function wp_display_faqs_certificadores($category = ''){
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			$post = get_post_meta(get_the_id());
-			echo '<p style="font-weight: 600;margin-bottom: 0">'.$post['faq_cert_question']['0'].'
+			echo '<p class="lps-faq">'.$post['faq_cert_question']['0'].'
 				<span>';
 				wp_edit_post_link('Editar');
 				wp_delete_post_link('Eliminar');
@@ -1642,9 +1634,9 @@ function frontend_manual_instructores_search(){
   	if( is_array($choices) ) {
 
 		for ($i = 0; $i < sizeof($choices); $i++) {
-			echo '<h2>'.$choices[$i].'<span style="font-weight: 300; font-size: 0.7em;">';
+			echo '<h3 class="lps-faq-cat">'.$choices[$i].'<span>';
 			wp_delete_faq_category_link('Eliminar Categoria', $IDs[$i], 92);
-			echo '</span></h2>';
+			echo '</span></h3>';
 			wp_display_manual_instructores($choices[$i]);
 		} 
 
@@ -1723,9 +1715,9 @@ function frontend_manual_certificadores_search(){
   	if( is_array($choices) ) {
 
 		for ($i = 0; $i < sizeof($choices); $i++) {
-			echo '<h2>'.$choices[$i].'<span style="font-weight: 300; font-size: 0.7em;">';
+			echo '<h3 class="lps-faq-cat">'.$choices[$i].'<span>';
 			wp_delete_faq_category_link('Eliminar Categoria', $IDs[$i], 125);
-			echo '</span></h2>';
+			echo '</span></h3>';
 			wp_display_manual_certificadores($choices[$i]);
 		} 
 
@@ -1736,36 +1728,10 @@ function frontend_manual_certificadores_search(){
 
 	wp_die(); 
 
-
-
-
-	// if ( $query->have_posts() ) {
-	// 	while ( $query->have_posts() ) {
-	// 		$query->the_post();
-	// 		$choices[] = get_post_meta( get_the_ID(), 'entry_cert_cat_input', true);
-	// 	}
-	// }
-	// wp_reset_postdata();
-  
-	// ob_start();
-	
-  	// if( is_array($choices) ) {
-	// 	foreach( $choices as $choice ) {
-	// 		echo '<h3 style="color: black;">'.$choice.'</h3>';
-	// 		wp_display_manual_certificadores($choice);
-	// 		echo '<br>';
-	// 	}
-	// }
-
-	// $content = ob_get_clean();
-	// echo $content;
-
-	// wp_die(); 
-
 }
 
 function wp_display_manual_certificadores($category = ''){
-
+	echo 'being called!';
 	$args = array(
 		'post_type' => 'manual_certificadores',
 		'post_status'    => 'publish',
@@ -1779,10 +1745,11 @@ function wp_display_manual_certificadores($category = ''){
 
 	if ( $query->have_posts() ) {
 		while ( $query->have_posts() ) {
-			// $query->the_post();
-			// $query->the_post();
+			echo 'i do have posts';
+
 			$query->the_post();
 			$post = get_post_meta(get_the_id());
+			
 			echo '<p style="font-weight: 600;margin-bottom: 0">'.$post['entry_cert_title']['0'].'
 				<span>';
 				wp_edit_post_link('Editar');
@@ -2315,7 +2282,6 @@ function frontend_alumnos_search(){
 			<?php echo $post->ID; ?>
 			<?php wp_delete_post_link('Eliminar'); ?>
 
-			<!-- wp_delete_post(257, true) -->
 			
 		</li>
 
@@ -2529,9 +2495,9 @@ function frontend_instructores_admin_search(){
 
 if($pagetemplate == 'page-ofc.php') {
 	// wp_delete_aspirante_link deletes user with id $cfuserid can delete aspirante
-	wp_delete_aspirante_link($cfuserid, '00');
+	wp_delete_aspirante_link($cfuserid, '00', '125', 'Eliminar');
 } else if($pagetemplate == 'page-ofa.php') {
-	wp_delete_aspirante_link($cfuserid, '', '156');
+	wp_delete_aspirante_link($cfuserid, '', '156', 'Eliminar');
 	// echo 'delete button should be here';
 }
 // wp_delete_aspirante_link($cfuserid);
@@ -2728,7 +2694,7 @@ function frontend_certificadores_admin_search(){
 				rel="<?php the_ID(); ?>" 
 				data-effect="mfp-modal">
 				<small>Modificar Datos</small>	
-				<?php wp_delete_aspirante_link($cfuserid, '', '156'); ?>
+				<?php wp_delete_aspirante_link($cfuserid, '', '156', 'Eliminar'); ?>
 			</a>
 
 			<a href="<?php the_permalink(); ?>" data-mfp-src="<?php the_permalink(); ?>" rel="<?php the_ID(); ?>" data-effect="mfp-modal" class="personal-data-toggle-admin post-link"><i class="ti-pencil"></i></a>

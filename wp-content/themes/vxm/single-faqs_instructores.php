@@ -1,26 +1,22 @@
 <?php acf_form_head() ?>
 <?php get_header() ?>
-<article id="single-post" class="white-popup mfp-with-anim post-<?php the_ID(); ?>">
+<article id="single-post" class="post-<?php the_ID(); ?>">
 
-<?php 	
-
-
-
-$faq_instructores_args = array(
-    'post_id'    	=>  get_the_ID(),
-    'new_post'     => array(
-        'post_type'    => 'faqs_instructores',
-        'post_status'  => 'publish'
-    ),
-    'field_groups' => array('1884'),
-    'submit_value' => __("Submit FAQ", 'bonestheme')
-);
-
-acf_form($faq_instructores_args);
-
-
-
-?>
+    <div style="width: 1500px; padding: 200px; margin: auto;">
+        <?php 	
+        $faq_instructores_args = array(
+            'post_id'    	=>  get_the_ID(),
+            'new_post'     => array(
+                'post_type'    => 'faqs_instructores',
+                'post_status'  => 'publish'
+            ),
+            'return' => get_permalink(92),
+            'field_groups' => array('1793'),
+            'submit_value' => __("Submit FAQ", 'bonestheme')
+        );
+        acf_form($faq_instructores_args);
+        ?>
+    </div>
 
 </article>
 

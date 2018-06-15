@@ -748,59 +748,59 @@ add_action( 'init', 'manual_instructores_custom_post_type', 0 );
 
 
 
-// Register Custom Post Type
-function manual_certificadores_custom_post_type() {
+// // Register Custom Post Type
+// function manual_certificadores_custom_post_type() {
 
-	$labels = array(
-		'name'                  => _x( 'Manual Certificadores', 'Post Type General Name', 'bonestheme' ),
-		'singular_name'         => _x( 'Manual Certificadores', 'Post Type Singular Name', 'bonestheme' ),
-		'menu_name'             => __( 'Manual Certificadores', 'bonestheme' ),
-		'name_admin_bar'        => __( 'Manual Frecuentes Certificadores', 'bonestheme' ),
-		'archives'              => __( 'Item Archives', 'bonestheme' ),
-		'attributes'            => __( 'Item Attributes', 'bonestheme' ),
-		'parent_item_colon'     => __( 'Parent Item:', 'bonestheme' ),
-		'all_items'             => __( 'All Items', 'bonestheme' ),
-		'add_new_item'          => __( 'Add New Item', 'bonestheme' ),
-		'add_new'               => __( 'Add New', 'bonestheme' ),
-		'new_item'              => __( 'New Item', 'bonestheme' ),
-		'edit_item'             => __( 'Edit Item', 'bonestheme' ),
-		'update_item'           => __( 'Update Item', 'bonestheme' ),
-		'view_item'             => __( 'View Item', 'bonestheme' ),
-		'view_items'            => __( 'View Items', 'bonestheme' ),
-		'search_items'          => __( 'Search Item', 'bonestheme' ),
-		'not_found'             => __( 'Not found', 'bonestheme' ),
-		'not_found_in_trash'    => __( 'Not found in Trash', 'bonestheme' ),
-		'featured_image'        => __( 'Featured Image', 'bonestheme' ),
-		'set_featured_image'    => __( 'Set featured image', 'bonestheme' ),
-		'remove_featured_image' => __( 'Remove featured image', 'bonestheme' ),
-		'use_featured_image'    => __( 'Use as featured image', 'bonestheme' ),
-		'insert_into_item'      => __( 'Insert into item', 'bonestheme' ),
-		'uploaded_to_this_item' => __( 'Uploaded to this item', 'bonestheme' ),
-		'items_list'            => __( 'Items list', 'bonestheme' ),
-		'items_list_navigation' => __( 'Items list navigation', 'bonestheme' ),
-		'filter_items_list'     => __( 'Filter items list', 'bonestheme' ),
-	);
-	$args = array(
-		'label'                 => __( 'Manual Certificadores', 'bonestheme' ),
-		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail', ),
-		'hierarchical'          => false,
-		'public'                => true,
-		'show_ui'               => true,
-		'show_in_menu'          => true,
-		'menu_position'         => 20,
-		'menu_icon'             => 'dashicons-format-status',
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
-		'can_export'            => true,
-		'has_archive'           => true,		
-		'exclude_from_search'   => false,
-		'publicly_queryable'    => true,
-	);
-	register_post_type( 'manual_certificadores', $args );
+// 	$labels = array(
+// 		'name'                  => _x( 'Manual Certificadores', 'Post Type General Name', 'bonestheme' ),
+// 		'singular_name'         => _x( 'Manual Certificadores', 'Post Type Singular Name', 'bonestheme' ),
+// 		'menu_name'             => __( 'Manual Certificadores', 'bonestheme' ),
+// 		'name_admin_bar'        => __( 'Manual Frecuentes Certificadores', 'bonestheme' ),
+// 		'archives'              => __( 'Item Archives', 'bonestheme' ),
+// 		'attributes'            => __( 'Item Attributes', 'bonestheme' ),
+// 		'parent_item_colon'     => __( 'Parent Item:', 'bonestheme' ),
+// 		'all_items'             => __( 'All Items', 'bonestheme' ),
+// 		'add_new_item'          => __( 'Add New Item', 'bonestheme' ),
+// 		'add_new'               => __( 'Add New', 'bonestheme' ),
+// 		'new_item'              => __( 'New Item', 'bonestheme' ),
+// 		'edit_item'             => __( 'Edit Item', 'bonestheme' ),
+// 		'update_item'           => __( 'Update Item', 'bonestheme' ),
+// 		'view_item'             => __( 'View Item', 'bonestheme' ),
+// 		'view_items'            => __( 'View Items', 'bonestheme' ),
+// 		'search_items'          => __( 'Search Item', 'bonestheme' ),
+// 		'not_found'             => __( 'Not found', 'bonestheme' ),
+// 		'not_found_in_trash'    => __( 'Not found in Trash', 'bonestheme' ),
+// 		'featured_image'        => __( 'Featured Image', 'bonestheme' ),
+// 		'set_featured_image'    => __( 'Set featured image', 'bonestheme' ),
+// 		'remove_featured_image' => __( 'Remove featured image', 'bonestheme' ),
+// 		'use_featured_image'    => __( 'Use as featured image', 'bonestheme' ),
+// 		'insert_into_item'      => __( 'Insert into item', 'bonestheme' ),
+// 		'uploaded_to_this_item' => __( 'Uploaded to this item', 'bonestheme' ),
+// 		'items_list'            => __( 'Items list', 'bonestheme' ),
+// 		'items_list_navigation' => __( 'Items list navigation', 'bonestheme' ),
+// 		'filter_items_list'     => __( 'Filter items list', 'bonestheme' ),
+// 	);
+// 	$args = array(
+// 		'label'                 => __( 'Manual Certificadores', 'bonestheme' ),
+// 		'labels'                => $labels,
+// 		'supports'              => array( 'title', 'editor', 'thumbnail', ),
+// 		'hierarchical'          => false,
+// 		'public'                => true,
+// 		'show_ui'               => true,
+// 		'show_in_menu'          => true,
+// 		'menu_position'         => 20,
+// 		'menu_icon'             => 'dashicons-format-status',
+// 		'show_in_admin_bar'     => true,
+// 		'show_in_nav_menus'     => true,
+// 		'can_export'            => true,
+// 		'has_archive'           => true,		
+// 		'exclude_from_search'   => false,
+// 		'publicly_queryable'    => true,
+// 	);
+// 	register_post_type( 'manual_certificadores', $args );
 
-}
-add_action( 'init', 'manual_certificadores_custom_post_type', 0 );
+// }
+// add_action( 'init', 'manual_certificadores_custom_post_type', 0 );
 
 
 

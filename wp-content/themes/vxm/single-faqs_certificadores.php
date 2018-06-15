@@ -1,26 +1,22 @@
-<?php get_header() ?>
 <?php acf_form_head() ?>
-<article id="single-post" class="white-popup mfp-with-anim post-<?php the_ID(); ?>">
+<?php get_header() ?>
+<article id="single-post" class="post-<?php the_ID(); ?>">
 
-<?php 	
-
-
-
-$faq_certificadores_args = array(
-    'post_id'    	=>  get_the_ID(),
-    'new_post'     => array(
-        'post_type'    => 'faqs_certificadores',
-        'post_status'  => 'publish'
-    ),
-    'field_groups' => array('1901'),
-    'submit_value' => __("Submit FAQ", 'bonestheme')
-);
-
-acf_form($faq_certificadores_args);
-
-
-
-?>
+<div style="width: 1500px; padding: 200px; margin: auto;">
+    <?php
+    $faq_certificadores_args = array(
+        'post_id'    	=>  get_the_ID(),
+        'new_post'     => array(
+            'post_type'    => 'faqs_certificadores',
+            'post_status'  => 'publish'
+        ),
+        'return' => get_permalink(125),
+        'field_groups' => array('1789'),
+        'submit_value' => __("Submit FAQ", 'bonestheme')
+    );
+    acf_form($faq_certificadores_args);
+    ?>
+</div>
 
 </article>
 

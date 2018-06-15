@@ -14,13 +14,7 @@ Template Name: OFC
 	<?php $allowed_roles = array('administrator', 'certificador', 'admin');
 	if( array_intersect($allowed_roles, $user->roles ) ) {  ?>
 
-		<?php // loop for instructor data
-		/*$posts = get_posts(array(
-			'post_type'		=> 'aspirantes',
-			'meta_key'		=> '_userid',
-			'meta_value'	=> $userid
-		));
-		setup_postdata( $post );*/
+		<?php 
 		$noiveo = get_field('numero_instructor_veo');
 		$noiveo_or_id = !empty($noiveo) ? $noiveo : 'ID'.str_pad($userid, 5, '0', STR_PAD_LEFT); ?>
 		
@@ -133,7 +127,7 @@ Template Name: OFC
 						'post_type'    => 'aspirantes',
 						'post_status'  => 'publish'
 					),
-					'field_groups'	=>	array('group_58083233c61be', 'group_58082fc615096', 'group_5a8b05de05701', 'group_5b0f2a4ad8df9',  'group_5b16f2ed36963', 'group_5a8ddba34185f'),
+					'field_groups'	=>	array('group_58083233c61be', 'group_58082fc615096', 'group_5a8b05de05701', 'group_5b0f2a4ad8df9',  'group_5b16f7026f5d8', 'group_5b16f2ed36963', 'group_5a8ddba34185f'),
 					'html_before_fields' => '<div class="grid-bottom">',
 					'html_after_fields' => '</div>',
 					'return' => get_permalink(125),
@@ -207,7 +201,7 @@ $new_faq_certificadores_args = array(
 	'return' => get_permalink(125),
 	// 'field_groups' => array('1901'),
 	'field_groups' => array('1789'),
-	'submit_value' => __("Submit FAQ", 'bonestheme')
+	'submit_value' => __("Crear Pregunta ", 'bonestheme')
 );
 
 acf_form($new_faq_certificadores_args);
@@ -221,7 +215,7 @@ $new_certificadores_cat_args = array(
 	'return' => get_permalink(125),
 	// 'field_groups' => array('1905'),
 	'field_groups' => array('1797'),
-	'submit_value' => __("Submit Category", 'bonestheme')
+	'submit_value' => __("Crear Categoría", 'bonestheme')
 );
 
 acf_form($new_certificadores_cat_args);
@@ -272,35 +266,32 @@ acf_form($new_certificadores_cat_args);
 
 
 <?php 	
-if(current_user_can('edit_post', get_the_id())){
-$new_entry_certificadores_args = array(
-	'post_id'    	=> 'new_post',
-	'new_post'     => array(
-		'post_type'    => 'manual_certificadores',
-		'post_status'  => 'publish'
-	),
-	'return' => get_permalink(125),
-	// 'field_groups' => array('1920'),
-	'field_groups' => array('1785'),
-	'submit_value' => __("Submit FAQ", 'bonestheme')
-);
-
-acf_form($new_entry_certificadores_args);
-
-$new_certificadores_entry_cat_args = array(
-	'post_id'    	=> 'new_post',
-	'new_post'     => array(
-		'post_type'    => 'entry_cert_cat_input',
-		'post_status'  => 'publish'
-	),
-	'return' => get_permalink(125),
-	// 'field_groups' => array('1924'),
-	'field_groups' => array('1777'),
-	'submit_value' => __("Submit Category", 'bonestheme')
-);
-
-acf_form($new_certificadores_entry_cat_args);
-}
+	if(current_user_can('edit_post', get_the_id())){
+		$new_entry_certificadores_args = array(
+			'post_id'    	=> 'new_post',
+			'new_post'     => array(
+				'post_type'    => 'manual_certificadores',
+				'post_status'  => 'publish'
+			),
+			'return' => get_permalink(125),
+			// 'field_groups' => array('1920'),
+			'field_groups' => array('1785'),
+			'submit_value' => __("Crear Entrada", 'bonestheme')
+		);
+		$new_certificadores_entry_cat_args = array(
+			'post_id'    	=> 'new_post',
+			'new_post'     => array(
+				'post_type'    => 'entry_cert_cat_input',
+				'post_status'  => 'publish'
+			),
+			'return' => get_permalink(125),
+			// 'field_groups' => array('1924'),
+			'field_groups' => array('1777'),
+			'submit_value' => __("Crear Categoría", 'bonestheme')
+		);
+		acf_form($new_entry_certificadores_args);
+		acf_form($new_certificadores_entry_cat_args);
+	}
 ?>
 
 

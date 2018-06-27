@@ -14,7 +14,7 @@ function parse_aspirante_infos(){
     $aspirante_infos = array();
     echo '<br>';
     echo '<br>';
-    echo '14jun_info_aspirantes/14jun_aspirantes_faltantes_info15.csv';
+    // echo '14jun_info_aspirantes/14jun_aspirantes_faltantes_info1.csv';
     echo '<br>';
     echo '<br>';
     $CSVfp = fopen("14jun_info_aspirantes/14jun_aspirantes_faltantes_info15.csv", "r");
@@ -78,7 +78,9 @@ function insert_aspirante($aspirante_info){
     $post_id = insert_aspirante_post($email, $full_name);
     
     insert_aspirante_post_meta($post_id, $aspirante_meta);
-    $password = insert_aspirante_user($post_id, $email);
+    $password = insert_aspirante_user($post_id, $email, $aspirante_meta['status']);
+    // update_field('status', $aspirante_meta['status'], 'user_'.$user_id);
+
 }
 
 
@@ -124,10 +126,10 @@ function insert_aspirante_post($email, $full_name){
 
 
 
-function insert_aspirante_user($post_id, $email){
+function insert_aspirante_user($post_id, $email, $status){
     $password = wp_generate_password( 12, false );
     $user_id = wp_create_user($email,$password,$email);
-
+    
     if(gettype($user_id) == "integer"){
         wp_update_user(
             array(
@@ -138,8 +140,12 @@ function insert_aspirante_user($post_id, $email){
         $user = new WP_User( $user_id );
         $user->set_role( 'subscriber' );
         update_post_meta( $post_id, '_userid', $user_id );
-    } 
+        update_field('status', $status, 'user_'.$user_id);
 
+        // update_post_meta( $post_id, '__status', 'field_5a8bdc3f3e036' );
+
+    } 
+    // update_field('status', $status, 'user_'.$user_id);
     if ( is_wp_error( $user_id ) ) {
         print_r($user_id);
         echo $user_id;
@@ -153,6 +159,9 @@ function insert_aspirante_user($post_id, $email){
 
 
 function insert_aspirante_post_meta($post_id, $aspirante_meta){
+
+    
+
 
     $aspirante = array();
 

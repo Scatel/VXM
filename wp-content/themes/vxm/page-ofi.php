@@ -131,17 +131,19 @@ Template Name: OFI
 
 				<div class="section"><div class="divider"></div></div>
 
-				<?php acf_form(array(
-					'post_id'      => 'new_post',
-					'new_post'     => array(
-						'post_type'    => 'alumnos',
-						'post_status'  => 'publish'
-					),
-					'html_before_fields' => '<div class="grid-bottom">',
-					'html_after_fields' => '</div>',
-					'updated_message' => __("Post updated", 'acf'),
-					'submit_value' => __("Alta de Alumno", 'bonestheme')
-				)); ?>
+				<?php 
+					acf_form(array(
+						'post_id'      => 'new_post',
+						'new_post'     => array(
+							'post_type'    => 'alumnos',
+							'post_status'  => 'publish'
+						),
+						'html_before_fields' => '<div class="grid-bottom">',
+						'html_after_fields' => '</div>',
+						'updated_message' => __("Post updated", 'acf'),
+						'submit_value' => __("Alta de Alumno", 'bonestheme')
+					)); 
+				?>
 			</div>
 
 

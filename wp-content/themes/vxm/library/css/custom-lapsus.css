@@ -73,3 +73,15 @@
 .nf-field-element input{
     height: 3em !important;
 }
+
+.nf-field-label label{
+    /* text-transform: uppercase; */
+    color: #22313F;
+    /* font-weight: 100 !important; */
+    /* font-size: 14px; */
+    /* font-family: 'Montserrat', sans-serif; */
+}
+
+.ui-datepicker {
+    background-color: rgb(240,240,240);
+}

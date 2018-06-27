@@ -595,7 +595,7 @@ function save_post_aspirantes( $post_id ) {
 		
 		// add status custom field for loop
 		update_post_meta( $post_id, '_status', '00' );
-
+		update_post_meta( $post_id, '__status', 'field_5a8bdc3f3e036' );
 		// asign user id to meta field of the post
 		add_post_meta( $post_id, '_userid', $user_id );
 
@@ -1731,9 +1731,8 @@ function frontend_manual_certificadores_search(){
 }
 
 function wp_display_manual_certificadores($category = ''){
-	echo 'being called!';
 	$args = array(
-		'post_type' => 'manual_certificadores',
+		'post_type' => 'manual_certifs',
 		'post_status'    => 'publish',
 		'meta_key' => 'entry_cert_category'
 	);
@@ -1745,7 +1744,6 @@ function wp_display_manual_certificadores($category = ''){
 
 	if ( $query->have_posts() ) {
 		while ( $query->have_posts() ) {
-			echo 'i do have posts';
 
 			$query->the_post();
 			$post = get_post_meta(get_the_id());
@@ -2165,44 +2163,9 @@ function frontend_alumnos_search(){
 	// POST VARS
 	$search_query = $_POST['search_query'];
 	$alumno_paged = $_POST['page'];
-	//$alumno_cats = json_decode(stripslashes($_POST['alumno_cats']));
-	//$alumno_cats = implode(",", $alumno_cats);
 	$order = $_POST['order'];
 	$orderby = $_POST['orderby'];
 
-	// Exclude Cursos from alumno search form
-	/*$cursos_id = 24;
-	$cursos_child = get_term_children( $cursos_id, 'alumno_cat' );
-	$cursos_child[] = $cursos_id;
-	//$cursos_child_ids = implode(",", $cursos_child);
-
-	$cats_in = array(
-		'relation' => 'AND',
-		array(
-			'taxonomy' => 'alumno_cat',
-			'field' => 'slug',
-			'terms' => $alumno_cats,
-			'operator' => 'IN',
-			)
-		);
-	$cats_notin = array(
-		array(
-			'taxonomy' => 'alumno_cat',
-			'field' => 'term_id',
-			'terms' => $cursos_child,
-			'operator' => 'NOT IN',
-			)
-		);
-
-	$tax_query = !empty($alumno_cats) ? array_merge($cats_in, $cats_notin) : $cats_notin;
-
-	$orby = ($orderby == 'date') ? $orderby : 'meta_value_num';
-	$orbyk = ($orderby !== 'date') ? $orderby : '' ;
-
-	$orderby_data = array(
-		'orderby' =>  $orby,
-		'meta_key' => $orbyk
-		);*/
 
 	$current_user = wp_get_current_user();
 
@@ -2211,25 +2174,8 @@ function frontend_alumnos_search(){
 		'post_type' => array('alumnos'),
 		'post_status' => 'publish',
 		'author' => $current_user->ID,
-		//'order' => $order,
-		//'orderby' => $orderby_data['orderby'],
-		//'meta_key' => $orderby_data['meta_key'],
 		'paged' => $alumno_paged,
 		's' => $search_query,
-		/*'meta_query' => array(
-			'relation' => 'OR',
-			array(
-				'key' => '_status',
-				'value' => '08',
-				'compare' => '='
-			),
-			array(
-				'key' => '_status',
-				'value' => '10',
-				'compare' => '='
-			),
-		),*/
-		//'tax_query' => $tax_query
 	);
 
 	$alumno_query = new WP_Query( $args ); ob_start();
@@ -2238,99 +2184,100 @@ function frontend_alumnos_search(){
 
 		echo '<ul class="lista-alumnos">';$counter = 0;
 		
-		//echo '<pre>'; print_r($alumno_query); echo '</pre>';
+
 		while ($alumno_query->have_posts()) {
 			$alumno_query->the_post();
 
 
-		$counter++; //$ms = str_pad($counter, 2, '0', STR_PAD_LEFT);
+			$counter++; 
 
-		$post_type = get_post_type_object($post->post_type); 
+			$post_type = get_post_type_object($post->post_type); 
 
-		// vars 
-		$numero = get_the_ID();
-		$alta = get_the_date('Y-m-d');
-		$sexo = get_field('OFI-1-ASexo');
-		$pais = get_field('OFI-1-APais');
-		$estado = get_field('OFI-1-AEstado');
-		$municipio = get_field('OFI-1-AMunicipio');
-		$telefono1 = get_field('OFI-1-ATelefono1');
-		$telefono2 = get_field('OFI-1-ATelefono2');
-		$mama = get_field('OFI-1-ANombreDeMama');
-		$email = get_field('OFI-1-AEmail');
+			// vars 
+			$numero = get_the_ID();
+			$alta = get_the_date('Y-m-d');
+			$sexo = get_field('OFI-1-ASexo');
+			$pais = get_field('OFI-1-APais');
+			$estado = get_field('OFI-1-AEstado');
+			$municipio = get_field('OFI-1-AMunicipio');
+			$telefono1 = get_field('OFI-1-ATelefono1');
+			$telefono2 = get_field('OFI-1-ATelefono2');
+			$mama = get_field('OFI-1-ANombreDeMama');
+			$email = get_field('OFI-1-AEmail');
 
-
-		
-		?>
-
-
-		<li class="section wow fadeIn" data-wow-delay="<?php echo $counter*2; ?>0ms">
-			<h5 class="no-margin"><?php the_title(); ?></h5>
-			<small class="blue-grey-text">Número de Alumno: <?php echo $numero; ?> — Fecha de Alta: <?php echo $alta; ?></small>
-			<div class="">
-
-			</div>
-			<!-- 2250 -->
-			<a 
-				class="box-picture post-link" 
-				href="<?php the_permalink(); echo '&'; ?>" 
-				data-mfp-src="<?php the_permalink(); echo '&'; ?>" 
-				rel="<?php the_ID(); ?>" 
-				data-effect="mfp-modal">
-				<small>Cambios al Alumno</small>
-			</a>
-			<?php echo $post->ID; ?>
-			<?php wp_delete_post_link('Eliminar'); ?>
 
 			
-		</li>
+			?>
+
+
+			<li class="section wow fadeIn" data-wow-delay="<?php echo $counter*2; ?>0ms">
+				<h5 class="no-margin"><?php the_title(); ?></h5>
+				<small class="blue-grey-text">Número de Alumno: <?php echo $numero; ?> — Fecha de Alta: <?php echo $alta; ?></small>
+				<div class="">
+
+				</div>
+				<!-- 2250 -->
+				<a 
+					class="box-picture post-link" 
+					href="<?php the_permalink(); echo '&'; ?>" 
+					data-mfp-src="<?php the_permalink(); echo '&'; ?>" 
+					rel="<?php the_ID(); ?>" 
+					data-effect="mfp-modal">
+					<small>Cambios al Alumno</small>
+				</a>
+				<a 
+					class="box-picture post-link" 
+					href="<?php the_permalink(1870); echo '&num_alumno='.get_the_ID().'&'; ?>" 
+					data-mfp-src="<?php the_permalink(1870); echo '&num_alumno='.get_the_ID().'&'; ?>" 
+					rel="<?php the_ID(); ?>" 
+					data-effect="mfp-modal">
+					<small>Registrar costo de clase</small>
+				</a>
+				<?php echo $post->ID; ?>
+				<?php wp_delete_post_link('Eliminar'); ?>
+
+				
+			</li>
 
 
 
-<?php
-$curPage = curPageURL();
+			<?php
+			$curPage = curPageURL();
 
-$parsedcurPage = parse_url($curPage);
-$path = $parsedcurPage['path'];
-$sluge = explode('/', $path);
-// print_r($path);
-$slug = array_slice($sluge, -2, 1);
+			$parsedcurPage = parse_url($curPage);
+			$path = $parsedcurPage['path'];
+			$sluge = explode('/', $path);
+			// print_r($path);
+			$slug = array_slice($sluge, -2, 1);
 
- ?>  
+			?>  
 
 
-	<script>
-		jQuery('.phone').text(function(i, text) {
-			return text.replace(/(\d\d\d)(\d\d\d)(\d\d\d\d)/, '($1) $2-$3');
-		});
-		jQuery(document).ready(function($) {
-			$('.post-link').magnificPopup({
-				type:'ajax',
-				tLoading: '',
-				midClick: true,
-				removalDelay: 500,
-				callbacks: {
-					close: function() {
-					},
-				},
-				ajax: {
-					settings: {
-						type: 'POST',
-						data: {
-							url: '<?php echo $slug['0']; ?>'
+			<script>
+				jQuery('.phone').text(function(i, text) {
+					return text.replace(/(\d\d\d)(\d\d\d)(\d\d\d\d)/, '($1) $2-$3');
+				});
+				jQuery(document).ready(function($) {
+					$('.post-link').magnificPopup({
+						type:'ajax',
+						tLoading: '',
+						midClick: true,
+						removalDelay: 500,
+						callbacks: {
+							close: function() {
+							},
+						},
+						ajax: {
+							settings: {
+								type: 'POST',
+								data: {
+									url: '<?php echo $slug['0']; ?>'
+								}
+							}
 						}
-					}
-				}
-			});
-		});
-	</script>
-
-
-
-
-
-
-
+					});
+				});
+			</script>
 
 		<?php }
 

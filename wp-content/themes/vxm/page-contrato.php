@@ -4,7 +4,12 @@ Template Name: Contrato
 */
 ?>
 
-<?php get_header(); ?>
+<?php get_header(); 
+
+    // Start buffering html code
+    ob_start();
+
+?>
 <style>
     ol, ul {
         margin-left: 20px;
@@ -15,11 +20,9 @@ Template Name: Contrato
 
 		
 		<div class="container">
-                    
             <h3 style="text-align: center">VIENDO POR EL MUNDO A.C.</h3>
             <h3 style="text-align: center">“V x M”</h3>
             <h3 style="text-align: center">R.F.C. VMU1603106S0</h3>
-
             <p>
                 <span style="font-weight: bold;">
                     Contrato de Licencia de Uso de la Metodología y el Material Involucrado (en adelante, “EL CONTRATO”)
@@ -28,11 +31,11 @@ Template Name: Contrato
                 <span style="font-weight: bold;">
                     “EL PROPIETARIO”
                 </span>
-                ), y de la otra parte [lps_current_username] (En adelante, 
+                ), y de la otra parte <?php echo do_shortcode('[lps_current_username]'); ?> (En adelante, 
                 <span style="font-weight: bold;">
                     "EL USUARIO"
                 </span>
-                ), el cual sujetan a las siguientes declaraciones y claúsulas:
+                ), el cual sujetan a las siguientes declaraciones y cláusulas:
             </p>
 
             <p style="font-weight: bold;">
@@ -53,7 +56,7 @@ Template Name: Contrato
                                 <span style="font-weight: bold;">
                                     “LA METODOLOGÍA”
                                 </span>
-                                ), que emplea en su asociación civil Viendo por el Mundo, A. C. de la cual es dueño. Dicha metodología y material está registrado en el INDAUTOR, Instituto Nacional del Derecho de Autor, y comprende:
+                                ), que emplea en su asociación civil Viendo por el Mundo, A. C. de la cual es dueño. Dicha metodología y material están registrados en el INDAUTOR, Instituto Nacional del Derecho de Autor, y comprende:
                             </p>
                             <p>
                                 Para el primer curso:
@@ -101,7 +104,7 @@ Template Name: Contrato
                                     Visión Extra Sensorial (VES)
                                 </li>
                                 <li>
-                                    Extra Ocular Visión (EOV)
+                                    Extra Ocular Vision (EOV)
                                 </li>
                             </ol>
                         </li>
@@ -187,10 +190,16 @@ Template Name: Contrato
                             </ul>
                         </li>
                         <li>
-                            Que acredita su personalidad con: ___________________________________________________
+                            Que acredita su personalidad con:
+                            <span style="border-bottom: 1px solid black;">
+                                <?php echo do_shortcode('[lps_current_username]'); ?>                            
+                            </span>
                         </li>
                         <li>
-                            Que tiene como domicilio ubicado en: ________________________________________________
+                            Que tiene como domicilio ubicado en:
+                            <span style="border-bottom: 1px solid black;">
+                                <?php echo do_shortcode('[lps_current_userdir]'); ?>                            
+                            </span>
                         </li>
                         <li>
                             Es su deseo hacer uso de
@@ -218,7 +227,7 @@ Template Name: Contrato
                 <span style="font-weight: bold">
                     "LA METODOLOGÍA" 
                 </span>
-                que es motivo de este contrato por un período de un año a partir de la fecha en que se firma este contrato.
+                que es motivo de este contrato por un periodo de un año a partir de la fecha en que se firma este contrato.
             </p>
 
             <p>
@@ -298,7 +307,7 @@ Template Name: Contrato
                 </span>
                 es el creador de 
                 <span style="font-weight: bold">
-                    "LA METOLODOÍA" 
+                    "LA METOLODOGÍA" 
                 </span>
                 del curso bajo el siguiente término (Formato F-VXM-008):
             </p>
@@ -308,7 +317,7 @@ Template Name: Contrato
                     “Noé Rogelio Esperón Hernández es el creador del método de Desarrollo Mental, de la Conciencia y de Visión Extra Ocular, y lo ha registrado en el Instituto Nacional del Derecho de Autor”.
                 </p>
                 <div style="width: 80%; border-bottom: 1px solid black; margin: auto">
-                    Hello world
+                    <?php echo do_shortcode('[lps_current_username]'); ?>   
                 </div>
                 <p>
                     está autorizado(a) por Noé Rogelio Esperón Hernández y la Asociación Civil Viendo por el Mundo, para impartir el curso de Desarrollo Mental, de la Conciencia y de Visión Extra Ocular”.
@@ -346,7 +355,7 @@ Template Name: Contrato
                 <span style="font-weight: bold">
                     SÉPTIMA: 
                 </span>
-                Al termino del curso, 
+                Al término del curso, 
                 <span style="font-weight: bold">
                     “EL USUARIO” 
                 </span>
@@ -354,7 +363,7 @@ Template Name: Contrato
                 <span style="font-weight: bold">
                     “EL CONTRATO” 
                 </span>
-                deberá enviar 6 casos con 10 clases cada uno en 6 meses para permanecer  en la página web www.viendoporelmundo.com de 
+                deberá enviar 6 casos con 10 clases cada uno en 6 meses para permanecer en la página web www.viendoporelmundo.com de 
                 <span style="font-weight: bold">
                     “EL PROPIETARIO” 
                 </span>
@@ -394,7 +403,7 @@ Template Name: Contrato
                 <span style="font-weight: bold">
                     “LA METODOLOGÍA” 
                 </span>
-                durante ese nuevo período de un año. Y así sería cada año subsecuente.
+                durante ese nuevo periodo de un año. Y así sería cada año subsecuente.
             </p>
             <p>
                 <span style="font-weight: bold">
@@ -617,38 +626,65 @@ Template Name: Contrato
             </p>
 
 
-            <div style="display: flex; flex-wrap: wrap; text-align: center;">
-                <div style="width: 50%">
+            <div style="text-align: center; overflow: auto; display: block; width: 100%;">
+                <div style="width: 50%; float:left;">
                     <p style="margin-bottom: 0">______________________</p>
-                    <p style="margin-top: 0">NOE ROGELIO ESPERON HERNANDEZ</p>
-                    <p style="margin-top: 0">"EL PROPIETARIO"</p>
+                    <p style="margin-top: 0; margin-bottom: 0">NOE ROGELIO ESPERÓN HERNANDEZ</p>
+                    <p style="margin-top: 0; font-weight: bold;">"EL PROPIETARIO"</p>
                 </div>
-                <div style="width: 50%">
+                <div style="width: 50%; float:left;">
                     <p style="margin-bottom: 0">______________________</p>
-                    <p style="margin-top: 0">Something</p>
+                    <p style="margin-top: 0">
+                        <?php echo do_shortcode('[lps_current_username]'); ?>   
+                    </p>
                 </div>
-                <div style="width: 50%">
+                <!-- <div style="width: 50%; float:left;">
                     <p style="margin-bottom: 0">______________________</p>
-                    <p style="margin-top: 0">ING. ADRIANA VERENICE CARVAJAL RANGEL</p>
+                    <p style="margin-top: 0; margin-bottom: 0">ING. ADRIANA VERENICE CARVAJAL RANGEL</p>
                     <p style="margin-top: 0; font-weight: bold">Directora General Viendo por el Mundo A.C.</p>
                 </div>
-                <div style="width: 50%">
+                <div style="width: 50%; float:left;">
                     <p style="margin-bottom: 0">______________________</p>
-                    <p style="margin-top: 0">LIC. CARLOS ALBERTO RANGEL CERDA</p>
+                    <p style="margin-top: 0; margin-bottom: 0">LIC. CARLOS ALBERTO RANGEL CERDA</p>
+                    <p style="margin-top: 0;  font-weight: bold">Representante Legal Viendo Por el Mundo A.C.</p>
+                </div> -->
+            </div>
+            <p>&nbsp;</p>
+            <div style="text-align: center; overflow: auto; display: block; width: 100%;">
+                <div style="width: 50%; float:left;">
+                    <p style="margin-bottom: 0">______________________</p>
+                    <p style="margin-top: 0; margin-bottom: 0">ING. ADRIANA VERENICE CARVAJAL RANGEL</p>
+                    <p style="margin-top: 0; font-weight: bold">Directora General Viendo por el Mundo A.C.</p>
+                </div>
+                <div style="width: 50%; float:left;">
+                    <p style="margin-bottom: 0">______________________</p>
+                    <p style="margin-top: 0; margin-bottom: 0">LIC. CARLOS ALBERTO RANGEL CERDA</p>
                     <p style="margin-top: 0;  font-weight: bold">Representante Legal Viendo Por el Mundo A.C.</p>
                 </div>
-                <div style="width: 50%">
+            </div>
+            <p>&nbsp;</p>
+            <div style="text-align: center; overflow: auto; display: block; width: 100%;">
+                <div style="width: 50%; float:left;">
                     <p style="margin-bottom: 0">______________________</p>
                     <p style="margin-top: 0;  font-weight: bold">Testigo</p>
                 </div>
-                <div style="width: 50%">
+                <div style="width: 50%; float:left;">
                     <p style="margin-bottom: 0">______________________</p>
                     <p style="margin-top: 0;  font-weight: bold">Testigo</p>
                 </div>
             </div>
 		</div> <!-- .container -->
-        <div class="lps-accept-term">
-            <a href="<?php echo get_site_url().'/?action=lps_check_contrat&user_id='.get_current_user_id().'&selected=accept'; ?>" class="btn">Aceptar terminos</a>
+        <br>
+        <br>
+
+        <?php
+            file_put_contents('assets/VXM-formats-in-html/contrat.html', ob_get_contents());
+            // end buffering and display in view
+            ob_end_flush();
+        ?>
+
+        <div style="margin-left: 200px; max-width: 300px;">
+            <a href="<?php echo get_site_url().'/?action=lps_check_contrat&user_id='.get_current_user_id().'&selected=accept'; ?>" class="btn">Aceptar términos</a>
             <a href="<?php echo get_site_url().'/?action=lps_check_contrat&user_id='.get_current_user_id().'&selected=accept_not'; ?>" class="btn-flat"> No Aceptar</a>
         </div>
 
@@ -657,4 +693,10 @@ Template Name: Contrato
 
 	</main>
 
-<?php get_footer(); ?>
+<?php 
+
+// include_once (ABSPATH .'testpdf.php');
+// create_contrat($post_id, $user_id);  
+
+
+get_footer(); ?>

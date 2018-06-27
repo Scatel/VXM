@@ -252,7 +252,7 @@ function frontend_alumnos_search_ajax_form(page, order, orderby) {
 		success: function(response){
 
 			jQuery('.lista-alumnos').show();
-			jQuery('#loading-posts').hide();
+            jQuery('#loading-posts').hide();
 			if(page === 1) {
 				jQuery('#aio-results').html(response);
 			} else {

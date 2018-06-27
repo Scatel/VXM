@@ -1,13 +1,19 @@
 <?php
 
 
+// Load WP components, no themes.
+// define('WP_USE_THEMES', true);
+require('wp-load.php');
+
+
+
 
 // Set $to as the email you want to send the test to.
 $to = "gerarddo1234@gmail.com";
  
 // Email subject and body text.
 $subject = 'Viendo por el mundo - Tu anualidad esta por vencer ';
-$message = 'Te recordamos que tu anualidad vencera el primero de enero por lo que te recomendamos pagues lo antes posible para prevenir incovenientes.';
+$message = 'Te recordamos que tu anualidad vencera el '.$date.' por lo que te recomendamos pagues lo antes posible para prevenir incovenientes.';
 $headers = '';
  
 // Load WP components, no themes.

@@ -412,8 +412,14 @@ function wp_delete_aspirante() {
     if (current_user_can('edit_users')) {
         $user_id = intval($_REQUEST['user_id']);
         $post_id = intval($_REQUEST['post_id']);
-        wp_delete_user($user_id);
-        wp_delete_post($post_id); 
+
+        // update_user_meta($user_id,'status',60);
+        // update_post_meta($post_id,'_status',60);
+        update_field('status', 50, 'user_'.$user_id);
+        update_field('_status', 50, $post_id);
+
+        // wp_delete_user($user_id);
+        // wp_delete_post($post_id); 
 
         // retrieve link from url
         if(isset($_REQUEST['redirect_id'])){
@@ -503,6 +509,66 @@ function formats_VXM($student = 'none'){
     </head>
     <body>  
   
+    <div class="page" style="font-family:DejaVu Sans, sans-serif; page-break-after:always; box-sizing:border-box;">
+        <header style="box-sizing:inherit; width: 100%;">
+            <div class="format-id" style="width:100%; text-align:right; margin: 50px 20px 20px 0; font-weight:500; box-sizing:inherit;">F-VXM-001</div>
+            <div class="logo" style="width: 27%; float:left; margin-top: 20px;"><img src="<?php echo ABSPATH ?>/assets/VXM-formats-in-html/vxm-logo.PNG" alt="vxm logo" style="display:block; width:100%; box-sizing:inherit;"></div>
+            <div class="title" style="width:45%; text-align:center; padding: 30px; float:left; box-sizing:inherit;"><h5 style="box-sizing:inherit;">AVISO DE PRIVACIDAD</h5></div>
+            <div class="deco" style="width: 20%; float:left; box-sizing:inherit; visibility:hidden;"><img src="<?php echo ABSPATH ?>/assets/VXM-formats-in-html/dummy.png" alt="dummy image" style="display:block; width:100%; box-sizing:inherit;"></div>
+        </header>
+        <section class="format_content" style="width:100%; display:block;">
+        <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>
+
+            Viendo por el Mundo con domicilio en Cerro San Elías 1014, Col. Las Puentes 9º Sector, San Nicolás de los Garza, Nuevo León, México es el responsable del uso y protección de sus datos personales, en términos de lo establecido por la Ley Federal de Protección de Datos Personales en Posesión de Particulares y al respecto le informa lo siguiente: 
+        </p>
+        <p>
+            Los datos personales que recabamos de usted, los utilizaremos para las siguientes finalidades que son necesarias para el servicio que solicita:        
+        </p>
+
+        <ol >
+            <li>
+                Proveer los servicios de capacitación, impartición de cursos y enseñanza en general de cualquier tema relacionado con el Desarrollo personal. 
+            </li>
+            <li>
+                Ofrecer información, servicios y promociones diseñados por Viendo por el Mundo para sus clientes.
+            </li>
+            <li>
+                Para enviarle toda la información referente a los cursos, clases y sesiones que Viendo por el Mundo pone a su disposición para su conocimiento.
+            </li>
+            <li>
+                Confirmar y corregir la información proporcionada con la que contamos, con la finalidad de garantizar la mejor calidad de nuestros servicios.
+            </li>
+            <li>
+                Para brindarle servicios de atención a nuestros clientes, aclaración de dudas relacionados con la prestación de nuestros servicios.
+            </li>
+
+        </ol>
+
+        <p>
+            En caso de que no desee que sus datos personales se utilicen para estos fines, indíquelo a continuación: 
+        </p>
+        <p>
+            Consiento que mis datos personales se utilicen para los fines antes mencionados: 
+        </p>
+        <p>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            SI______________
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            NO______________
+        </p>
+        <p>
+            La negativa para el uso de sus datos personales para estas finalidades no podrá ser un motivo para que le neguemos los servicios y productos que solicita o contrata con nosotros.
+        </p>
+
+
+
+
+        </section>
+    </div>  
+
+
+
     <div class="page" style="font-family:DejaVu Sans, sans-serif; page-break-after:always; box-sizing:border-box;">
       <header style="box-sizing:inherit; width: 100%;">
         <div class="format-id" style="width:100%; text-align:right; margin: 50px 20px 20px 0; font-weight:500; box-sizing:inherit;">F-VXM-003</div>
@@ -602,7 +668,7 @@ function formats_VXM($student = 'none'){
 
     <div class="page" style="font-family:DejaVu Sans, sans-serif; page-break-after:always; box-sizing:border-box;">
                 <header style="box-sizing:inherit; width: 100%;">
-                  <div class="format-id" style="width:100%; text-align:right; margin: 50px 20px 20px 0; font-weight:500; box-sizing:inherit;">F-VXM-003</div>
+                  <div class="format-id" style="width:100%; text-align:right; margin: 50px 20px 20px 0; font-weight:500; box-sizing:inherit;">F-VXM-004</div>
                   <div class="logo" style="width: 27%; float:left; margin-top: 20px;"><img src="<?php echo ABSPATH ?>/assets/VXM-formats-in-html/vxm-logo.PNG" alt="vxm logo" style="display:block; width:100%; box-sizing:inherit;"></div>
                   <div class="title" style="width:45%; text-align:center; padding: 30px; float:left; box-sizing:inherit;"><h5 style="box-sizing:inherit;">TESTIMONIOS DE LOS PADRES SOBRE AVANCES DE SU HIJO</h5></div>
                   <div class="deco" style="width: 20%; float:left; box-sizing:inherit;"><img src="<?php echo ABSPATH ?>/assets/VXM-formats-in-html/dummy.png" alt="dummy image" style="display:block; width:100%; box-sizing:inherit;"></div>
@@ -1170,6 +1236,46 @@ function my_login_redirect( $redirect_to, $request, $user ) {
     return $error_code;
 }
 
+add_action('hf_form_success', 'OFI_3_hanlde');
+function OFI_3_handle($submission, $form){
+
+}
+// add_filter( 'hf_validate_form', 'OFI_3_handle', 10, 3 );
+// function OFI_3_handle( $error_code, $form, $data ) {
+//     $pass_1 =  $_POST['pass_1'];
+//     $pass_2 =  $_POST['pass_2'];
+// 	if( $pass_1 !== $pass_2  ) {
+// 		$error_code = 'not_the_same'; 
+// 	} else {
+//         // here goes the logic
+//         $args = array(
+//             'post_type' => 'aspirantes',
+//             'numberposts' => 1,
+//             'post_status'    => 'publish',
+//             'meta_key' => '_userid',
+//             'meta_value' => get_current_user_id()
+//         );
+
+//         $query = new WP_Query($args);
+//         // this while is intented to have one iteration since we are only going to change the current user password
+//         if ( $query->have_posts() ) {
+//             while ( $query->have_posts() ) {
+//                 $query->the_post();
+//                 $pass_changed = get_post_meta( get_the_ID(), 'pass_changed', true);
+//                 update_post_meta(get_the_ID(), 'pass_changed', 'changed', 'not_changed');
+
+//                 update_field('field_5809034ffa525', '01', get_the_ID());
+//             }
+//         }
+
+//         if($pass_changed === 'not_changed'){
+//             wp_set_password($pass_1, get_current_user_id());
+//         }
+//     }
+//     return $error_code;
+// }
+
+
 add_shortcode('lps_current_username', 'lps_current_username_func');
 function lps_current_username_func(){
     $user = wp_get_current_user();
@@ -1183,6 +1289,8 @@ function lps_current_username_func(){
 
     );
 
+    $first_name = 'NO_INFO';
+    $last_name = '';
     $query = new WP_Query($args);
     // this while is intented to have one iteration since we are only going to change the current user password
     if ( $query->have_posts() ) {
@@ -1196,6 +1304,42 @@ function lps_current_username_func(){
     return $first_name.' '.$last_name;
 }
 
+add_shortcode('lps_current_userdir', 'lps_current_userdir_func');
+function lps_current_userdir_func(){
+    $user = wp_get_current_user();
+
+    $args = array(
+        'post_type' => 'aspirantes',
+        'numberposts' => 1,
+        'post_status'    => 'publish',
+        'meta_key' => '_userid',
+        'meta_value' => $user->ID
+
+    );
+
+    $colonia = 'NO_INFO';
+    // $calle = '';
+    // $municipio = '';
+    // $estado = '';
+    // $pais = '';
+    $query = new WP_Query($args);
+    // this while is intented to have one iteration since we are only going to change the current user password
+    if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+            $query->the_post();
+
+            $colonia = get_post_meta( get_the_ID(), 'OFI-1-AColonia', true);
+            $calle = get_post_meta( get_the_ID(), 'OFI-1-ACalle', true);
+            $municipio = get_post_meta( get_the_ID(), 'OFI-1-AMunicipio', true);
+            $estado = get_post_meta( get_the_ID(), 'OFI-1-AEstado', true);
+            $pais = get_post_meta( get_the_ID(), 'OFI-1-APais', true);
+
+        }
+    }
+    // echo 'hey';
+    // return 'hey';
+    return $calle.' '.$colonia.' '.$municipio.' '.$estado.' '.$pais;
+}
 
 
 
@@ -1229,6 +1373,13 @@ function lps_contrat_handle(){
     if($selected == 'accept'){
         update_field('field_5809034ffa525', '05', $post_id);
         wp_redirect(get_the_permalink(2));
+
+
+        include_once (ABSPATH .'testpdf.php');
+        create_contrat($post_id, $user_id);  
+
+
+
     } else if ($selected == 'accept_not'){
         update_field('field_5809034ffa525', '02', $post_id);
         wp_redirect(get_the_permalink(2));
@@ -1239,7 +1390,50 @@ function lps_contrat_handle(){
 }
 
 
+function lps_select_one($column, $table, $where){
+    global $wpdb;
 
+    $keys = array_keys($where);
+    $where_query = '';
+    for($i = 0; $i < sizeof($keys) - 1; $i++){
+        $where_query = $where_query.$keys[$i].' = '.$where[$keys[$i]].' AND ';
+    }
+    $where_query = $where_query.$keys[$i].' = '.$where[$keys[$i]].';';
+
+    $row = $wpdb->get_row("SELECT ".$column." FROM ".$table." WHERE ".$where_query, 'ARRAY_A');
+
+    if(sizeof($row) == 1){
+        return $row[$column];
+    } else {
+        return $row;   
+    }
+}
+
+function lps_insert_bdrei($column, $row){
+    global $wpdb;
+    $wpdb->insert("wp_submitted_form", array(
+        "name" => $name,
+        "email" => $email,
+        "phone" => $phone,
+        "country" => $country,
+        "course" => $course,
+        "message" => $message,
+        "datesent" => $now
+    ));
+}
+
+function lps_update_bdrei($column, $registro_id, $row){
+    global $wpdb;
+    $wpdb->insert("wp_submitted_form", array(
+    "name" => $name,
+    "email" => $email,
+    "phone" => $phone,
+    "country" => $country,
+    "course" => $course,
+    "message" => $message,
+    "datesent" => $now ,
+    ));
+}
 
 
 

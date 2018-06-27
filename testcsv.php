@@ -5,18 +5,18 @@ define('WP_USE_THEMES', true);
 
 // To run the program just change the name of the file in lines 122 and 18 and run it
 // 122 18
-$start_id = 2060;
+$start_id = 1846;
 
 
-DO_IT_POSTS($start_id);
-// DO_IT_META();
+// DO_IT_POSTS($start_id);
+DO_IT_META();
 
 
 function DO_IT_POSTS($start_id){
     $full_names = array();
     $emails = array();
 
-    $CSVfp = fopen("14jun_info_aspirantes/14jun_aspirantes_faltantes_info1.csv", "r");
+    $CSVfp = fopen("INFOASPIRANTES.csv", "r");
     if($CSVfp !== FALSE) {
         while(! feof($CSVfp)) {
             $data = fgetcsv($CSVfp, 1000, ",");
@@ -27,49 +27,21 @@ function DO_IT_POSTS($start_id){
         }
     }
     fclose($CSVfp);
+    print_r($full_names);
+    echo '<br>';
+    print_r($emails);
+    echo '<br>';
     echo 'Full names: '.sizeof($full_names).' Emails: '.sizeof($emails);
 
     insert_aspirantes_posts($full_names, $emails, $start_id);
-    // insert_users($emails);
+    insert_users($emails);
 }
 
-// La funcion principal va a recibir un arreglo de arreglos, donde los subarreglos contendran la informacion de los aspirantes
-// DO_IT es la funcion principal para meter la meta_data
-// abre el archivo csv, luego pasa esa informacion a $aspirante_info
-// y luego llama a insert_aspirante_posts_meta
-
-function DO_IT_META(){
-    $CSVfp = fopen("14jun_info_aspirantes/14jun_aspirantes_faltantes_info.csv", "r");
-    if($CSVfp !== FALSE) {
-        while(! feof($CSVfp)) {
-            $data = fgetcsv($CSVfp, 1000, ",");
-
-            $aspirante_info['primer_nombre'] = $data['0'];
-            $aspirante_info['apellidos'] = $data['1'];
-            $aspirante_info['pais'] = $data['2'];
-            $aspirante_info['estado'] = $data['3'];
-            $aspirante_info['municipio'] = $data['4'];
-            $aspirante_info['colonia'] = $data['5'];
-            $aspirante_info['telefono1'] = $data['6'];
-            $aspirante_info['telefono2'] = $data['7'];
-            $aspirante_info['email'] = $data['8'];
-            $aspirante_info['iveo'] = $data['9'];
-            $aspirante_info['status'] = $data['10'];
-
-        
-            insert_aspirante_post_meta($aspirante_info);
-        }
+function insert_users($emails){
+    for($h = 0; $h < sizeof($emails); $h++){
+        insert_user($emails[$h]);
     }
-    fclose($CSVfp);
 }
-
-
-
-// function insert_users($emails){
-//     for($h = 0; $h < sizeof($emails); $h++){
-//         insert_user($emails[$h]);
-//     }
-// }
 
 function insert_user($email){
 
@@ -87,29 +59,24 @@ function insert_user($email){
             $password = wp_generate_password( 12, false );
             $user_id = wp_create_user( $email, $password, $email );
 
-            if(gettype($user_id) == "integer"){
-                wp_update_user(
-                    array(
-                        'ID'          =>    $user_id,
-                        'nickname'    =>    $email
-                    )
-                );
-    
-                $user = new WP_User( $user_id );
-                $user->set_role( 'subscriber' );
-    
-                // wp_mail( $email, 'Welcome to Viendo por el Mundo!', 'Your Password: ' . $password );
-                update_post_meta( $post_id, '_userid', $user_id );    
-                
-                return true
-            } else {
-                return false
-            }
+            wp_update_user(
+                array(
+                    'ID'          =>    $user_id,
+                    'nickname'    =>    $email
+                )
+            );
+
+            $user = new WP_User( $user_id );
+            $user->set_role( 'subscriber' );
+
+            // wp_mail( $email, 'Welcome to Viendo por el Mundo!', 'Your Password: ' . $password );
+            update_post_meta( $post_id, '_userid', $user_id );
+
         }
     }
 }
 
-function insert_aspirantes($full_names, $emails, $start_id){
+function insert_aspirantes_posts($full_names, $emails, $start_id){
     
     $autogend_id = $start_id;
 
@@ -146,6 +113,33 @@ function insert_aspirantes($full_names, $emails, $start_id){
 
 
 
+
+// La funcion principal va a recibir un arreglo de arreglos, donde los subarreglos contendran la informacion de los aspirantes
+// DO_IT es la funcion principal para meter la meta_data
+// abre el archivo csv, luego pasa esa informacion a $aspirante_info
+// y luego llama a insert_aspirante_posts_meta
+
+function DO_IT_META(){
+    $CSVfp = fopen("INFOASPIRANTES.csv", "r");
+    if($CSVfp !== FALSE) {
+        while(! feof($CSVfp)) {
+            $data = fgetcsv($CSVfp, 1000, ",");
+
+            $aspirante_info['primer_nombre'] = $data['0'];
+            $aspirante_info['apellidos'] = $data['1'];
+            $aspirante_info['pais'] = $data['2'];
+            $aspirante_info['estado'] = $data['3'];
+            $aspirante_info['municipio'] = $data['4'];
+            $aspirante_info['colonia'] = $data['5'];
+            $aspirante_info['telefono1'] = $data['6'];
+            $aspirante_info['telefono2'] = $data['7'];
+            $aspirante_info['email'] = $data['8'];
+        
+            insert_aspirante_post_meta($aspirante_info);
+        }
+    }
+    fclose($CSVfp);
+}
 
 
 

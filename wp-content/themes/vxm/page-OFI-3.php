@@ -30,7 +30,6 @@ $args = array(
 );
 
 
-acf_form($args);
 ?>
 
 
@@ -41,23 +40,13 @@ acf_form($args);
 
 	<article id="single-post" class="white-popup mfp-with-anim post-<?php the_ID(); ?>">
 
+        <?php vxm_forms_alumnos(); ?>
 
-<!-- <div class="hide"> -->
-    <!-- <div class="acf-date-picker acf-input-wrap" data-date_format="dd/mm/yy" data-first_day="1">
-        <input class="input hasDatepicker" value="" type="text" id="dp1529958992878">		
-    </div> -->
-<!-- </div> -->
-
-<!-- <input class="input hasDatepicker" value="" type="text" id="dp1529958992878"> -->
 
         <?php while (have_posts()) : the_post(); ?>
 
 
         <h2 class="h6 no-margin">Registrar costos de clase</h2>
-        <h5>Hello world!</h5>
-
-
-
 
 
         <script>
@@ -76,8 +65,7 @@ acf_form($args);
 
         <div class="section"><div class="divider"></div></div>
 
-        <p> <?php echo $row['descripcion_imagen']; ?> </p>
-        <p> <?php echo $row['simboliza']; ?> </p>
+
 
 
 

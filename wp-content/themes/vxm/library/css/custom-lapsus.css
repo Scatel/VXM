@@ -82,6 +82,7 @@
     /* font-family: 'Montserrat', sans-serif; */
 }
 
-.ui-datepicker {
-    background-color: rgb(240,240,240);
+.ui-datepicker  {
+    background-color: white;
+    border: 1px solid black;
 }

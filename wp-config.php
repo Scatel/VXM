@@ -12,11 +12,11 @@
 
 
 /* MySQL settings */
-// define( 'DB_NAME', 'scatel_vxm' );
+// define( 'DB_NAME', 'scatelco_vxm' );
 // define( 'DB_USER', 'root' );
 // define( 'DB_PASSWORD', '' );
 
-define( 'DB_NAME', 'scatel_vxm' );
+define( 'DB_NAME', 'scatelco_vxm' );
 define( 'DB_USER', 'root' );
 define( 'DB_PASSWORD', '' );
 define( 'DB_HOST', 'localhost' );

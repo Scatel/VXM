@@ -483,12 +483,12 @@ function faqs_custom_post_type() {
 		'supports'              => array( 'title', 'editor', 'thumbnail', ),
 		'hierarchical'          => false,
 		'public'                => true,
-		'show_ui'               => true,
-		'show_in_menu'          => true,
+		'show_ui'               => false,
+		'show_in_menu'          => false,
 		'menu_position'         => 20,
 		'menu_icon'             => 'dashicons-format-status',
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
+		'show_in_admin_bar'     => false,
+		'show_in_nav_menus'     => false,
 		'can_export'            => true,
 		'has_archive'           => true,		
 		'exclude_from_search'   => false,
@@ -542,12 +542,12 @@ function faqs_category_custom_post_type() {
 		'supports'              => array( 'title', 'editor', 'thumbnail', ),
 		'hierarchical'          => false,
 		'public'                => true,
-		'show_ui'               => true,
-		'show_in_menu'          => true,
+		'show_ui'               => false,
+		'show_in_menu'          => false,
 		'menu_position'         => 20,
 		'menu_icon'             => 'dashicons-format-status',
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
+		'show_in_admin_bar'     => false,
+		'show_in_nav_menus'     => false,
 		'can_export'            => true,
 		'has_archive'           => true,		
 		'exclude_from_search'   => false,
@@ -605,12 +605,12 @@ function faqs_instructores_custom_post_type() {
 		'supports'              => array( 'title', 'editor', 'thumbnail', ),
 		'hierarchical'          => false,
 		'public'                => true,
-		'show_ui'               => true,
-		'show_in_menu'          => true,
+		'show_ui'               => false,
+		'show_in_menu'          => false,
 		'menu_position'         => 20,
 		'menu_icon'             => 'dashicons-format-status',
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
+		'show_in_admin_bar'     => false,
+		'show_in_nav_menus'     => false,
 		'can_export'            => true,
 		'has_archive'           => true,		
 		'exclude_from_search'   => false,
@@ -670,12 +670,12 @@ function faqs_certificadores_custom_post_type() {
 		'supports'              => array( 'title', 'editor', 'thumbnail', ),
 		'hierarchical'          => false,
 		'public'                => true,
-		'show_ui'               => true,
-		'show_in_menu'          => true,
+		'show_ui'               => false,
+		'show_in_menu'          => false,
 		'menu_position'         => 20,
 		'menu_icon'             => 'dashicons-format-status',
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
+		'show_in_admin_bar'     => false,
+		'show_in_nav_menus'     => false,
 		'can_export'            => true,
 		'has_archive'           => true,		
 		'exclude_from_search'   => false,
@@ -729,12 +729,12 @@ function manual_instructores_custom_post_type() {
 		'supports'              => array( 'title', 'editor', 'thumbnail', ),
 		'hierarchical'          => false,
 		'public'                => true,
-		'show_ui'               => true,
-		'show_in_menu'          => true,
+		'show_ui'               => false,
+		'show_in_menu'          => false,
 		'menu_position'         => 20,
 		'menu_icon'             => 'dashicons-format-status',
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
+		'show_in_admin_bar'     => false,
+		'show_in_nav_menus'     => false,
 		'can_export'            => true,
 		'has_archive'           => true,		
 		'exclude_from_search'   => false,
@@ -749,7 +749,7 @@ add_action( 'init', 'manual_instructores_custom_post_type', 0 );
 
 
 // Register Custom Post Type
-function manual_certificadores_custom_post_type() {
+function manual_certifs_custom_post_type() {
 
 	$labels = array(
 		'name'                  => _x( 'Manual Certificadores', 'Post Type General Name', 'bonestheme' ),
@@ -786,21 +786,21 @@ function manual_certificadores_custom_post_type() {
 		'supports'              => array( 'title', 'editor', 'thumbnail', ),
 		'hierarchical'          => false,
 		'public'                => true,
-		'show_ui'               => true,
-		'show_in_menu'          => true,
+		'show_ui'               => false,
+		'show_in_menu'          => false,
 		'menu_position'         => 20,
 		'menu_icon'             => 'dashicons-format-status',
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
+		'show_in_admin_bar'     => false,
+		'show_in_nav_menus'     => false,
 		'can_export'            => true,
 		'has_archive'           => true,		
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 	);
-	register_post_type( 'manual_certificadores', $args );
+	register_post_type( 'manual_certifs', $args );
 
 }
-add_action( 'init', 'manual_certificadores_custom_post_type', 0 );
+add_action( 'init', 'manual_certifs_custom_post_type', 0 );
 
 
 

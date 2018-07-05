@@ -1,63 +1,79 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
 require('wp-load.php');
+define('WP_USE_THEMES', true);
 
-//'ID'             
-//'post_author'             '713'
-//'post_date'             
-//'post_date_gmt'             
-//'post_content'             ''
-//'post_content_filtered'             ''
-//'post_title'             'Gerardo MIJARES'
-//'post_excerpt'             ''
-// 'post_status'             'publish'
-// 'post_type'             'aspirantes'
-// 'comment_status'             'closed'
-// 'ping_status'             'closed'
-//'post_password'             ''
-//'post_name'             ''
-//'to_ping'             ''
-//'pinged'             ''
-//'post_modified'             ''
-//'post_modified_gmt'             ''
-//'post_parent' super optional             ''
-//'menu_order'             ''
-//'post_mime_type'             ''
-// 'guid'.             'http://localhost/vxm/?aspirantes=1811'
+// To run the program just change the name of the file in lines 122 and 18 and run it
+// 122 18
+$start_id = 1846;
 
 
+// DO_IT_POSTS($start_id);
+DO_IT_META();
 
 
-// 'post_author'             713
-// 'post_title'             'Gerardo MIJARES'
-// 'post_status'             'publish'
-// 'post_type'             'aspirantes'
-// 'comment_status'             'closed'
-// 'ping_status'             'closed'
-// 'guid'              'http://localhost/vxm/?aspirantes='.$autogend_id
+function DO_IT_POSTS($start_id){
+    $full_names = array();
+    $emails = array();
 
-
-
-
-$full_names = array('GERARDO MIJARES','RICARDO GONZALEZ');
-$emails = array('gerardo.mijares@lapsusdev.com', 'ricardo.gonz@lapsusdev.com');
-$start_id = 1820;
-
-// insert_aspirantes_posts($full_names, $emails, $start_id);
-function DO_IT_POSTS(){
-    $CSVfp = fopen("LIBROPRUEBACSV.csv", "r");
+    $CSVfp = fopen("INFOASPIRANTES.csv", "r");
     if($CSVfp !== FALSE) {
         while(! feof($CSVfp)) {
             $data = fgetcsv($CSVfp, 1000, ",");
 
-            array_push($full_names, $data['0'].$data['1']);
-            array_push($emails, $data['6']);
+            array_push($full_names, $data['0'].' '.$data['1']);
+            array_push($emails, $data['8']);
 
         }
     }
     fclose($CSVfp);
     print_r($full_names);
+    echo '<br>';
     print_r($emails);
+    echo '<br>';
+    echo 'Full names: '.sizeof($full_names).' Emails: '.sizeof($emails);
+
+    insert_aspirantes_posts($full_names, $emails, $start_id);
+    insert_users($emails);
+}
+
+function insert_users($emails){
+    for($h = 0; $h < sizeof($emails); $h++){
+        insert_user($emails[$h]);
+    }
+}
+
+function insert_user($email){
+
+    global $wpdb;
+    $result = $wpdb->get_results( 
+        $wpdb->prepare("
+            SELECT ID
+            FROM  aio_posts
+            WHERE (post_content = '".$email."' AND post_type = 'aspirantes')"
+        )
+    );
+    if ($result){
+        foreach($result as $pageThing){
+            $post_id = $pageThing->ID;
+            $password = wp_generate_password( 12, false );
+            $user_id = wp_create_user( $email, $password, $email );
+
+            wp_update_user(
+                array(
+                    'ID'          =>    $user_id,
+                    'nickname'    =>    $email
+                )
+            );
+
+            $user = new WP_User( $user_id );
+            $user->set_role( 'subscriber' );
+
+            // wp_mail( $email, 'Welcome to Viendo por el Mundo!', 'Your Password: ' . $password );
+            update_post_meta( $post_id, '_userid', $user_id );
+
+        }
+    }
 }
 
 function insert_aspirantes_posts($full_names, $emails, $start_id){
@@ -73,7 +89,6 @@ function insert_aspirantes_posts($full_names, $emails, $start_id){
         $my_post = array();
 
         // Create $my_post object
-        // $my_post['ID'] = $autogend_id;
         $my_post['post_author'] = 713;
         $my_post['post_title'] = $full_name;
         $my_post['post_status'] = 'publish';
@@ -102,10 +117,10 @@ function insert_aspirantes_posts($full_names, $emails, $start_id){
 // La funcion principal va a recibir un arreglo de arreglos, donde los subarreglos contendran la informacion de los aspirantes
 // DO_IT es la funcion principal para meter la meta_data
 // abre el archivo csv, luego pasa esa informacion a $aspirante_info
-// y lueog llama a insert_aspirante_posts_meta
+// y luego llama a insert_aspirante_posts_meta
 
-function DO_IT(){
-    $CSVfp = fopen("LIBROPRUEBACSV.csv", "r");
+function DO_IT_META(){
+    $CSVfp = fopen("INFOASPIRANTES.csv", "r");
     if($CSVfp !== FALSE) {
         while(! feof($CSVfp)) {
             $data = fgetcsv($CSVfp, 1000, ",");
@@ -115,11 +130,12 @@ function DO_IT(){
             $aspirante_info['pais'] = $data['2'];
             $aspirante_info['estado'] = $data['3'];
             $aspirante_info['municipio'] = $data['4'];
-            $aspirante_info['telefono'] = $data['5'];
-            $aspirante_info['email'] = $data['6'];
+            $aspirante_info['colonia'] = $data['5'];
+            $aspirante_info['telefono1'] = $data['6'];
+            $aspirante_info['telefono2'] = $data['7'];
+            $aspirante_info['email'] = $data['8'];
         
-            print_r($aspirante_info);
-            insert_aspirante_posts_meta($aspirante_info);
+            insert_aspirante_post_meta($aspirante_info);
         }
     }
     fclose($CSVfp);
@@ -131,62 +147,48 @@ function DO_IT(){
 
 
 
-// $handle = fopen ("LIBROPRUEBACSV.csv","r");
-// // echo '<table border="1"><tr><td>First name</td><td>Last name</td></tr><tr>';
-// while ($data = fgetcsv ($handle, 1000, ";")) {
-//         $data = array_map("utf8_encode", $data); //added
-//         $num = count ($data);
-//         for ($c=0; $c < $num; $c++) {
-//             // output data
-//             echo "<td>$data[$c]</td>";
-//         }
-//         echo "</tr><tr>";
-// }
-
-
-
-// $aspirante_info['primer_nombre'] = $data['0'];
-// $aspirante_info['apellidos'] = $data['1'];
-// $aspirante_info['pais'] = $data['2'];
-// $aspirante_info['estado'] = $data['3'];
-// $aspirante_info['municipio'] = $data['4'];
-// $aspirante_info['telefono'] = $data['5'];
-// $aspirante_info['email'] = $data['6'];
 
 
 // this function is intended to be run after adding aspirantes to posts table, aspirante info 
 // is intended to have the 7 fields of informaction from excel datasheet
 // database will be queried in posts table for people with the same $aspirante_info['email']
 // once we got the post, we'll retrieve the $post_id and call insert_aspirantes_post_meta
-function insert_aspirante_posts_meta($aspirante_info){
+function insert_aspirante_post_meta($aspirante_info){
 
-    $args = array('post_content' => $aspirante_info['email']);
-    $query = new WP_Query($args);
+    global $wpdb;
+    $result = $wpdb->get_results( 
+        $wpdb->prepare("
+            SELECT ID
+            FROM   aio_posts
+            WHERE post_content = '".$aspirante_info['email']."'"
+        )
+    );
+    if ($result){
+        foreach($result as $pageThing){
+            $post_id = $pageThing->ID;
+            echo '<br>';
+            print_r($post_id);
+            echo '<br>';
 
-    // Actually do the inserting into table thing
-    if($query->have_posts()){
-        while($query->have_posts()){     // this while is expected to have only one iteration since we are entering the info of one aspirante
+            $aspirante_meta['primer_nombre'] = $aspirante_info['primer_nombre'];
+            $aspirante_meta['apellidos'] = $aspirante_info['apellidos'];
+            $aspirante_meta['pais'] = $aspirante_info['pais'];
+            $aspirante_meta['estado'] = $aspirante_info['estado'];
+            $aspirante_meta['municipio'] = $aspirante_info['municipio'];
+            $aspirante_meta['colonia'] = $aspirante_info['colonia'];
+            $aspirante_meta['telefono1'] = $aspirante_info['telefono1'];
+            $aspirante_meta['telefono2'] = $aspirante_info['telefono2'];
+            $aspirante_meta['email'] = $aspirante_info['email'];
 
-                $post_id = get_the_ID();
 
-                $aspirante_meta['primer_nombre'] = $aspirante_info['primer_nombre'];
-                $aspirante_meta['apellidos'] = $aspirante_info['apellidos'];
-                $aspirante_meta['pais'] = $aspirante_info['pais'];
-                $aspirante_meta['estado'] = $aspirante_info['estado'];
-                $aspirante_meta['municipio'] = $aspirante_info['municipio'];
-                $aspirante_meta['telefono'] = $aspirante_info['telefono'];
-                $aspirante_meta['email'] = $aspirante_info['email'];
+            print_r($aspirante_meta);
+            echo '<br>';
 
-                insert_aspirante_post_meta($post_id, $aspirante_meta);
+            insert_aspirante_post_metas($post_id, $aspirante_meta);
 
-                // Erase auxiliary emails in post content if info was successfully put inserted into table
-                $args = array();
-                $args['post_content'] = "";
-                wp_update_post($post_id, $args);
         }
-    } else {
-        echo "<h4>".$aspirante_info['email']." wasn't added since it wasn't found on database</h4>";
     }
+
 }
 
 
@@ -194,26 +196,26 @@ function insert_aspirante_posts_meta($aspirante_info){
 
 
 
-function insert_aspirante_post_meta($post_id, $aspirante_meta){
-    
+function insert_aspirante_post_metas($post_id, $aspirante_meta){
+
     $aspirante = array();
 
     $aspirante['first_name'] = $aspirante_meta['primer_nombre'];
     $aspirante['apellidos'] = $aspirante_meta['apellidos'];
     $aspirante['pagado'] = '';
-    $aspirante['importe'] = '';
-    $aspirante['lugar_cert'] = '';
+    $aspirante['importe'] = '0';
+    $aspirante['lugar_cert'] = 'NOINFO';
     $aspirante['pais'] = $aspirante_meta['pais'];
     $aspirante['edo'] = $aspirante_meta['estado']; //ver si esta disponible la informacion
     $aspirante['municipio'] = $aspirante_meta['municipio']; //ver si esta disponible la informacion
-    $aspirante['colonia'] = '';
+    $aspirante['colonia'] =  $aspirante_meta['colonia'];
     $aspirante['calle'] = '';
-    $aspirante['telefono1'] = String($aspirante_meta['telefono']); //settype($var1, "string");
-    $aspirante['telefono2'] = '';
+    $aspirante['telefono1'] = $aspirante_meta['telefono1']; //settype($var1, "string");
+    $aspirante['telefono2'] = $aspirante_meta['telefono2'];
     $aspirante['email'] = $aspirante_meta['email'];
     $aspirante['niveo'] = '';
     $aspirante['notas'] = '';
-    $aspirante['post_id'] = String($post_id); //para el wp-old-slug;
+    $aspirante['post_id'] = $post_id; //para el wp-old-slug;
     $aspirante['user_id'] = '';
 
     $meta_keys = array(
@@ -252,7 +254,8 @@ function insert_aspirante_post_meta($post_id, $aspirante_meta){
         '_wp_old_slug',        
         'tipo_de_aspirante',        
         '_tipo_de_aspirante',           
-        '_status',          
+        '_status',
+        '__status',         
         '_userid' 
     );
 
@@ -293,14 +296,19 @@ function insert_aspirante_post_meta($post_id, $aspirante_meta){
         'instructor',
         'field_580ee593ab24b',
         '00',
+        'field_5a8bdc3f3e036',
         $aspirante['user_id']
     );
 
-    if(sizeof($meta_values) === sizeof($meta_keys)){
-        for ($k = 0; $k <= 10; $k++){
+    // echo sizeof($meta_values);
+    // echo sizeof($meta_keys);
+
+    // if(sizeof($meta_values) === sizeof($meta_keys)){
+        for ($k = 0; $k <= sizeof($meta_values); $k++){
+            // echo $k;
             add_post_meta( $post_id, $meta_keys[$k], $meta_values[$k] );
         }
-    }
+    // }
 
 }
 

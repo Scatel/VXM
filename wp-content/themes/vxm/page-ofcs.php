@@ -207,12 +207,14 @@ Template Name: OFCS
 						'post_type'    => 'aspirantes',
 						'post_status'  => 'publish'
 					),
-					'field_groups'	=>	array('group_58083233c61be', 'group_58082fc615096'),
+					'field_groups'	=>	array('group_58083233c61be', 'group_58082fc615096', 'group_5b16f2ed36963'),
 					'html_before_fields' => '<div class="grid-bottom">',
 					'html_after_fields' => '</div>',
+					'return' => get_permalink(154),
 					'updated_message' => __("Post updated", 'acf'),
 					'submit_value' => __("Alta de Aspirante", 'bonestheme')
 				)); ?>
+				
 				
 			</div>
 

@@ -8,6 +8,8 @@
     z-index: 100;
 }*/
 
+
+
 .modal-content {
     background-color: rgb(250, 250, 250);
 } 
@@ -16,15 +18,71 @@
     color: black;
 }
 
-.delete {
-    color: red;
+.lps-delete {
+    /* display: inline-block; */
+    background-color: red;
+    color: white;
+    padding: 1px;
+    border-radius: 3px;
+    font-weight: 300;
+    font-size: 0.8em;
+    margin-left: 3px;
+    margin-right: 2px;
 }
 
-.delete:hover {
-    color: red !important;
-    font-size: 1.1em;
+.lps-delete:hover {
+    color: white !important;
+    background-color: firebrick; 
+    /* font-size: 1.1em; */
 }
 
-table, th, td {
-    /* border: 1px solid black; */
+.lps-edit {
+    color: black;
+    font-weight: 300;
+    font-size: 0.8em;
+    margin-left: 3px;
+    margin-right: 2px;
+
+    /* padding: 1px; */
+
+}
+
+.lps-edit:hover {
+    color: limegreen;
+    /* font-size: 1.1em; */
+}
+
+.lps-faq {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.lps-faq-cat span {
+    font-size: 0.7em;
+}
+
+
+.ninja-forms-req-symbol {
+  display: none;
+}
+
+.nf-form-fields-required {
+    display: none;
+}
+
+.nf-field-element input{
+    height: 3em !important;
+}
+
+.nf-field-label label{
+    /* text-transform: uppercase; */
+    color: #22313F;
+    /* font-weight: 100 !important; */
+    /* font-size: 14px; */
+    /* font-family: 'Montserrat', sans-serif; */
+}
+
+.ui-datepicker  {
+    background-color: white;
+    border: 1px solid black;
 }

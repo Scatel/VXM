@@ -316,11 +316,11 @@ function wp_edit_post_link($link = 'Edit Post')
 
   }
 
-  $link = "<a  href='" . get_permalink( $post->ID) . "'>".$link."</a>";
+  $link = "<a class='lps-edit' href='" . get_permalink( $post->ID) . "'>".$link."</a>";
   echo $link;
   
 }
-// wp_delete_user( $id, $reassign );
+
 
 function wp_delete_post_link($link = 'Delete Post')
 
@@ -343,11 +343,11 @@ function wp_delete_post_link($link = 'Delete Post')
 
   }
 
-  $link = "<a class='delete small' href='" . wp_nonce_url( get_bloginfo('url') . "/wp-admin/post.php?action=delete&amp;post=" . $post->ID, 'delete-post_' . $post->ID) . "'>".$link."</a>";
+  $link = "<a class='lps-delete small' href='" . wp_nonce_url( get_bloginfo('url') . "/wp-admin/post.php?action=delete&amp;post=" . $post->ID, 'delete-post_' . $post->ID) . "'>".$link."</a>";
   echo $link;
   
 }
-// wp_delete_user( $id, $reassign );
+
 
 add_action('init','wp_delete_faq_category');
 function wp_delete_faq_category(){
@@ -398,7 +398,7 @@ function wp_delete_faq_category_link($link = 'Delete Post', $post_id, $red_id = 
 
 
   // $red_id = 10;
-  $link = "<a class='delete small' href='" . wp_nonce_url( get_bloginfo('url') ). "/?page_id=10&action=wp_delete_faq_category&post_id=".$post->ID."&redirect_id=".$red_id."'>".$link."</a>";
+  $link = "<a class='lps-delete small' href='" . wp_nonce_url( get_bloginfo('url') ). "/?page_id=10&action=wp_delete_faq_category&post_id=".$post->ID."&redirect_id=".$red_id."'>".$link."</a>";
   echo $link;
   
 }
@@ -412,8 +412,14 @@ function wp_delete_aspirante() {
     if (current_user_can('edit_users')) {
         $user_id = intval($_REQUEST['user_id']);
         $post_id = intval($_REQUEST['post_id']);
-        wp_delete_user($user_id);
-        wp_delete_post($post_id); 
+
+        // update_user_meta($user_id,'status',60);
+        // update_post_meta($post_id,'_status',60);
+        update_field('status', 50, 'user_'.$user_id);
+        update_field('_status', 50, $post_id);
+
+        // wp_delete_user($user_id);
+        // wp_delete_post($post_id); 
 
         // retrieve link from url
         if(isset($_REQUEST['redirect_id'])){
@@ -439,9 +445,9 @@ function wp_delete_aspirante_link($userID, $indiscriminate='', $redirect_id = ''
 
   if (current_user_can( 'delete_users', $userID )){
     if($indiscriminate == ''){
-      echo  "<a class='delete small' href='".$url."'>".$link."</a>"; 
+      echo  "<a class='lps-delete small' href='".$url."'>".$link."</a>"; 
     } elseif ($indiscriminate == $status){
-      echo  "<a class='delete small' href='".$url."'>".$link."</a>"; 
+      echo  "<a class='lps-delete small' href='".$url."'>".$link."</a>"; 
     }
   }
 
@@ -487,21 +493,82 @@ function create_format(){
 
 function formats_VXM($student = 'none'){
 
+    $full_name = $student['post_title'];
+
   ?>
  <html>
     <head>
        <style>
         *, *:before, *:after { box-sizing: inherit; }
         </style>
-        <meta charset="UTF-8">
         <!-- <link rel="stylesheet" href="test.css"> -->
         <style type="text/css" >p {color: black; font-size: 0.9em;}</style>
         <style>
-    *{ font-family: DejaVu Sans !important;}
+    /* *{ font-family: DejaVu Sans !important;} */
   </style>
     </head>
     <body>  
   
+    <div class="page" style="font-family:DejaVu Sans, sans-serif; page-break-after:always; box-sizing:border-box;">
+        <header style="box-sizing:inherit; width: 100%;">
+            <div class="format-id" style="width:100%; text-align:right; margin: 50px 20px 20px 0; font-weight:500; box-sizing:inherit;">F-VXM-001</div>
+            <div class="logo" style="width: 27%; float:left; margin-top: 20px;"><img src="<?php echo ABSPATH ?>/assets/VXM-formats-in-html/vxm-logo.PNG" alt="vxm logo" style="display:block; width:100%; box-sizing:inherit;"></div>
+            <div class="title" style="width:45%; text-align:center; padding: 30px; float:left; box-sizing:inherit;"><h5 style="box-sizing:inherit;">AVISO DE PRIVACIDAD</h5></div>
+            <div class="deco" style="width: 20%; float:left; box-sizing:inherit; visibility:hidden;"><img src="<?php echo ABSPATH ?>/assets/VXM-formats-in-html/dummy.png" alt="dummy image" style="display:block; width:100%; box-sizing:inherit;"></div>
+        </header>
+        <section class="format_content" style="width:100%; display:block;">
+        <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>
+
+            Viendo por el Mundo con domicilio en Cerro San Elías 1014, Col. Las Puentes 9º Sector, San Nicolás de los Garza, Nuevo León, México es el responsable del uso y protección de sus datos personales, en términos de lo establecido por la Ley Federal de Protección de Datos Personales en Posesión de Particulares y al respecto le informa lo siguiente: 
+        </p>
+        <p>
+            Los datos personales que recabamos de usted, los utilizaremos para las siguientes finalidades que son necesarias para el servicio que solicita:        
+        </p>
+
+        <ol >
+            <li>
+                Proveer los servicios de capacitación, impartición de cursos y enseñanza en general de cualquier tema relacionado con el Desarrollo personal. 
+            </li>
+            <li>
+                Ofrecer información, servicios y promociones diseñados por Viendo por el Mundo para sus clientes.
+            </li>
+            <li>
+                Para enviarle toda la información referente a los cursos, clases y sesiones que Viendo por el Mundo pone a su disposición para su conocimiento.
+            </li>
+            <li>
+                Confirmar y corregir la información proporcionada con la que contamos, con la finalidad de garantizar la mejor calidad de nuestros servicios.
+            </li>
+            <li>
+                Para brindarle servicios de atención a nuestros clientes, aclaración de dudas relacionados con la prestación de nuestros servicios.
+            </li>
+
+        </ol>
+
+        <p>
+            En caso de que no desee que sus datos personales se utilicen para estos fines, indíquelo a continuación: 
+        </p>
+        <p>
+            Consiento que mis datos personales se utilicen para los fines antes mencionados: 
+        </p>
+        <p>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            SI______________
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            NO______________
+        </p>
+        <p>
+            La negativa para el uso de sus datos personales para estas finalidades no podrá ser un motivo para que le neguemos los servicios y productos que solicita o contrata con nosotros.
+        </p>
+
+
+
+
+        </section>
+    </div>  
+
+
+
     <div class="page" style="font-family:DejaVu Sans, sans-serif; page-break-after:always; box-sizing:border-box;">
       <header style="box-sizing:inherit; width: 100%;">
         <div class="format-id" style="width:100%; text-align:right; margin: 50px 20px 20px 0; font-weight:500; box-sizing:inherit;">F-VXM-003</div>
@@ -513,83 +580,84 @@ function formats_VXM($student = 'none'){
 
 
           <span style="display:block; width:600px; border-bottom: 1px solid black; font-weight:700; margin-bottom: 20px;">
-          NOMBRE DEL ALUMNO:
-          Ricardo Gonz
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NOMBRE DEL ALUMNO:
+            <?php echo $full_name; ?>
           </span>
         
         <table cellspacing=0 style="width: 100%; border: 1px solid black;">
-            <tr>
+            <tr style="font-size: 0.7em; text-align: center;">
                 <th style="border: 1px solid black; width:7%; ">SESIÓN</th>
                 <th style="border: 1px solid black; width:13%;">FECHA</th>
                 <th style="border: 1px solid black; width:60%;">DESCRIPCIÓN DEL AVANCE</th>
                 <th style="border: 1px solid black; width:20%;">FIRMA DEL PADRE/MADRE</th>
             </tr>
         
-                <tr style="height: 70px; text-align: center;">
-                    <td style="border: 1px solid black;">1</td>
+                <tr style="text-align: center;">
+                    <td style="border: 1px solid black; height:50px;">1</td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                 </tr>
                 
                 <tr style="height: 70px; text-align: center;">
-                    <td style="border: 1px solid black;">2</td>
+                    <td style="border: 1px solid black; height:50px;">2</td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                 </tr>
                 
                 <tr style="height: 70px; text-align: center;">
-                    <td style="border: 1px solid black;">3</td>
+                    <td style="border: 1px solid black; height:50px;">3</td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                 </tr>
                 
                 <tr style="height: 70px; text-align: center;">
-                    <td style="border: 1px solid black;">4</td>
+                    <td style="border: 1px solid black; height:50px;">4</td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                 </tr>
                 
                 <tr style="height: 70px; text-align: center;">
-                    <td style="border: 1px solid black;">5</td>
+                    <td style="border: 1px solid black; height:50px;">5</td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                 </tr>
                 
                 <tr style="height: 70px; text-align: center;">
-                    <td style="border: 1px solid black;">6</td>
+                    <td style="border: 1px solid black; height:50px;">6</td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                 </tr>
                 
                 <tr style="height: 70px; text-align: center;">
-                    <td style="border: 1px solid black;">7</td>
+                    <td style="border: 1px solid black; height:50px;">7</td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                 </tr>
                 
                 <tr style="height: 70px; text-align: center;">
-                    <td style="border: 1px solid black;">8</td>
+                    <td style="border: 1px solid black; height:50px;">8</td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                 </tr>
                 
                 <tr style="height: 70px; text-align: center;">
-                    <td style="border: 1px solid black;">9</td>
+                    <td style="border: 1px solid black; height:50px;">9</td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                 </tr>
                 
                 <tr style="height: 70px; text-align: center;">
-                    <td style="border: 1px solid black;">10</td>
+                    <td style="border: 1px solid black; height:50px;">10</td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
@@ -600,7 +668,7 @@ function formats_VXM($student = 'none'){
 
     <div class="page" style="font-family:DejaVu Sans, sans-serif; page-break-after:always; box-sizing:border-box;">
                 <header style="box-sizing:inherit; width: 100%;">
-                  <div class="format-id" style="width:100%; text-align:right; margin: 50px 20px 20px 0; font-weight:500; box-sizing:inherit;">F-VXM-003</div>
+                  <div class="format-id" style="width:100%; text-align:right; margin: 50px 20px 20px 0; font-weight:500; box-sizing:inherit;">F-VXM-004</div>
                   <div class="logo" style="width: 27%; float:left; margin-top: 20px;"><img src="<?php echo ABSPATH ?>/assets/VXM-formats-in-html/vxm-logo.PNG" alt="vxm logo" style="display:block; width:100%; box-sizing:inherit;"></div>
                   <div class="title" style="width:45%; text-align:center; padding: 30px; float:left; box-sizing:inherit;"><h5 style="box-sizing:inherit;">TESTIMONIOS DE LOS PADRES SOBRE AVANCES DE SU HIJO</h5></div>
                   <div class="deco" style="width: 20%; float:left; box-sizing:inherit;"><img src="<?php echo ABSPATH ?>/assets/VXM-formats-in-html/dummy.png" alt="dummy image" style="display:block; width:100%; box-sizing:inherit;"></div>
@@ -608,7 +676,7 @@ function formats_VXM($student = 'none'){
                   <section class="format_content" style="width:100%;display:block;">
 
                     <p class="date" style=" width:100%; text-align:right; display:block; margin-top: 50px;">
-                        Fecha: <span style="width: 300px;">_________________________________________________</span>
+                         <span style="width: 300px;"> Fecha:_________________________________________________</span>
                     </p>
 
                     <h5>
@@ -688,36 +756,39 @@ function formats_VXM($student = 'none'){
                             <li><div style="height:13px; width:13px; border: 1px solid black; display:inline-block; margin-right:15px;"></div>Se orina en la cama</li>
                             <li><div style="height:13px; width:13px; border: 1px solid black; display:inline-block; margin-right:15px;"></div>Es débil visual</li>
                             <li><div style="height:13px; width:13px; border: 1px solid black; display:inline-block; margin-right:15px;"></div>Es invidente</li>
-                            <li><div style="height:13px; width:13px;  display:inline-block; margin-right:15px;"></div>Otros:________________________________________________________________________________________________________</li>
-                            <li style="margin-top:30px;"><div style="height:13px; width:13px;  display:inline-block; margin-right:15px;"></div>__________________________________________________________________________________________________</li>
+                            <li><div style="height:13px; width:13px;  display:inline-block; margin-right:15px;"></div>Otros:________________________________________________________________________</li>
+                            <li style="margin-top:30px;"><div style="height:13px; width:13px;  display:inline-block; margin-right:15px;"></div>______________________________________________________________________________</li>
 
                         </ul>
-                        <h2>INFORMACIÓN GENERAL</h2>
+                        <h5>INFORMACIÓN GENERAL</h5>
                         <p>
                             ¿Está su hijo(a) actualmente bajo algún tratamiento médico?
-                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 40px;">_________________________________________________________________________________________________________________________________</span>
+                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 40px;">________________________________________________________________________________________</span>
                         </p>
                         <p>
                             ¿Tiene problemas alimenticios?
-                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 40px;">_________________________________________________________________________________________________________________________________</span>
+                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 40px;">________________________________________________________________________________________</span>
                         </p>
+                        <br>
+                        <br>
+                        <br>
                         <p>Defina el estado de salud física actual de su hijo(a):</p>
                         <p>
-                            EXCELENTE: <span style="width: 200px; display:inline-block; font-weight:700;">____________________</span>
-                            BUENO: <span style="width: 200px; display:inline-block; font-weight:700; ">____________________</span>
-                            REGULAR: <span style="width: 200px; display:inline-block; font-weight:700;">____________________</span>
-                            MALO: <span style="width: 200px; display:inline-block; font-weight:700;">____________________</span>
+                            EXCELENTE: <span style=" display:inline-block; font-weight:700;">__________</span>
+                            BUENO: <span style=" display:inline-block; font-weight:700; ">__________</span>
+                            REGULAR: <span style=" display:inline-block; font-weight:700;">__________</span>
+                            MALO: <span style=" display:inline-block; font-weight:700;">__________</span>
                         </p>
                         <p>Defina el estado de salud mental actual de su hijo(a):</p>
                         <p>
-                            EXCELENTE: <span style="width: 200px; display:inline-block; font-weight:700;">____________________</span>
-                            BUENO: <span style="width: 200px; display:inline-block; font-weight:700; ">____________________</span>
-                            REGULAR: <span style="width: 200px; display:inline-block; font-weight:700;">____________________</span>
-                            MALO: <span style="width: 200px; display:inline-block; font-weight:700;">____________________</span>
+                            EXCELENTE: <span style="display:inline-block; font-weight:700;">__________</span>
+                            BUENO: <span style="display:inline-block; font-weight:700; ">__________</span>
+                            REGULAR: <span style="display:inline-block; font-weight:700;">__________</span>
+                            MALO: <span style="display:inline-block; font-weight:700;">__________</span>
                         </p>
                         <p>
                             ¿Cómo se enteró de las clases de Visión Extra Ocular?
-                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 40px;">_________________________________________________________________________________________________________________________________</span>
+                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 40px;">______________________________________________________________________________________________</span>
                         </p>
                     </section>
                 </div>  
@@ -725,18 +796,18 @@ function formats_VXM($student = 'none'){
                 <div class="page" style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif; page-break-after:always; box-sizing:border-box;">
                     <section class="format_content" style="width:100%;">
                         
-                        <h3 style="margin-top: 200px; margin-bottom: 100px;">EXENCIÓN DE RESPONSABILIDAD MÉDICA Y PSICOLÓGICA</h3>
+                        <h3 style="margin-top: 100px; margin-bottom: 100px;">EXENCIÓN DE RESPONSABILIDAD MÉDICA Y PSICOLÓGICA</h3>
                         
                         <p>El desarrollo proporcionado en este espacio o bajo el nombre de "Developing your Mind" <strong style="text-decoration: underline">NO</strong> puede en ningún modo sustituir la opinión de un profesional médico o psicológico (Médico, Psiquiatra, Psicólogo, u otros).<strong style="text-decoration: underline">No</strong> deberá en ningún modo ser interpretada como un intento de ofrecer un consejo médico, diagnóstico o tratamiento, que pudiera interferir en la práctica médica, psiquiátrica, o psicológica.</p>
                         <p>Entiendo y me doy por informado(a) de manera clara que el desarrollo proporcionado por "Developing Your Mind", <strong style="text-decoration: underline">NO</strong> es proporcionado por un profesional de medicina o psicología. El desarrollo mental en "Developing your Mind" deberá ser tomado como una Técina Alternativa para el desarrollo humano y mental. Por lo que cualquier resultado en aplicación de dicha técnica será completa responsabilidad de quien lo toma.</p>
                     
                         <p style="margin-top: 60px;">
                             Nombre del Padre/Madre o Tutor:
-                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_________________________________________________________________________________________________________________________________</span>
+                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_____________________________________________________________________________________________</span>
                         </p>
                         <p style="margin-top: 60px;">
                             Firma de enterado:
-                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_________________________________________________________________________________________________________________________________</span>
+                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_____________________________________________________________________________________________</span>
                         </p>
                         <p style="margin-top: 60px;">
                             Fecha:
@@ -748,18 +819,18 @@ function formats_VXM($student = 'none'){
                 <div class="page" style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif; page-break-after:always; box-sizing:border-box;">
                     <section class="format_content" style="width:100%;">
                         
-                        <h3 style="margin-top: 200px; margin-bottom: 100px;">AUTORIZACIÓN</h3>
+                        <h3 style="margin-top: 100px; margin-bottom: 100px;">AUTORIZACIÓN</h3>
                         
                         <p>Doy mi permiso para que mi hijo(a) participe en actividades en relación con el curso de desarrollo mental, de 10 sesiones semanales a cargo de los instructores capacitados de "Developing your Mind" en sus instalaciones.</p>
                         <p>Entiendo que mi participación en el seguimiento de las tareas en casa son una parte importante del proceso de desarrollo mental, y por lo tanto, estoy de acuerdo en participar y seguir en su totalidad las recomendaciones dadas por los instructores en cada sesión semanal para optimizar los resultados en el proceso de desarrollo de mi hijo (a)</p>
                     
                         <p style="margin-top: 60px;">
                             Nombre del Padre/Madre o Tutor:
-                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_________________________________________________________________________________________________________________________________</span>
+                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_____________________________________________________________________________________________</span>
                         </p>
                         <p style="margin-top: 60px;">
                             Firma de enterado:
-                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_________________________________________________________________________________________________________________________________</span>
+                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_____________________________________________________________________________________________</span>
                         </p>
                         <p style="margin-top: 60px;">
                             Fecha:
@@ -771,18 +842,18 @@ function formats_VXM($student = 'none'){
                 <div class="page" style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif; page-break-after:always; box-sizing:border-box;">
                     <section class="format_content" style="width:100%;">
                         
-                        <h3 style="margin-top: 200px; margin-bottom: 100px;">AUTHORIZATION RELEASE</h3>
+                        <h3 style="margin-top: 100px; margin-bottom: 100px;">AUTHORIZATION RELEASE</h3>
                         
                         <p>I hereby give my permission for my child to participate in activitis in connection with my child's enrollment in the mind development course, given by the trained staff representatives of "Developing your Mind" at their indoor facilities.</p>
                         <p>I understand that my participation in the follow up of the home work activities are an important part of the mind development process, and therefore, I agree to participate and follow in full the recommendations fiven by the instructor in each weekly session in accordance to optimize results in the development process of my child.</p>
                     
                         <p style="margin-top: 60px;">
                             Name of Parent/Guardian:
-                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_________________________________________________________________________________________________________________________________</span>
+                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_____________________________________________________________________________________________</span>
                         </p>
                         <p style="margin-top: 60px;">
                             Signature of Parent/Guardian:
-                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_________________________________________________________________________________________________________________________________</span>
+                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_____________________________________________________________________________________________</span>
                         </p>
                         <p style="margin-top: 60px;">
                             Date:
@@ -794,18 +865,18 @@ function formats_VXM($student = 'none'){
                 <div class="page" style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif; page-break-after:always; box-sizing:border-box;">
                     <section class="format_content" style="width:100%;">
                         
-                        <h3 style="margin-top: 200px; margin-bottom: 100px;">DISCLAIMER</h3>
+                        <h3 style="margin-top: 100px; margin-bottom: 100px;">DISCLAIMER</h3>
                         
                         <p>The development provided in this space or under the name of "Developing your Mind" can <strong>not</strong> and <strong>does not</strong> replace the advice of any health professional (Medical Physician, Psychiatrist, Psychologist, or other). It should <strong>not</strong> be construed as an attempt to provide medical services, advice, diagnosis, or treatment that could interfere with any medical, psychiatric, or psychological practice.</p>
                         <p>I fully understand that the services provided by Developing Your Mind, <strong>do not</strong>, replace in any way the advice or services of any health professional Medical phyisician, psychiatrist, psychologist. And that the services provided by "Developing you mind" should be taken only as an Alternative method for intellectual and human development: therefore the application and outcome of the techniques here provided are the sole responsibility of the individuals who attend to take the development courses.</p>
                     
                         <p style="margin-top: 60px;">
                             Name of Parent/Guardian:
-                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_________________________________________________________________________________________________________________________________</span>
+                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_____________________________________________________________________________________________</span>
                         </p>
                         <p style="margin-top: 60px;">
                             Signature of Parent/Guardian:
-                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_________________________________________________________________________________________________________________________________</span>
+                            <span style="width: 900px; display:block;  font-weight:700; margin-top: 20px;">_____________________________________________________________________________________________</span>
                         </p>
                         <p style="margin-top: 60px;">
                             Date:
@@ -829,33 +900,33 @@ function acf_load_category_field_choices( $field ) {
 	$args = array(
 		'post_type' => 'faq_category_input',
 		'numberposts' => 10,
-    'post_status'    => 'publish',
-    'meta_key' => 'faq_category_input'
+        'post_status'    => 'publish',
+        'meta_key' => 'faq_category_input'
 	);
 
 	$query = new WP_Query( $args );
 
-  $choices = array();
+    $choices = array();
 
 	if ( $query->have_posts() ) {
 		while ( $query->have_posts() ) {
-      $query->the_post();
-      $choices[] = get_post_meta( get_the_ID(), 'faq_category_input', true);
+            $query->the_post();
+            $choices[] = get_post_meta( get_the_ID(), 'faq_category_input', true);
 		}
 	}
 	wp_reset_postdata();
   
-  // remove any unwanted white space
-  $choices = array_map('trim', $choices);
-
-  // loop through array and add to field 'choices'
-  if( is_array($choices) ) {
-      foreach( $choices as $choice ) {
-          $field['choices'][ $choice ] = $choice;
-      }
-  }
-  
-  return $field;
+    // remove any unwanted white space
+    $choices = array_map('trim', $choices);
+    $field['choices'] = array();
+    // loop through array and add to field 'choices'
+    if( is_array($choices) ) {
+        foreach( $choices as $choice ) {
+            $field['choices'][ $choice ] = $choice;
+        }
+    }
+    
+    return $field;
 }
 
 add_filter('acf/load_field/name=faq_inst_category', 'acf_load_inst_category_field_choices');
@@ -974,34 +1045,33 @@ function acf_load_entry_cert_category_field_choices( $field ) {
     
 	$args = array(
 		'post_type' => 'entry_cert_cat_input',
-		'numberposts' => 10,
-    'post_status'    => 'publish',
-    'meta_key' => 'entry_cert_cat_input'
+        'post_status'    => 'publish',
+        'meta_key' => 'entry_cert_cat_input'
 	);
 
 	$query = new WP_Query( $args );
 
-  $choices = array();
+    $choices = array();
 
 	if ( $query->have_posts() ) {
 		while ( $query->have_posts() ) {
-      $query->the_post();
-      $choices[] = get_post_meta( get_the_ID(), 'entry_cert_cat_input', true);
+            $query->the_post();
+            $choices[] = get_post_meta( get_the_ID(), 'entry_cert_cat_input', true);
 		}
 	}
 	wp_reset_postdata();
   
-  // remove any unwanted white space
-  $choices = array_map('trim', $choices);
+    // remove any unwanted white space
+    $choices = array_map('trim', $choices);
 
-  // loop through array and add to field 'choices'
-  if( is_array($choices) ) {
-      foreach( $choices as $choice ) {
-          $field['choices'][ $choice ] = $choice;
-      }
-  }
-  
-  return $field;
+    // loop through array and add to field 'choices'
+    if( is_array($choices) ) {
+        foreach( $choices as $choice ) {
+            $field['choices'][ $choice ] = $choice;
+        }
+    }
+    
+    return $field;
 }
 
 
@@ -1027,7 +1097,7 @@ function test_mailing(){
 
 
     // Set $to as the email you want to send the test to.
-    $to = "gerarddo1234@gmail.com";
+    $to = "pruebascatel@gmail.com";
     
     // No need to make changes below this line.
     
@@ -1078,6 +1148,8 @@ function validate_pass_reset( $error_code, $form, $data ) {
                 $query->the_post();
                 $pass_changed = get_post_meta( get_the_ID(), 'pass_changed', true);
                 update_post_meta(get_the_ID(), 'pass_changed', 'changed', 'not_changed');
+
+                update_field('field_5809034ffa525', '01', get_the_ID());
             }
         }
 
@@ -1108,17 +1180,165 @@ function my_login_redirect( $redirect_to, $request, $user ) {
     if ( $query->have_posts() ) {
         while ( $query->have_posts() ) {
             $query->the_post();
-            $pass_changed = get_post_meta( get_the_ID(), 'pass_changed', true);
+            $post_id = get_the_ID();
+            $pass_status = get_post_meta( $post_id, 'pass_changed', true);
+            $status = get_field('field_5809034ffa525', $post_id);
         }
     }
 
-    if($pass_changed == 'not_changed'){
+    // update_field($selector, $value, $post_id); 
+
+    if($pass_status == 'not_changed'){
         // $redirect_to = get_permalink(2034);
         $redirect_to = get_permalink(1817);
 
+    } else if ($pass_status == 'changed' && $status == '01'){
+        $redirect_to = get_permalink(1855);
     }
 
     return $redirect_to;    
+
+
+
+
+
+
+    $pass_1 =  $_POST['pass_1'];
+    $pass_2 =  $_POST['pass_2'];
+	if( $pass_1 !== $pass_2  ) {
+		$error_code = 'not_the_same'; 
+	} else {
+        // here goes the logic
+        $args = array(
+            'post_type' => 'aspirantes',
+            'numberposts' => 1,
+            'post_status'    => 'publish',
+            'meta_key' => '_userid',
+            'meta_value' => get_current_user_id()
+        );
+
+        $query = new WP_Query($args);
+        // this while is intented to have one iteration since we are only going to change the current user password
+        if ( $query->have_posts() ) {
+            while ( $query->have_posts() ) {
+                $query->the_post();
+                $pass_changed = get_post_meta( get_the_ID(), 'pass_changed', true);
+                update_post_meta(get_the_ID(), 'pass_changed', 'changed', 'not_changed');
+
+                update_field('field_5809034ffa525', '01', get_the_ID());
+            }
+        }
+
+        if($pass_changed === 'not_changed'){
+            wp_set_password($pass_1, get_current_user_id());
+        }
+    }
+    return $error_code;
+}
+
+add_action('hf_form_success', 'OFI_3_hanlde');
+function OFI_3_handle($submission, $form){
+
+}
+// add_filter( 'hf_validate_form', 'OFI_3_handle', 10, 3 );
+// function OFI_3_handle( $error_code, $form, $data ) {
+//     $pass_1 =  $_POST['pass_1'];
+//     $pass_2 =  $_POST['pass_2'];
+// 	if( $pass_1 !== $pass_2  ) {
+// 		$error_code = 'not_the_same'; 
+// 	} else {
+//         // here goes the logic
+//         $args = array(
+//             'post_type' => 'aspirantes',
+//             'numberposts' => 1,
+//             'post_status'    => 'publish',
+//             'meta_key' => '_userid',
+//             'meta_value' => get_current_user_id()
+//         );
+
+//         $query = new WP_Query($args);
+//         // this while is intented to have one iteration since we are only going to change the current user password
+//         if ( $query->have_posts() ) {
+//             while ( $query->have_posts() ) {
+//                 $query->the_post();
+//                 $pass_changed = get_post_meta( get_the_ID(), 'pass_changed', true);
+//                 update_post_meta(get_the_ID(), 'pass_changed', 'changed', 'not_changed');
+
+//                 update_field('field_5809034ffa525', '01', get_the_ID());
+//             }
+//         }
+
+//         if($pass_changed === 'not_changed'){
+//             wp_set_password($pass_1, get_current_user_id());
+//         }
+//     }
+//     return $error_code;
+// }
+
+
+add_shortcode('lps_current_username', 'lps_current_username_func');
+function lps_current_username_func(){
+    $user = wp_get_current_user();
+
+    $args = array(
+        'post_type' => 'aspirantes',
+        'numberposts' => 1,
+        'post_status'    => 'publish',
+        'meta_key' => '_userid',
+        'meta_value' => $user->ID
+
+    );
+
+    $first_name = 'NO_INFO';
+    $last_name = '';
+    $query = new WP_Query($args);
+    // this while is intented to have one iteration since we are only going to change the current user password
+    if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            $first_name = get_post_meta( get_the_ID(), 'OFC-1-ANombresDelAspirante', true);
+            $last_name = get_post_meta( get_the_ID(), 'OFC-1-AApellidosDelAspirante', true);
+        }
+    }
+
+    return $first_name.' '.$last_name;
+}
+
+add_shortcode('lps_current_userdir', 'lps_current_userdir_func');
+function lps_current_userdir_func(){
+    $user = wp_get_current_user();
+
+    $args = array(
+        'post_type' => 'aspirantes',
+        'numberposts' => 1,
+        'post_status'    => 'publish',
+        'meta_key' => '_userid',
+        'meta_value' => $user->ID
+
+    );
+
+    $colonia = 'NO_INFO';
+    // $calle = '';
+    // $municipio = '';
+    // $estado = '';
+    // $pais = '';
+    $query = new WP_Query($args);
+    // this while is intented to have one iteration since we are only going to change the current user password
+    if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+            $query->the_post();
+
+            $colonia = get_post_meta( get_the_ID(), 'OFI-1-AColonia', true);
+            $calle = get_post_meta( get_the_ID(), 'OFI-1-ACalle', true);
+            $municipio = get_post_meta( get_the_ID(), 'OFI-1-AMunicipio', true);
+            $estado = get_post_meta( get_the_ID(), 'OFI-1-AEstado', true);
+            $pais = get_post_meta( get_the_ID(), 'OFI-1-APais', true);
+
+        }
+    }
+    // echo 'hey';
+    // return 'hey';
+    return $calle.' '.$colonia.' '.$municipio.' '.$estado.' '.$pais;
 }
 
 
@@ -1126,17 +1346,48 @@ function my_login_redirect( $redirect_to, $request, $user ) {
 
 
 
+add_action('init','lps_contrat_handle');
+function lps_contrat_handle(){
+  if(isset($_REQUEST['action']) && $_REQUEST['action']=='lps_check_contrat') {
+
+    $user_id = intval($_REQUEST['user_id']);
+    $selected =  $_REQUEST['selected'];
+
+    $args = array(
+        'post_type' => 'aspirantes',
+        'numberposts' => 1,
+        'post_status'    => 'publish',
+        'meta_key' => '_userid',
+        'meta_value' => $user_id
+    );
+
+    $query = new WP_Query($args);
+    // this while is intented to have one iteration since we are only going to change the current user password
+    if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            $post_id = get_the_ID();
+        }
+    }
+
+    if($selected == 'accept'){
+        update_field('field_5809034ffa525', '05', $post_id);
+        wp_redirect(get_the_permalink(2));
+
+
+        include_once (ABSPATH .'testpdf.php');
+        create_contrat($post_id, $user_id);  
 
 
 
-
-
-
-
-
-
-
-
+    } else if ($selected == 'accept_not'){
+        update_field('field_5809034ffa525', '02', $post_id);
+        wp_redirect(get_the_permalink(2));
+    }
+    exit();
+  }
+  
+}
 
 
 

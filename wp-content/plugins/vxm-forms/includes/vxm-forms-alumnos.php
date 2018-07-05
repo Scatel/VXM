@@ -1,13 +1,17 @@
 <?php
 
-function vxm_forms_alumnos($student = array()){
+function vxm_forms_alumnos($num_alumno = 0){
 
+
+    if($num_alumno !== 0){
+        $student = vxm_db_get_student($num_alumno);
+    } else {
+        $student = array();
+    }
 ?>
 
     <form action="<?php echo admin_url( 'admin-post.php' ); ?>" class="vxm-forms-alumnos" method="POST">
-
         <div class="grid-bottom">
-
             <style>
                 .vxm-forms-alumnos label{
                     color: #758595;
@@ -23,23 +27,18 @@ function vxm_forms_alumnos($student = array()){
                 .vxm-forms-alumnos #email {
                     text-transform: none;
                 }
-
-
                 .vxm-forms-alumnos .ui-datepicker {
                     background-color: rgb(40,240,240);
                 }
-
             </style>
             <script>
                 $( function() {
                     $( "#datepicker" ).datepicker({
                         dateFormat: 'dd/mm/yy'
-                        // navigationAsDateFormat: true, 
-                        // nextText: 'MM', 
-                        // prevText: 'MM'
                     });
                 } );
             </script>
+
             <input type="hidden" name="action" value="vxm_forms_captura_alumnos">
 
             <div class="col-4">
@@ -47,7 +46,7 @@ function vxm_forms_alumnos($student = array()){
                     Nombre:
                     <span class="acf-required">*</span>
                 </label>
-                <input type="text" name="nombres" value="<?php echo 'jorge';//echo $student['nombre'];?>"  required/>
+                <input type="text" name="nombres" value="<?php echo $student['nombres']; ?>"  required/>
             </div>
 
             <div class="col-4">
@@ -144,9 +143,7 @@ function vxm_forms_alumnos($student = array()){
 
             <script>
                 if( $('body > #ui-datepicker-div').exists() ) {
-                
                     $('body > #ui-datepicker-div').wrap('<div class="acf-ui-datepicker" />');
-                
                 }
             </script>
             </div>
@@ -154,7 +151,7 @@ function vxm_forms_alumnos($student = array()){
             <div class="col-6">
                 <label>Número de instructor:</label>
                 <input type="number" name="num_instructor" value="<?php echo $student['num_instructor'];?>" />
-            </div>
+            </div>  
 
             <a href="javascript:void(0)" class="btn-flat" onclick="$.magnificPopup.close();">Cancelar</a>
 

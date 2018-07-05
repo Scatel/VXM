@@ -5,8 +5,17 @@
 add_action('admin_post_vxm_forms_captura_alumnos', 'vxm_forms_captura_alumnos');
 function vxm_forms_captura_alumnos(){
 
+    $post_id = $_POST['post_id'];
+
+    if($_POST['post_id'] === 'new_post'){
+        // $args = array(...)
+        // $post_id = wp_create_post($args);
+    } else {
+        $post_id = $_POST['post_id'];
+    }
+
     $row = array(
-        'post_id' => 1940,
+        'post_id' => $post_id,
         'fecha_alta' => $_POST['fecha_alta'],
         'nombres' => $_POST['nombres'],
         'apellidos' => $_POST['apellidos'],
@@ -23,7 +32,13 @@ function vxm_forms_captura_alumnos(){
         'num_instructor' => $_POST['num_instructor']  
     );
 
-    vxm_db_insert('aio_vxm_bda', $row);
+    if($_POST['post_id'] === 'new_post'){
+        vxm_db_insert('aio_vxm_bda', $row);
+    } else {
+        // $bda_id = $vxm_get_id();
+        vxm_db_update( $bda_id, 'aio_vxm_bda', $row);
+    }
+
 
     wp_redirect(get_the_permalink(92));
     exit;

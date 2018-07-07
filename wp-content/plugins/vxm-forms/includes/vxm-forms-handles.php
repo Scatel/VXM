@@ -10,6 +10,7 @@ function vxm_forms_captura_alumnos(){
     if($_POST['post_id'] === 'new_post'){
         // $args = array(...)
         // $post_id = wp_create_post($args);
+        $post_id = 45;
     } else {
         $post_id = $_POST['post_id'];
     }
@@ -17,18 +18,18 @@ function vxm_forms_captura_alumnos(){
     $row = array(
         'post_id' => $post_id,
         'fecha_alta' => $_POST['fecha_alta'],
-        'nombres' => $_POST['nombres'],
-        'apellidos' => $_POST['apellidos'],
+        'nombres' => strtoupper($_POST['nombres']),
+        'apellidos' => strtoupper($_POST['apellidos']),
         'sexo' => $_POST['sexo'],
         'pais' => $_POST['pais'],
-        'estado' => $_POST['estado'],
-        'municipio' => $_POST['municipio'],
-        'colonia' => $_POST['colonia'],
-        'calle' => $_POST['calle'],
+        'estado' => strtoupper($_POST['estado']),
+        'municipio' => strtoupper($_POST['municipio']),
+        'colonia' => strtoupper($_POST['colonia']),
+        'calle' => strtoupper($_POST['calle']),
         'telefono1' => $_POST['telefono1'],
         'telefono2' => $_POST['telefono2'],
         'email' => $_POST['email'],
-        'nombre_mama' => $_POST['nombre_mama'],
+        'nombre_mama' => strtoupper($_POST['nombre_mama']),
         'num_instructor' => $_POST['num_instructor']  
     );
 
@@ -39,7 +40,7 @@ function vxm_forms_captura_alumnos(){
         vxm_db_update( $bda_id, 'aio_vxm_bda', $row);
     }
 
-
+    // print_r($_POST);
     wp_redirect(get_the_permalink(92));
     exit;
 

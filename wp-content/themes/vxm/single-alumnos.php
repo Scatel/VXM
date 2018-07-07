@@ -11,6 +11,8 @@
 
 		<?php while (have_posts()) : the_post(); ?>
 
+		<?php vxm_forms_alumnos(); ?>
+
 			<h1 class="h5 no-margin hide"><?php the_title(); ?></h1>
 			<h2 class="h6 no-margin">Cambios a Alumnos</h2>
 

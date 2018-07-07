@@ -1,22 +1,30 @@
 <?php
 
-
-header('Content-Type: text/html; charset=UTF-8');
-require('wp-load.php');
+header('Content-Type: text/html; charset=UTF-8'); 
+require('../../wp-load.php');
 define('WP_USE_THEMES', true);
 
-// print_r(parse_aspirante_infos());
+////////////////////////////////////////////////////////////////////////
+// to make this work on a slow computer (such as mine) you have to manually change the name of the file
+// you want to load in the parse_aspirante_infos function
 
+// these are the primary functions, before doing anything make sure that fields are
+// right in all functions, most importantly   parse_aspirante_infos   and   insert_aspirante_post_meta
 $aspirante_infos =  parse_aspirante_infos();
 insert_aspirantes($aspirante_infos);
+////////////////////////////////////////////////////////////////////////
+
 
 function parse_aspirante_infos(){
     $aspirante_infos = array();
     echo '<br>';
     echo '<br>';
+    // //echo the name of the file you're currently inserting intro database
     // echo '14jun_info_aspirantes/14jun_aspirantes_faltantes_info1.csv';
     echo '<br>';
     echo '<br>';
+    // already tried to put a variable instead of hardcoded text, doesn't work
+    // be careful if you want to see it not working for yourself
     $CSVfp = fopen("14jun_info_aspirantes/14jun_aspirantes_faltantes_info15.csv", "r");
     if($CSVfp !== FALSE) {
         while(! feof($CSVfp)) {
@@ -41,10 +49,6 @@ function parse_aspirante_infos(){
     return $aspirante_infos;
 }
 
-
-
-// post_id,user_id,email,password
-
 function insert_aspirantes($aspirante_infos){
     for($i = 0; $i < sizeof($aspirante_infos); $i++){
 
@@ -67,8 +71,6 @@ function insert_aspirantes($aspirante_infos){
     echo '<br>';
 }
 
-
-
 function insert_aspirante($aspirante_info){
 
     $email = $aspirante_info['email'];
@@ -78,25 +80,8 @@ function insert_aspirante($aspirante_info){
     $post_id = insert_aspirante_post($email, $full_name);
     
     insert_aspirante_post_meta($post_id, $aspirante_meta);
-    $password = insert_aspirante_user($post_id, $email, $aspirante_meta['status']);
-    // update_field('status', $aspirante_meta['status'], 'user_'.$user_id);
-
+    $password = insert_aspirante_user($post_id, $email, $aspirante_meta['status'])
 }
-
-
-// $aspirante_meta['primer_nombre'] = $aspirante_info['primer_nombre'];
-// $aspirante_meta['apellidos'] = $aspirante_info['apellidos'];
-// $aspirante_meta['pais'] = $aspirante_info['pais'];
-// $aspirante_meta['estado'] = $aspirante_info['estado'];
-// $aspirante_meta['municipio'] = $aspirante_info['municipio'];
-// $aspirante_meta['colonia'] = $aspirante_info['colonia'];
-// $aspirante_meta['telefono1'] = $aspirante_info['telefono1'];
-// $aspirante_meta['telefono2'] = $aspirante_info['telefono2'];
-// $aspirante_meta['email'] = $aspirante_info['email'];
-// $aspirante_meta['niveo'] = $aspirante_info['niveo'];
-// $aspirante_meta['status'] = $aspirante_info['status'];
-
-
 
 function insert_aspirante_post($email, $full_name){
     // Create post object
@@ -123,9 +108,6 @@ function insert_aspirante_post($email, $full_name){
     return $post_id;
 }
 
-
-
-
 function insert_aspirante_user($post_id, $email, $status){
     $password = wp_generate_password( 12, false );
     $user_id = wp_create_user($email,$password,$email);
@@ -141,11 +123,8 @@ function insert_aspirante_user($post_id, $email, $status){
         $user->set_role( 'subscriber' );
         update_post_meta( $post_id, '_userid', $user_id );
         update_field('status', $status, 'user_'.$user_id);
-
-        // update_post_meta( $post_id, '__status', 'field_5a8bdc3f3e036' );
-
     } 
-    // update_field('status', $status, 'user_'.$user_id);
+
     if ( is_wp_error( $user_id ) ) {
         print_r($user_id);
         echo $user_id;
@@ -153,15 +132,9 @@ function insert_aspirante_user($post_id, $email, $status){
         echo $user_id.','.$email.','.$password;
         return $password;
     }
-    // echo $user_id.','.$email.','.$password;
-    // return $password;
 }
 
-
 function insert_aspirante_post_meta($post_id, $aspirante_meta){
-
-    
-
 
     $aspirante = array();
 
@@ -269,7 +242,3 @@ function insert_aspirante_post_meta($post_id, $aspirante_meta){
         add_post_meta( $post_id, $meta_keys[$k], $meta_values[$k] );
     }
 }
-
-
-
-

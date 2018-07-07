@@ -132,6 +132,11 @@ Template Name: OFI
 				<div class="section"><div class="divider"></div></div>
 
 				<?php 
+
+					vxm_forms_alumnos(); 
+
+					echo '<br><br><br><br>';
+
 					acf_form(array(
 						'post_id'      => 'new_post',
 						'new_post'     => array(

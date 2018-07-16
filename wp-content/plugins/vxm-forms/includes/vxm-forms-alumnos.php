@@ -31,15 +31,9 @@ function vxm_forms_alumnos($num_alumno = 0){
                     background-color: rgb(40,240,240);
                 }
             </style>
-            <script>
-                $( function() {
-                    $( "#datepicker" ).datepicker({
-                        dateFormat: 'dd/mm/yy'
-                    });
-                } );
-            </script>
 
             <input type="hidden" name="action" value="vxm_forms_captura_alumnos">
+            <input type="hidden" name="post_id" value="new_post">
 
             <div class="col-4">
                 <label>
@@ -62,7 +56,11 @@ function vxm_forms_alumnos($num_alumno = 0){
                     Sexo:
                     <span class="acf-required">*</span>
                 </label>
-                <input type="text" name="sexo" value="<?php echo $student['sexo'];?>"  required/>
+
+                <select name="sexo" class="browser-default" value="<?php echo $student['sexo'];?>" style="margin-bottom: 15px; background-color: #eceff1">
+                    <option value="0">Femenino</option>
+                    <option value="1">Masculino</option>
+                </select>
             </div>
 
             <div class="col-3">
@@ -78,7 +76,14 @@ function vxm_forms_alumnos($num_alumno = 0){
                     País:
                     <span class="acf-required">*</span>
                 </label>
-                <input type="text" name="pais" value="<?php echo $student['pais'];?>"  required/>
+                <select 
+                    class="browser-default" 
+                    name="pais" 
+                    data-role="country-selector" 
+                    value="<?php echo $student['pais'];?>" 
+                    style="margin-bottom: 15px; background-color: #eceff1"></select> 
+
+       
             </div>
 
             <div class="col-3">
@@ -97,36 +102,21 @@ function vxm_forms_alumnos($num_alumno = 0){
                 <input type="text" name="municipio" value="<?php echo $student['municipio'];?>"  required/>
             </div>
 
-            <div class="col-2">
+            <div class="col-4">
                 <label>
                     Colonia:
                 </label>
                 <input type="text" name="colonia" value="<?php echo $student['colonia'];?>" />
             </div>
 
-            <div class="col-3">
+            <div class="col-4">
                 <label>
                     Calle:
                 </label>
                 <input type="text" name="calle" value="<?php echo $student['calle'];?>" />
             </div>
 
-            <div class="col-2">
-                <label>
-                    Telefono1:
-                    <span class="acf-required">*</span>
-                </label>
-                <input type="number" name="telefono1" value="<?php echo $student['telefono1'];?>"  required/>
-            </div>
-
-            <div class="col-2">
-                <label>
-                    Telefono2:
-                </label>
-                <input type="number" name="telefono2" value="<?php echo $student['telefono2'];?>" />
-            </div>
-
-            <div class="col-3   ">
+            <div class="col-4">
                 <label>
                     Email:
                     <span class="acf-required">*</span>
@@ -134,31 +124,55 @@ function vxm_forms_alumnos($num_alumno = 0){
                 <input type="email" name="email" id="email" value="<?php echo $student['email'];?>" required />
             </div>
 
-            <div class="col-6">
+            <div class="col-3">
+                <label>
+                    Telefono1:
+                    <span class="acf-required">*</span>
+                </label>
+                <input type="number" name="telefono1" value="<?php echo $student['telefono1'];?>"  required/>
+            </div>
+
+            <div class="col-3">
+                <label>
+                    Telefono2:
+                </label>
+                <input type="number" name="telefono2" value="<?php echo $student['telefono2'];?>" />
+            </div>
+
+
+
+            <div class="col-4">
                 <label>
                     Fecha de alta:
                     <span class="acf-required">*</span>
                 </label>
                 <input type="text" name="fecha_alta" value="<?php echo $student['fecha_alta'];?>" id="datepicker" />
-
-            <script>
-                if( $('body > #ui-datepicker-div').exists() ) {
-                    $('body > #ui-datepicker-div').wrap('<div class="acf-ui-datepicker" />');
-                }
-            </script>
             </div>
 
-            <div class="col-6">
+            <div class="col-2">
                 <label>Número de instructor:</label>
-                <input type="number" name="num_instructor" value="<?php echo $student['num_instructor'];?>" />
+                <?php
+                    if($num_alumno === 0){
+                        $num_instructor = get_current_user_id();
+                    } else {
+                        $num_instructor = $student['num_instructor'];
+                    }
+                ?>
+                <input type="number" name="num_instructor" value="<?php echo $num_instructor;?>" />
             </div>  
 
-            <a href="javascript:void(0)" class="btn-flat" onclick="$.magnificPopup.close();">Cancelar</a>
 
+            <a href="javascript:void(0)" class="btn-flat" onclick="$.magnificPopup.close();">Cancelar</a>
 
             <button class="btn" type="submit">
                 Enviar
             </button>
+
+
+
+
+
+
 
 
         </div>
@@ -170,11 +184,20 @@ function vxm_forms_alumnos($num_alumno = 0){
 
 
     <script>
-        // $('#test_btn').on('click', () => {
-        //     console.log('hello world');
-        // })
-    
-    
+
+
+        $( function() {
+                $( "#datepicker" ).datepicker({
+                    dateFormat: 'dd/mm/yy'
+                });
+
+                if( $('body > #ui-datepicker-div').exists() ) {
+                    $('body > #ui-datepicker-div').wrap('<div class="acf-ui-datepicker" />');
+                }
+
+
+            } 
+        );
     </script>
     <?php
 

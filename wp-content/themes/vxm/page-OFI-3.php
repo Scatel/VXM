@@ -40,7 +40,7 @@ $args = array(
 
 	<article id="single-post" class="white-popup mfp-with-anim post-<?php the_ID(); ?>">
 
-        <?php vxm_forms_alumnos(); ?>
+        
 
 
         <?php while (have_posts()) : the_post(); ?>
@@ -58,16 +58,7 @@ $args = array(
             <input class="datepicker" type="text" >
         </div>
 
-
-
-
-
-
         <div class="section"><div class="divider"></div></div>
-
-
-
-
 
         <!-- <div class="container"> -->
             <?php echo do_shortcode('[hf_form slug="ofi-3"]'); ?>

@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
-require('wp-load.php');
+require('../wp-load.php');
 define('WP_USE_THEMES', true);
 
 

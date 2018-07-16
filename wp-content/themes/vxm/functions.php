@@ -48,7 +48,7 @@ require_once( 'library/device-body-class/devicebodyclass.php' );
 //require_once('library/wpas-forms.php');
 
 // ACF Fields Groups
-require_once('library/acf-fields.php');
+// require_once('library/acf-fields.php');
 
 
 
@@ -413,13 +413,9 @@ function wp_delete_aspirante() {
         $user_id = intval($_REQUEST['user_id']);
         $post_id = intval($_REQUEST['post_id']);
 
-        // update_user_meta($user_id,'status',60);
-        // update_post_meta($post_id,'_status',60);
+
         update_field('status', 50, 'user_'.$user_id);
         update_field('_status', 50, $post_id);
-
-        // wp_delete_user($user_id);
-        // wp_delete_post($post_id); 
 
         // retrieve link from url
         if(isset($_REQUEST['redirect_id'])){
@@ -1167,73 +1163,38 @@ add_filter( 'hf_form_message_not_the_same', function( $message ) {
 
 add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
 function my_login_redirect( $redirect_to, $request, $user ) {
-    $args = array(
-        'post_type' => 'aspirantes',
-        'numberposts' => 1,
-        'post_status'    => 'publish',
-        'meta_key' => '_userid',
-        'meta_value' => $user->ID
-    );
+    
+    $user_id =  $user->ID;
 
-    $query = new WP_Query($args);
-    // this while is intented to have one iteration since we are only going to change the current user password
-    if ( $query->have_posts() ) {
-        while ( $query->have_posts() ) {
-            $query->the_post();
-            $post_id = get_the_ID();
-            $pass_status = get_post_meta( $post_id, 'pass_changed', true);
-            $status = get_field('field_5809034ffa525', $post_id);
-        }
-    }
-
-    // update_field($selector, $value, $post_id); 
-
-    if($pass_status == 'not_changed'){
-        // $redirect_to = get_permalink(2034);
-        $redirect_to = get_permalink(1817);
-
-    } else if ($pass_status == 'changed' && $status == '01'){
-        $redirect_to = get_permalink(1855);
-    }
-
-    return $redirect_to;    
-
-
-
-
-
-
-    $pass_1 =  $_POST['pass_1'];
-    $pass_2 =  $_POST['pass_2'];
-	if( $pass_1 !== $pass_2  ) {
-		$error_code = 'not_the_same'; 
-	} else {
-        // here goes the logic
+    if($user_id !== NULL){
+    
         $args = array(
             'post_type' => 'aspirantes',
             'numberposts' => 1,
             'post_status'    => 'publish',
             'meta_key' => '_userid',
-            'meta_value' => get_current_user_id()
+            'meta_value' => $user_id
         );
 
-        $query = new WP_Query($args);
+        $query = new WP_Query($args);   
+
         // this while is intented to have one iteration since we are only going to change the current user password
         if ( $query->have_posts() ) {
             while ( $query->have_posts() ) {
-                $query->the_post();
-                $pass_changed = get_post_meta( get_the_ID(), 'pass_changed', true);
-                update_post_meta(get_the_ID(), 'pass_changed', 'changed', 'not_changed');
-
-                update_field('field_5809034ffa525', '01', get_the_ID());
+                $post = $query->the_post();
+                $post_id = get_the_ID();
+                $pass_status = get_post_meta( $post_id, 'pass_changed', true);
+                $status = get_field('_status', $post_id);
             }
         }
 
-        if($pass_changed === 'not_changed'){
-            wp_set_password($pass_1, get_current_user_id());
+        if($pass_status == 'not_changed'){
+            $redirect_to = get_permalink(1817).'&post_id='.$post_id.'&user_id='.$user_id;
+        } else if ($pass_status == 'changed' && $status == '01'){
+            $redirect_to = get_permalink(1855);
         }
     }
-    return $error_code;
+    return $redirect_to;    
 }
 
 add_action('hf_form_success', 'OFI_3_hanlde');
@@ -1296,12 +1257,12 @@ function lps_current_username_func(){
     if ( $query->have_posts() ) {
         while ( $query->have_posts() ) {
             $query->the_post();
-            $first_name = get_post_meta( get_the_ID(), 'OFC-1-ANombresDelAspirante', true);
-            $last_name = get_post_meta( get_the_ID(), 'OFC-1-AApellidosDelAspirante', true);
+            $full_name = get_post_meta( get_the_ID(), 'ASP_nombre_completo', true);
+            // $last_name = get_post_meta( get_the_ID(), 'O-1-AApellidosDelAspirante', true);
         }
     }
 
-    return $first_name.' '.$last_name;
+    return $full_name;
 }
 
 add_shortcode('lps_current_userdir', 'lps_current_userdir_func');
@@ -1328,11 +1289,11 @@ function lps_current_userdir_func(){
         while ( $query->have_posts() ) {
             $query->the_post();
 
-            $colonia = get_post_meta( get_the_ID(), 'OFI-1-AColonia', true);
-            $calle = get_post_meta( get_the_ID(), 'OFI-1-ACalle', true);
-            $municipio = get_post_meta( get_the_ID(), 'OFI-1-AMunicipio', true);
-            $estado = get_post_meta( get_the_ID(), 'OFI-1-AEstado', true);
-            $pais = get_post_meta( get_the_ID(), 'OFI-1-APais', true);
+            $colonia = get_post_meta( get_the_ID(), 'ASP_colonia', true);
+            $calle = get_post_meta( get_the_ID(), 'ASP_calle', true);
+            $municipio = get_post_meta( get_the_ID(), 'ASP_municipio', true);
+            $estado = get_post_meta( get_the_ID(), 'ASP_estado', true);
+            $pais = get_post_meta( get_the_ID(), 'ASP_pais', true);
 
         }
     }

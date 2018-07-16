@@ -521,10 +521,9 @@ function save_post_aspirantes( $post_id ) {
 
 	// vars	
 	$post = get_post( $post_id );
-	$nombres = get_field('OFC-1-ANombresDelAspirante', $post_id);
-	$apellidos = get_field('OFC-1-AApellidosDelAspirante', $post_id);
+	$nombre_completo = get_field('ASP_nombre_completo', $post_id);
 	
-	$aspirante_title = $nombres.' '.$apellidos;
+	$aspirante_title = $nombre_completo;
 	$post_slug = sanitize_title_with_dashes($aspirante_title,'','save');
 	$post_slugsan = sanitize_title($post_slug);
 
@@ -536,7 +535,7 @@ function save_post_aspirantes( $post_id ) {
 		)
 	);
 
-	$tipo_de_aspirante = get_field('tipo_de_aspirante', $post_id);
+	$tipo_de_aspirante = get_field('ASP_tipo_aspirante', $post_id);
 
 	if(empty($tipo_de_aspirante)) {		
 		if(is_page_template('page-ofc.php')) {
@@ -548,20 +547,12 @@ function save_post_aspirantes( $post_id ) {
 		}
 	}
 
-
-	update_field('tipo_de_aspirante', $tipo_de_aspirante, $post_id);
+	update_field('ASP_tipo_aspirante', $tipo_de_aspirante, $post_id);
 
 	add_action('acf/save_post', 'save_post_aspirantes');
 
 	//vars
-	$pais = get_field('OFI-1-APais', $post_id);
-	$estado = get_field('OFI-1-AEstado', $post_id);
-	$municipio = get_field('OFI-1-AMunicipio', $post_id);
-	$colonia = get_field('OFI-1-AColonia', $post_id);
-	$calle = get_field('OFI-1-ACalle', $post_id);
-	$telefono1 = get_field('OFI-1-ATelefono1', $post_id);
-	$telefono2 = get_field('OFI-1-ATelefono2', $post_id);
-	$email = get_field('OFI-1-AEmail', $post_id);
+	$email = get_field('ASP_email', $post_id);
 
 
 
@@ -571,7 +562,7 @@ function save_post_aspirantes( $post_id ) {
 		add_post_meta( $post_id, 'pass_changed', 'not_changed');
 
 		// $password = wp_generate_password( 12, false );
-		$password = get_field('initial_pass_inst', $post_id);
+		$password = get_field('ASP_initial_pass', $post_id);
 		// $password = 'jambon';
 		$user_id = wp_create_user( $email, $password, $email );
 
@@ -588,18 +579,22 @@ function save_post_aspirantes( $post_id ) {
 		wp_mail( $email, 'Welcome!', 'Your Password: ' . $password );
 
 		// add user status
-		//update_user_meta( $user_id, 'status', '00' );
 		/* 
 		********************NNNNNNNNNNNNNNNNNNN 00000000000000000000000 NNNNNNNNNNNNNNNNN**************************/
 		update_field('status', '00', 'user_'.$user_id);
+		update_field('_status', '00', $post_id);
+
 		
 		// add status custom field for loop
-		update_post_meta( $post_id, '_status', '00' );
-		update_post_meta( $post_id, '__status', 'field_5a8bdc3f3e036' );
+		// update_post_meta( $post_id, '_status', '00' );
+		// update_post_meta( $post_id, '__status', 'field_5a8bdc3f3e036' );
+
+
+
+
 		// asign user id to meta field of the post
 		add_post_meta( $post_id, '_userid', $user_id );
-
-
+		update_user_meta( $user_id, 'status', '00' );
 
 	}
 }
@@ -658,7 +653,7 @@ function my_acf_update_value( $value, $post_id, $field  ) {
 		update_post_meta( $post_id, '_status', $value );
 	}
 
-	$tipo_de_aspirante = str_replace('_', '-', get_field('tipo_de_aspirante', $post_id));
+	$tipo_de_aspirante = str_replace('_', '-', get_field('ASP_tipo_aspirante', $post_id));
 
 	switch ($value) {
 		case '00': $role = 'subscriber'; break;
@@ -1134,7 +1129,7 @@ function status_08_bulk_action_handler( $redirect_to, $doaction, $post_ids ) {
 		$cfuserid = get_post_meta( $post_id, '_userid', true );
 		update_field('status', '08', 'user_'.$cfuserid);
 
-		$tipo_de_aspirante = str_replace('_', '-', get_field('tipo_de_aspirante', $post_id));
+		$tipo_de_aspirante = str_replace('_', '-', get_field('ASP_tipo_aspirante', $post_id));
 
 		$usuario = new WP_User($cfuserid);
 		$usuario->set_role($tipo_de_aspirante);
@@ -1163,7 +1158,7 @@ function status_10_bulk_action_handler( $redirect_to, $doaction, $post_ids ) {
 		$cfuserid = get_post_meta( $post_id, '_userid', true );
 		update_field('status', '10', 'user_'.$cfuserid);
 
-		$tipo_de_aspirante = str_replace('_', '-', get_field('tipo_de_aspirante', $post_id));
+		$tipo_de_aspirante = str_replace('_', '-', get_field('ASP_tipo_aspirante', $post_id));
 
 		$usuario = new WP_User($cfuserid);
 		$usuario->set_role($tipo_de_aspirante);
@@ -1367,6 +1362,22 @@ wp_enqueue_script( 'admin-ajax' );
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 add_action('wp_ajax_nopriv_frontend_faqs_search', 'frontend_faqs_search');
 add_action('wp_ajax_frontend_faqs_search', 'frontend_faqs_search');
 function frontend_faqs_search(){
@@ -1512,19 +1523,6 @@ function wp_display_faqs_instructores($category = ''){
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 add_action('wp_ajax_nopriv_frontend_faqs_certificadores_search', 'frontend_faqs_certificadores_search');
 add_action('wp_ajax_frontend_faqs_certificadores_search', 'frontend_faqs_certificadores_search');
 function frontend_faqs_certificadores_search(){
@@ -1567,9 +1565,6 @@ function frontend_faqs_certificadores_search(){
 	echo $content;
 
 	wp_die(); 
-
-
-
 }
 
 function wp_display_faqs_certificadores($category = ''){
@@ -1600,11 +1595,6 @@ function wp_display_faqs_certificadores($category = ''){
 		}
 	}
 }
-
-
-
-
-
 
 add_action('wp_ajax_nopriv_frontend_manual_instructores_search', 'frontend_manual_instructores_search');
 add_action('wp_ajax_frontend_manual_instructores_search', 'frontend_manual_instructores_search');
@@ -1680,9 +1670,6 @@ function wp_display_manual_instructores($category = ''){
 	}
 
 }
-
-
-
 
 
 
@@ -1775,6 +1762,18 @@ function wp_display_manual_certificadores($category = ''){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 add_action('wp_ajax_nopriv_frontend_instructores_search', 'frontend_instructores_search');
 add_action('wp_ajax_frontend_instructores_search', 'frontend_instructores_search');
 function frontend_instructores_search(){
@@ -1790,35 +1789,47 @@ function frontend_instructores_search(){
 		'post_type'   => array('aspirantes'),
 		'post_status' => 'publish',
 		'author'      => $userid,
-		'meta_key'    => 'tipo_de_aspirante',
+		'meta_key'    => 'ASP_tipo_aspirante',
 		'meta_value'  => 'instructor',
 		'paged'       => $aspirante_paged,
 		's'           => $search_query,
 		'meta_query'  => array(
-			'relation' => 'OR',
+			'relation' => 'AND',
 			array(
-				'key' => '_status',
-				'value' => '08',
-				'compare' => '='
+				'relation' => 'OR',
+				array(
+					'key' => '_status',
+					'value' => '08',
+					'compare' => '='
+				),
+				array(
+					'key' => '_status',
+					'value' => '10',
+					'compare' => '='
+				),
+				array(
+					'key' => '_status',
+					'value' => '60',
+					'compare' => '='
+				)
 			),
 			array(
-				'key' => '_status',
-				'value' => '10',
+				'key' => 'ASP_instructor_lista_mostrar',
+				'value' => '1',
 				'compare' => '='
-			),
-			array(
-				'key' => '_status',
-				'value' => '60',
-				'compare' => '='
-			),
-		),
+			)
+		)
+			
 	);
 
 	$aspirante_query = new WP_Query( $args ); ob_start();
 
+
+
 	if ($aspirante_query->have_posts()) {
 
 		echo '<ul class="lista-alumnos">';
+
 		$counter = 0;
 
 		while ($aspirante_query->have_posts()) {
@@ -1830,15 +1841,22 @@ function frontend_instructores_search(){
 
 			// vars 
 			$numero = get_the_ID();
-			$noiveo = get_field('numero_instructor_veo');
+			$noiveo = get_field('ASP_numero_instructor_veo');
 			$alta = get_the_date('Y-m-d');
-			$sexo = get_field('OFI-1-ASexo');
-			$pais = get_field('OFI-1-APais');
-			$estado = get_field('OFI-1-AEstado');
-			$municipio = get_field('OFI-1-AMunicipio');
-			$telefono1 = get_field('OFI-1-ATelefono1');
-			$telefono2 = get_field('OFI-1-ATelefono2');
-			$email = get_field('OFI-1-AEmail'); 
+			$sexo = get_field('ASP_sexo');
+			$pais = get_field('ASP_pais');
+			$estado = get_field('ASP_estado');
+			$municipio = get_field('ASP_municipio');
+			$telefono1 = get_field('ASP_telefono1');
+			$telefono2 = get_field('ASP_telefono2');
+			$email = get_field('ASP_email'); 
+
+			$pais_mostrar = get_field('ASP_pais_mostrar');
+			$municipio_mostrar = get_field('ASP_municipio_mostrar');
+			$estado_mostrar = get_field('ASP_estado_mostrar');
+			$telefono1_mostrar = get_field('ASP_telefono1_mostrar');
+			$telefono2_mostrar = get_field('ASP_telefono2_mostrar');
+			$email_mostrar = get_field('ASP_email_mostrar'); 
 
 			$cfuserid = get_post_meta( get_the_ID(), '_userid', true );
 
@@ -1853,8 +1871,9 @@ function frontend_instructores_search(){
 				case '20': $status = 'Suspendido'; break;
 				case '30': $status = 'Sin movimiento en 12 meses'; break;
 				case '50': $status = 'No Deseado'; break;
+				case '60': $status = 'No Autorizado'; break;
 			}
-?>
+		?>
 
 			<li 
 				class="section wow fadeIn" 
@@ -1878,12 +1897,30 @@ function frontend_instructores_search(){
 				<div class="personal-data">
 					<ul class="data-list">
 
-						<li><?php echo $municipio.', '.$estado.', '.$pais; ?>.</li>
+						<li>
+							<?php 
+
+							if($municipio_mostrar == 1){
+								echo $municipio;
+							}
+							if($estado_mostrar == 1){
+								echo ', '.$estado;
+							}
+							if($pais_mostrar == 1){
+								echo ', '.$pais;
+							}
+							// echo $email_html;
+							// echo $municipio.', '.$estado.', '.$pais; 
+						
+						
+							?>.
+						</li>
 
 						<?php // phone number and email data
+
 							$tel1 = !empty($telefono1) ? '<span class="tel1"><i class="ti-headphone-alt"></i> '.$telefono1.'</span>' : '';
 							$tel2 = !empty($telefono2) ? '<span class="tel2"><i class="ti-headphone-alt"></i> '.$telefono2.'</span>' : '';
-							$email1 = 
+							$email_html = 
 								'<a 
 									href="mailto:'.antispambot($email).'">
 									<span class="email">
@@ -1896,9 +1933,18 @@ function frontend_instructores_search(){
 
 						?>
 						<li>
-							<?php echo $tel1; ?>
-							<?php echo $tel2; ?>
-							<?php echo $email1; ?>
+							<?php 
+								if($telefono1_mostrar == 1){
+									echo $tel1; 
+								}
+								if($telefono1_mostrar == 1){
+									echo $tel1; 
+								}
+								if($email_mostrar == 1){
+									echo $email_html;
+								}
+							?>
+
 						</li>
 					</ul>
 				</div>
@@ -1910,8 +1956,10 @@ function frontend_instructores_search(){
 				});
 			</script>
 
+
+
 			<?php 
-		// } //end if
+
 		} //end while
 
 		echo '</ul>';
@@ -1995,28 +2043,36 @@ function frontend_certificadores_search() {
 		'post_type'   => array('aspirantes'),
 		'post_status' => 'publish',
 		'author'      => $userid,
-		'meta_key'    => 'tipo_de_aspirante',
+		'meta_key'    => 'ASP_tipo_aspirante',
 		'meta_value'  => 'certificador',
 		'paged'       => $aspirante_paged,
 		's'           => $search_query,
 		'meta_query'  => array(
-			'relation' => 'OR',
+			'relation' => 'AND',
 			array(
-				'key' => '_status',
-				'value' => '08',
-				'compare' => '='
+				'relation' => 'OR',
+				array(
+					'key' => '_status',
+					'value' => '08',
+					'compare' => '='
+				),
+				array(
+					'key' => '_status',
+					'value' => '10',
+					'compare' => '='
+				),
+				array(
+					'key' => '_status',
+					'value' => '60',
+					'compare' => '='
+				)
 			),
 			array(
-				'key' => '_status',
-				'value' => '10',
+				'key' => 'ASP_instructor_lista_mostrar',
+				'value' => '1',
 				'compare' => '='
-			),
-			array(
-				'key' => '_status',
-				'value' => '10',
-				'compare' => '='
-			),
-		),
+			)
+		)
 	);
 
 	$aspirante_query = new WP_Query( $args ); ob_start();
@@ -2034,15 +2090,23 @@ function frontend_certificadores_search() {
 
 			// vars 
 			$numero = get_the_ID();
-			$noiveo = get_field('numero_instructor_veo');
+			$noiveo = get_field('ASP_numero_instructor_veo');
 			$alta = get_the_date('Y-m-d');
-			$sexo = get_field('OFI-1-ASexo');
-			$pais = get_field('OFI-1-APais');
-			$estado = get_field('OFI-1-AEstado');
-			$municipio = get_field('OFI-1-AMunicipio');
-			$telefono1 = get_field('OFI-1-ATelefono1');
-			$telefono2 = get_field('OFI-1-ATelefono2');
-			$email = get_field('OFI-1-AEmail'); 
+			$sexo = get_field('ASP_sexo');
+			$pais = get_field('ASP_pais');
+			$estado = get_field('ASP_estado');
+			$municipio = get_field('ASP_municipio');
+			$telefono1 = get_field('ASP_telefono1');
+			$telefono2 = get_field('ASP_telefono2');
+			$email = get_field('ASP_email'); 
+
+			$pais_mostrar = get_field('ASP_pais_mostrar');
+			$municipio_mostrar = get_field('ASP_municipio_mostrar');
+			$estado_mostrar = get_field('ASP_estado_mostrar');
+			$telefono1_mostrar = get_field('ASP_telefono1_mostrar');
+			$telefono2_mostrar = get_field('ASP_telefono2_mostrar');
+			$email_mostrar = get_field('ASP_email_mostrar'); 
+
 
 			$cfuserid = get_post_meta( get_the_ID(), '_userid', true );
 
@@ -2056,6 +2120,8 @@ function frontend_certificadores_search() {
 				case '20': $status = 'Suspendido'; break;
 				case '30': $status = 'Sin movimiento en 12 meses'; break;
 				case '50': $status = 'No Deseado'; break;
+				case '60': $status = 'No Autorizado'; break;
+
 			}
 
 			?>
@@ -2078,11 +2144,53 @@ function frontend_certificadores_search() {
 				<a href="javascript:void(0)" class="personal-data-toggle"><i class="ti-id-badge"></i></a>
 				<div class="personal-data">
 					<ul class="data-list">
-						<li><?php echo $municipio.', '.$estado.', '.$pais; ?>.</li>
+						<li>
+						<?php 
+						if($municipio_mostrar == 1){
+							echo $municipio;
+						}
+						if($estado_mostrar == 1){
+							echo ', '.$estado;
+						}
+						if($pais_mostrar == 1){
+							echo ', '.$pais;
+						}
+						?>.
+
+						</li>
 						
 						<?php // phone number and email data
+						
+						$tel1 = !empty($telefono1) ? '<span class="tel1"><i class="ti-headphone-alt"></i> '.$telefono1.'</span>' : '';
 						$tel2 = !empty($telefono2) ? '<span class="tel2"><i class="ti-headphone-alt"></i> '.$telefono2.'</span>' : '';
-						echo sprintf('<li><span class="tel1"><i class="ti-headphone-alt"></i> <span class="phone">%s</span></span> %s <span class="email"><i class="ti-email"></i> <a href="mailto:%s">%s</a></span></li>', $telefono1, $tel2, antispambot($email), antispambot($email)); ?>
+						$email_html = 
+							'<a 
+								href="mailto:'.antispambot($email).'">
+								<span class="email">
+									<i class="ti-email"></i>'.antispambot($email).
+								'</span>
+							</a>';
+
+						$tel1 = $tel1<>'' ? '<a href="tel:'.$telefono1.'" class="instructor-tel">'.$tel1.'</a>':$tel1;
+						$tel2 = $tel2<>'' ? '<a href="tel:'.$telefono2.'" class="instructor-tel">'.$tel2.'</a>':$tel2;
+
+						?>
+
+						<li>
+							<?php 
+								if($telefono1_mostrar == 1){
+									echo $tel1; 
+								}
+								if($telefono1_mostrar == 1){
+									echo $tel1; 
+								}
+								if($email_mostrar == 1){
+									echo $email_html;
+								}
+							?>
+
+						</li>
+
 					</ul>
 				</div>
 			<?php 
@@ -2358,18 +2466,32 @@ function frontend_instructores_admin_search(){
 		'post_type' => array('aspirantes'),
 		'post_status' => 'publish',
 		'author'     => $userid,
-		'meta_key'   => 'tipo_de_aspirante',
+		'meta_key'   => 'ASP_tipo_aspirante',
 		'meta_value' => 'instructor',
 		'paged' => $aspirante_paged,
 		's' => $search_query,
 	);
 
-	$aspirante_query = new WP_Query( $args ); ob_start();
-
+	$aspirante_query = new WP_Query( $args ); 
+	
+	ob_start();
 
 	if ($aspirante_query->have_posts()) {
 
-		echo '<ul class="lista-alumnos">';$counter = 0;
+		echo '<ul class="lista-alumnos">';
+		$counter = 0;
+
+		
+
+
+
+
+
+
+
+
+
+
 
 		while ($aspirante_query->have_posts()) {
 			$aspirante_query->the_post();
@@ -2379,20 +2501,19 @@ function frontend_instructores_admin_search(){
 
 			// vars 
 			$numero = get_the_ID();
-			$noiveo = get_field('numero_instructor_veo');
+			$noiveo = get_field('ASP_numero_instructor_veo');
 			$alta = get_the_date('M j, Y');
-			$sexo = get_field('OFI-1-ASexo');
-			$pais = get_field('OFI-1-APais');
-			$estado = get_field('OFI-1-AEstado');
-			$municipio = get_field('OFI-1-AMunicipio');
-			$telefono1 = get_field('OFI-1-ATelefono1');
-			$telefono2 = get_field('OFI-1-ATelefono2');
-			$email = get_field('OFI-1-AEmail'); 
+			$sexo = get_field('ASP_sexo');
+			$pais = get_field('ASP_pais');
+			$estado = get_field('ASP_estado');
+			$municipio = get_field('ASP_municipio');
+			$telefono1 = get_field('ASP_telefono1');
+			$telefono2 = get_field('ASP_telefono2');
+			$email = get_field('ASP_email'); 
 
 			$cfuserid = get_post_meta( get_the_ID(), '_userid', true );
 
 			$statusraw = get_field('status', 'user_'.$cfuserid);
-			//$status = ( $statusraw == 10) ? 'Certificado' : 'Pre Certificado';
 
 			switch ($statusraw) {
 				case '00': $status = 'Sin Certificar'; break;
@@ -2402,105 +2523,100 @@ function frontend_instructores_admin_search(){
 				case '20': $status = 'Suspendido'; break;
 				case '30': $status = 'Sin movimiento en 12 meses'; break;
 				case '50': $status = 'No Deseado'; break;
-			} // end switch
+				case '60': $status = 'No Autorizado'; break;
+			} 
 
 		?>
 
-		<li class="section wow fadeIn" data-wow-delay="<?php echo $counter*2; ?>0ms">
-			<h5 class="no-margin">
-				<?php the_title(); ?>
-				<span>
-					<a 
-						class="box-picture post-link" 
-						href="<?php the_permalink(); ?>" 
-						data-mfp-src="<?php the_permalink(); ?>" 
-						rel="<?php the_ID(); ?>" 
-						data-effect="mfp-modal">
-						<!-- <small><i class="ti-pencil"></i>Editar</small> -->
-					</a>
-				</span>
-			</h5>
-			
-			<?php $noiveo_or_id = !empty($noiveo) ? $noiveo : 'ID'.str_pad($cfuserid, 5, '0', STR_PAD_LEFT); ?>
-			<small class="blue-grey-text">
-				<?php echo $noiveo_or_id; ?> — <span class="badge-status status-<?php echo $statusraw; ?>"><?php echo $status; ?></span> — Fecha de alta: <?php echo $alta; ?>. 
-			</small>
-
-			<a 
-				class="box-picture post-link" 
-				href="<?php the_permalink(); echo '&'; ?>" 
-				data-mfp-src="<?php the_permalink(); echo '&'; ?>" 
-				rel="<?php get_the_ID() ?>" 
-				data-effect="mfp-modal">
-				<small>
-					Modificar Datos
+			<li class="section wow fadeIn" data-wow-delay="<?php echo $counter*2; ?>0ms">
+				<h5 class="no-margin">
+					<?php the_title(); ?>
+					<span>
+						<a 
+							class="box-picture post-link" 
+							href="<?php the_permalink(); ?>" 
+							data-mfp-src="<?php the_permalink(); ?>" 
+							rel="<?php the_ID(); ?>" 
+							data-effect="mfp-modal">
+						</a>
+					</span>
+				</h5>
+				
+				<?php $noiveo_or_id = !empty($noiveo) ? $noiveo : 'ID'.str_pad($cfuserid, 5, '0', STR_PAD_LEFT); ?>
+				<small class="blue-grey-text">
+					<?php echo $noiveo_or_id; ?> — <span class="badge-status status-<?php echo $statusraw; ?>"><?php echo $status; ?></span> — Fecha de alta: <?php echo $alta; ?>. 
 				</small>
-			</a>
 
-			<?php 
+				<a 
+					class="box-picture post-link" 
+					href="<?php the_permalink(); echo '&'; ?>" 
+					data-mfp-src="<?php the_permalink(); echo '&'; ?>" 
+					rel="<?php get_the_ID(); ?>" 
+					data-effect="mfp-modal">
+					<small>
+						Modificar Datos
+					</small>
+				</a>
 
-
-if($pagetemplate == 'page-ofc.php') {
-	// wp_delete_aspirante_link deletes user with id $cfuserid can delete aspirante
-	wp_delete_aspirante_link($cfuserid, '00', '125', 'Eliminar');
-} else if($pagetemplate == 'page-ofa.php') {
-	wp_delete_aspirante_link($cfuserid, '', '156', 'Eliminar');
-	// echo 'delete button should be here';
-}
-// wp_delete_aspirante_link($cfuserid);
-// echo 'delete button should be here';
-			?>
-<!-- 2005 -->
-
-			<!-- <a href="<?php the_permalink(); ?>" data-mfp-src="<?php the_permalink(); ?>" rel="<?php the_ID(); ?>" data-effect="mfp-modal" class="personal-data-toggle-admin post-link"><i class="ti-pencil"></i></a> -->
-			<div class="personal-data-admin">
-				<ul class="data-list">
-					<li><?php echo $municipio.', '.$estado.', '.$pais; ?>.</li>
-					
-					<?php // phone number and email data
-					$tel2 = !empty($telefono2) ? '<span class="tel2"><i class="ti-headphone-alt"></i> '.$telefono2.'</span>' : '';
-					echo sprintf('<li><span class="tel1"><i class="ti-headphone-alt"></i> <span class="phone">%s</span></span> %s <span class="email"><i class="ti-email"></i> <a href="mailto:%s">%s</a></span></li>', $telefono1, $tel2, antispambot($email), antispambot($email)); ?>
-				</ul>
-			</div>
-		</li>
-
-
-<?php
-$curPage = curPageURL();
-$parsedcurPage = parse_url($curPage);
-$path = $parsedcurPage['path'];
-$sluge = explode('/', $path);
-$slug = array_slice($sluge, -2, 1);
- ?>  
-
-	<script>
-		jQuery('.phone').text(function(i, text) {
-			return text.replace(/(\d\d\d)(\d\d\d)(\d\d\d\d)/, '($1) $2-$3');
-		});
-		jQuery(document).ready(function($) {
-			$('.post-link').magnificPopup({
-				type:'ajax',
-				tLoading: '',
-				midClick: true,
-				removalDelay: 500,
-				callbacks: {
-					beforeOpen: function() {
-						this.st.mainClass = this.st.el.attr('data-effect');
-					},
-					close: function() {
-					},
-				},
-				ajax: {
-					settings: {
-						type: 'POST',
-						data: {
-							url: '<?php echo $slug['0']; ?>'
-						}
-					}
+				<?php 
+				if($pagetemplate == 'page-ofc.php') {
+					wp_delete_aspirante_link($cfuserid, '00', '125', 'Eliminar');
+				} else if($pagetemplate == 'page-ofa.php') {
+					wp_delete_aspirante_link($cfuserid, '', '156', 'Eliminar');
 				}
-			});
-		});
-	</script>
+				?>
+
+
+				<div class="personal-data-admin">
+					<ul class="data-list">
+						<li><?php echo $municipio.', '.$estado.', '.$pais; ?>.</li>
+						
+						<?php // phone number and email data
+						$tel2 = !empty($telefono2) ? '<span class="tel2"><i class="ti-headphone-alt"></i> '.$telefono2.'</span>' : '';
+						echo sprintf('<li><span class="tel1"><i class="ti-headphone-alt"></i> <span class="phone">%s</span></span> %s <span class="email"><i class="ti-email"></i> <a href="mailto:%s">%s</a></span></li>', $telefono1, $tel2, antispambot($email), antispambot($email)); ?>
+					</ul>
+				</div>
+			</li>
+
+
+			<?php
+			$curPage = curPageURL();
+			$parsedcurPage = parse_url($curPage);
+			$path = $parsedcurPage['path'];
+			$sluge = explode('/', $path);
+			$slug = array_slice($sluge, -2, 1);
+			?>  
+
+			<script>
+				jQuery('.phone').text(function(i, text) {
+					return text.replace(/(\d\d\d)(\d\d\d)(\d\d\d\d)/, '($1) $2-$3');
+				});
+				jQuery(document).ready(function($) {
+					$('.post-link').magnificPopup({
+						type:'ajax',
+						tLoading: '',
+						midClick: true,
+						removalDelay: 500,
+						callbacks: {
+							beforeOpen: function() {
+								this.st.mainClass = this.st.el.attr('data-effect');
+							},
+							close: function() {
+							},
+						},
+						ajax: {
+							settings: {
+								type: 'POST',
+								data: {
+									url: '<?php echo $slug['0']; ?>'
+								}
+							}
+						}
+					});
+				});
+			</script>
+
+		<?php } //end while
 
 
 
@@ -2509,26 +2625,29 @@ $slug = array_slice($sluge, -2, 1);
 
 
 
-		<?php }
+
+
+
+
+
+
+
+
+
 
 		echo '</ul>';
 
 		$max = $aspirante_query->max_num_pages;
 		$paged = ( get_query_var('paged') > 1 ) ? get_query_var('paged') : 1;
-		
 		$nextPage = $aspirante_paged + 1;
-
-		//echo '<pre style="width:100%">'; print_r($tax_query); echo '</pre>';
 
 		if($nextPage <= $max) {
 			echo '<span id="load-more-aspirantes-admin-wrap" class="load-more-wrap center wow fadeInUp cf"><a href="'.admin_url().'admin-ajax.php?paged='.$nextPage.'" id="load-more-aspirantes-admin" class="btn load-more-btn">Cargar más</a></span>';
 		}
 
-
 	} else {
 		echo '<li class="col-12">No se encontraron resultados</li>';
 	}
-
 
 	$content = ob_get_clean();
 	echo $content;
@@ -2576,7 +2695,7 @@ function frontend_certificadores_admin_search(){
 		'post_type' => array('aspirantes'),
 		'post_status' => 'publish',
 		'author'     => $userid,
-		'meta_key'   => 'tipo_de_aspirante',
+		'meta_key'   => 'ASP_tipo_aspirante',
 		'meta_value' => 'certificador',
 		'paged' => $aspirante_paged,
 		's' => $search_query
@@ -2597,15 +2716,15 @@ function frontend_certificadores_admin_search(){
 
 			// vars 
 			$numero = get_the_ID();
-			$noiveo = get_field('numero_instructor_veo');
+			$noiveo = get_field('ASP_numero_instructor_veo');
 			$alta = get_the_date('M j, Y');
-			$sexo = get_field('OFI-1-ASexo');
-			$pais = get_field('OFI-1-APais');
-			$estado = get_field('OFI-1-AEstado');
-			$municipio = get_field('OFI-1-AMunicipio');
-			$telefono1 = get_field('OFI-1-ATelefono1');
-			$telefono2 = get_field('OFI-1-ATelefono2');
-			$email = get_field('OFI-1-AEmail'); 
+			$sexo = get_field('ASP_sexo');
+			$pais = get_field('ASP_pais');
+			$estado = get_field('ASP_estado');
+			$municipio = get_field('ASP_municipio');
+			$telefono1 = get_field('ASP_telefono1');
+			$telefono2 = get_field('ASP_telefono2');
+			$email = get_field('ASP_email'); 
 
 			$cfuserid = get_post_meta( get_the_ID(), '_userid', true );
 

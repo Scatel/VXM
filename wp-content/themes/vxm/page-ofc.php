@@ -127,7 +127,15 @@ Template Name: OFC
 						'post_type'    => 'aspirantes',
 						'post_status'  => 'publish'
 					),
-					'field_groups'	=>	array('group_5b32b36f9f5b7','group_58083233c61be', 'group_58082fc615096', 'group_5a8b05de05701', 'group_5b0f2a4ad8df9',  'group_5b16f7026f5d8', 'group_5b16f2ed36963', 'group_5a8ddba34185f'),
+					'field_groups'	=>	array(
+						'group_58082fc615096', // datos personales y contacto
+						'group_58083233c61be', // datos de aspirantes 
+						'group_5a2ebc1e3f068', // numero de instructor veo
+						'group_5b16f7026f5d8', // inicio de anualidad
+						'group_5b16f2ed36963', // password inicial
+						'group_5b46854b34e04', // privacidad
+						'group_5b4631ac7abc9'  // comentarios sobre el aspirante
+					),
 					'html_before_fields' => '<div class="grid-bottom">',
 					'html_after_fields' => '</div>',
 					'return' => get_permalink(125),

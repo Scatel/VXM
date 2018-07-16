@@ -91,7 +91,7 @@ Template Name: OFCS
 				$args = array (
 					'post_type'  => array( 'aspirantes' ),
 					'author'     => $userid,
-					'meta_key'   => 'tipo_de_aspirante',
+					'meta_key'   => 'ASP_tipo_aspirante',
 					'meta_value' => 'certificador'
 				);
 
@@ -105,14 +105,14 @@ Template Name: OFCS
 						<?php // custom fields 
 						$numero = get_the_ID();
 						$alta = get_the_date('Y-m-d');
-						$sexo = get_field('OFI-1-ASexo');
-						$pais = get_field('OFI-1-APais');
-						$estado = get_field('OFI-1-AEstado');
-						$municipio = get_field('OFI-1-AMunicipio');
-						$telefono1 = get_field('OFI-1-ATelefono1');
-						$telefono2 = get_field('OFI-1-ATelefono2');
-						$mama = get_field('OFI-1-ANombreDeMama');
-						$email = get_field('OFI-1-AEmail'); 
+						$sexo = get_field('ASP_sexo');
+						$pais = get_field('ASP_pais');
+						$estado = get_field('ASP_estado');
+						$municipio = get_field('ASP_municipio');
+						$telefono1 = get_field('ASP_telefono1');
+						$telefono2 = get_field('ASP_telefono2');
+						// $mama = get_field('ASP_ama');
+						$email = get_field('ASP_Email'); 
 
 						$cfuserid = get_post_meta( get_the_ID(), '_userid', true ); 
 
@@ -136,7 +136,7 @@ Template Name: OFCS
 				}
 
 				
-				wp_reset_postdata(); ?>
+				wp_reset_postdata(); ?>	
 
 
 
@@ -201,20 +201,46 @@ Template Name: OFCS
 
 				<div class="section"><div class="divider"></div></div>
 
-				<?php acf_form(array(
+				<?php 
+				// acf_form(array(
+				// 	'post_id'      => 'new_post',
+				// 	'new_post'     => array(
+				// 		'post_type'    => 'aspirantes',
+				// 		'post_status'  => 'publish'
+				// 	),
+				// 	'field_groups'	=>	array('group_58083233c61be', 'group_58082fc615096', 'group_5b16f2ed36963'),
+				// 	'html_before_fields' => '<div class="grid-bottom">',
+				// 	'html_after_fields' => '</div>',
+				// 	'return' => get_permalink(154),
+				// 	'updated_message' => __("Post updated", 'acf'),
+				// 	'submit_value' => __("Alta de Aspirante", 'bonestheme')
+				// )); 
+				?>
+				
+
+				<?php 
+				acf_form(array(
 					'post_id'      => 'new_post',
 					'new_post'     => array(
 						'post_type'    => 'aspirantes',
 						'post_status'  => 'publish'
 					),
-					'field_groups'	=>	array('group_58083233c61be', 'group_58082fc615096', 'group_5b16f2ed36963'),
+					'field_groups'	=>	array(
+						'group_58082fc615096', // datos personales y contacto
+						'group_58083233c61be', // datos de aspirantes 
+						'group_5a2ebc1e3f068', // numero de instructor veo
+						'group_5b16f7026f5d8', // inicio de anualidad
+						'group_5b16f2ed36963', // password inicial
+						'group_5b46854b34e04', // privacidad
+						'group_5b4631ac7abc9'  // comentarios sobre el aspirante
+					),
 					'html_before_fields' => '<div class="grid-bottom">',
 					'html_after_fields' => '</div>',
 					'return' => get_permalink(154),
 					'updated_message' => __("Post updated", 'acf'),
 					'submit_value' => __("Alta de Aspirante", 'bonestheme')
-				)); ?>
-				
+				)); 
+				?>
 				
 			</div>
 

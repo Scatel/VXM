@@ -5,14 +5,14 @@ require('../../wp-load.php');
 define('WP_USE_THEMES', true);
 
 ////////////////////////////////////////////////////////////////////////
-// to make this work on a slow computer (such as mine) you have to manually change the name of the file
+// t=To make this work on a slow computer (such as mine) you have to manually change the name of the file
 // you want to load in the parse_aspirante_infos function
 
 // these are the primary functions, before doing anything make sure that fields are
 // right in all functions, most importantly   parse_aspirante_infos   and   insert_aspirante_post_meta
 $aspirante_infos =  parse_aspirante_infos();
 insert_aspirantes($aspirante_infos);
-////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////   
 
 
 function parse_aspirante_infos(){

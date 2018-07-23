@@ -195,6 +195,7 @@ function vxm_forms_alumnos($num_alumno = 0){
                     $('body > #ui-datepicker-div').wrap('<div class="acf-ui-datepicker" />');
                 }
 
+                $("select[data-role=country-selector]").countrySelector();
 
             } 
         );
@@ -203,7 +204,21 @@ function vxm_forms_alumnos($num_alumno = 0){
 
 
 }
+// wp_register_script( 'vxm-forms-countryselector-js', plugin_dir_url( __FILE__ ) . 'assets/countrySelector/js/jquery.countrySelector.js', array( 'jquery' ), '5.1.1', true );
+// wp_dequeue_script( 'vxm-forms-countryselector-js');
+// add_action('wp_enqueue_scripts', 'vxm_forms_enqueue_scripts_template');
+// function vxm_forms_enqueue_scripts_template() {   
+    // wp_register_script( 'vxm-forms-main', plugin_dir_url( __FILE__ ) . 'assets/js/vxm-forms-main.js', array( 'jquery' ), '5.1.1', true );
+    // wp_enqueue_script( 'vxm-forms-main' );
 
+    // wp_register_script( 'vxm-forms-countryselector-js', plugin_dir_url( __FILE__ ) . 'assets/countrySelector/js/jquery.countrySelector.js', array( 'jquery' ), '5.1.1', true );
+    // wp_enqueue_script( 'vxm-forms-countryselector-js' );
+    // wp_dequeue_script( 'vxm-forms-countryselector-js');
+
+    // wp_enqueue_style( 'vxm-forms-countryselector-css', plugin_dir_url( __FILE__ ) . 'assets/countrySelector/css/jquery-countryselector.css');
+// }
+
+// wp_enqueue_script( 'vxm-forms-countryselector-js' );
 
 ?>
 

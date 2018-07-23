@@ -576,7 +576,7 @@ function save_post_aspirantes( $post_id ) {
 		$user = new WP_User( $user_id );
 		$user->set_role( 'subscriber' );
 
-		wp_mail( $email, 'Welcome!', 'Your Password: ' . $password );
+		// wp_mail( $email, 'Welcome!', 'Your Password: ' . $password );
 
 		// add user status
 		/* 
@@ -687,31 +687,23 @@ function aio_post_exists( $id ) {
 }
 
 
-add_filter('acf/validate_value/name=OFI-1-AEmail', 'my_acf_validate_value', 10, 4);
+add_filter('acf/validate_value/name=ASP_email', 'my_acf_validate_value', 10, 4);
 function my_acf_validate_value( $valid, $value, $field, $input ){
 	
 	$post_id = $_POST['_acf_post_id'];
-	$test = $_POST['_acf_post_id'];
 
 	// bail early if value is already invalid
 	if( !$valid ) {
-		
 		return $valid;
-		
 	}
 
 	$exists = email_exists($value);
-	
-	/*if(!aio_post_exists($post_id)) {
-
-	}*/
 
 	if ( !aio_post_exists($post_id) && $exists ) {
-		$valid = "Este email ya está asignado al usuario No. ".$exists.$post_id.$test;
+		$valid = "Este email ya está asignado al usuario No. ".$exists;
 	}
 	
-	return $valid;	
-	
+	return $valid;
 }
 
 
@@ -1844,7 +1836,7 @@ function frontend_instructores_search(){
 			$noiveo = get_field('ASP_numero_instructor_veo');
 			$alta = get_the_date('Y-m-d');
 			$sexo = get_field('ASP_sexo');
-			$pais = get_field('ASP_pais');
+			$pais = strtoupper(get_field('ASP_pais'));
 			$estado = get_field('ASP_estado');
 			$municipio = get_field('ASP_municipio');
 			$telefono1 = get_field('ASP_telefono1');
@@ -1900,20 +1892,24 @@ function frontend_instructores_search(){
 						<li>
 							<?php 
 
+
+							// echo $pais;
+							// if($estado_mostrar == 1){
+							// 	echo ', '.$estado;
+							// }
+							// if($municipio_mostrar == 1){
+							// 	echo ', '.$municipio;
+							// }
+
 							if($municipio_mostrar == 1){
 								echo $municipio;
 							}
 							if($estado_mostrar == 1){
 								echo ', '.$estado;
 							}
-							if($pais_mostrar == 1){
-								echo ', '.$pais;
-							}
-							// echo $email_html;
-							// echo $municipio.', '.$estado.', '.$pais; 
+							echo ', '.$pais;
 						
-						
-							?>.
+							?>
 						</li>
 
 						<?php // phone number and email data
@@ -2288,11 +2284,12 @@ function frontend_alumnos_search(){
 
 	$alumno_query = new WP_Query( $args ); ob_start();
 	
+	// verificar porque el quiery no esta encontrando los posts de alumnos
 	if ($alumno_query->have_posts()) {
 
 		echo '<ul class="lista-alumnos">';$counter = 0;
 		
-
+		//libreria de db te regresara un array de arrays sobre el que vas a hacer el loop
 		while ($alumno_query->have_posts()) {
 			$alumno_query->the_post();
 
@@ -2304,6 +2301,8 @@ function frontend_alumnos_search(){
 			// vars 
 			$numero = get_the_ID();
 			$alta = get_the_date('Y-m-d');
+
+			//estos valores se van a conseguir del array que lance la funcion para queries
 			$sexo = get_field('OFI-1-ASexo');
 			$pais = get_field('OFI-1-APais');
 			$estado = get_field('OFI-1-AEstado');

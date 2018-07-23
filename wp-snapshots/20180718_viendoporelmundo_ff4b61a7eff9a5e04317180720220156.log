@@ -1,0 +1,80 @@
+********************************************************************************
+DUPLICATOR-LITE PACKAGE-LOG: 20 July, 2018 10:02 pm
+NOTICE: Do NOT post to public sites or forums 
+********************************************************************************
+VERSION:	1.2.36
+WORDPRESS:	4.9.7
+PHP INFO:	5.5.12 | SAPI: apache2handler
+SERVER:		Apache/2.4.9 (Win64) PHP/5.5.12 
+PHP TIME LIMIT: (0) no time limit imposed 
+PHP MAX MEMORY: 2048M (256M default) 
+MEMORY STACK: 65.5MB 
+
+********************************************************************************
+DATABASE:
+********************************************************************************
+BUILD MODE:   MYSQLDUMP
+MYSQLTIMEOUT: 5000
+MYSQLDUMP:    Is Supported 
+FILTERED: [] 
+RESPONSE: Ran from C:/xampp/mysql/bin/mysqldump.exe 
+TABLES: total:39 | filtered:0 | create:39 
+SQL CREATED: 20180718_viendoporelmundo_ff4b61a7eff9a5e04317180720220156_database.sql 
+SQL FILE SIZE: 3.1MB (3255777) 
+SQL FILE TIME: 2018-07-20 22:02:42 
+SQL RUNTIME: 1.90 sec. 
+
+******************************************************************************** 
+ARCHIVE (ZIP): 
+******************************************************************************** 
+ARCHIVE DIR:  C:/wamp/www/vxm 
+ARCHIVE FILE: 20180718_viendoporelmundo_ff4b61a7eff9a5e04317180720220156_archive.zip 
+FILTERS: *OFF* 
+DIRS:
+	not set 
+FILES:
+	not set 
+EXTS:  not set 
+---------------------------------------- 
+COMPRESSING 
+SIZE:	119.65MB 
+STATS:	Dirs 1,094 | Files 6,296 
+SQL ADDED: 20180718_viendoporelmundo_ff4b61a7eff9a5e04317180720220156_database.sql 
+ZipArchive Object
+(
+    [status] => 0
+    [statusSys] => 0
+    [numFiles] => 7390
+    [filename] => C:\wamp\www\vxm\wp-snapshots\tmp\20180718_viendoporelmundo_ff4b61a7eff9a5e04317180720220156_archive.zip
+    [comment] => 
+)
+ 
+COMPRESSION RESULT: '1' 
+COMPRESSED SIZE: 45.81MB 
+ARCHIVE RUNTIME: 109.11 sec. 
+MEMORY STACK: 67.75MB 
+
+******************************************************************************** 
+MAKE INSTALLER: 
+******************************************************************************** 
+Build Start 
+Build Finished 
+Preping for use 
+PACK SIZE:  
+Template parsed with new data 
+Complete [C:/wamp/www/vxm/wp-snapshots/tmp/20180718_viendoporelmundo_ff4b61a7eff9a5e04317180720220156_installer.php] 
+Added to archive 
+
+******************************************************************************** 
+INTEGRITY CHECKS: 
+******************************************************************************** 
+SQL File: 3.1MB 
+Installer File: 442.75KB 
+Archive File: 45.81MB  
+
+********************************************************************************
+RECORD ID:[28]
+TOTAL PROCESS RUNTIME: 111.67 sec.
+PEAK PHP MEMORY USED: 69.75MB
+DONE PROCESSING => 20180718_viendoporelmundo 20 July, 2018 10:04 pm
+ 

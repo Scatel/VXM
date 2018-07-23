@@ -16,8 +16,11 @@ function vxm_forms_enqueue_scripts() {
 
     wp_register_script( 'vxm-forms-countryselector-js', plugin_dir_url( __FILE__ ) . 'assets/countrySelector/js/jquery.countrySelector.js', array( 'jquery' ), '5.1.1', true );
     wp_enqueue_script( 'vxm-forms-countryselector-js' );
+    // wp_dequeue_script( 'vxm-forms-countryselector-js');
 
     wp_enqueue_style( 'vxm-forms-countryselector-css', plugin_dir_url( __FILE__ ) . 'assets/countrySelector/css/jquery-countryselector.css');
+    wp_enqueue_style( 'vxm-forms-forms-css-main', plugin_dir_url( __FILE__ ) . 'assets/css/main.css');
+
 }
 
 

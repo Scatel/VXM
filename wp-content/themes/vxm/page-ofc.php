@@ -131,7 +131,7 @@ Template Name: OFC
 						'group_58082fc615096', // datos personales y contacto
 						'group_58083233c61be', // datos de aspirantes 
 						'group_5a2ebc1e3f068', // numero de instructor veo
-						'group_5b16f7026f5d8', // inicio de anualidad
+						'group_5b16f7026f5d8', // inicio de anualidad (los campos de este grupo son calculados)
 						'group_5b16f2ed36963', // password inicial
 						'group_5b46854b34e04', // privacidad
 						'group_5b4631ac7abc9'  // comentarios sobre el aspirante

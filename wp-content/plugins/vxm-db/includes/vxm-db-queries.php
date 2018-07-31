@@ -1,4 +1,7 @@
 <?php 
+// $column is a string. Ex: 'email, full_name'
+// $table is a string. Ex: 'aio_vxm_bda'
+// $where is an array. Ex: array('email'=>'gerard4235@gmail.com','full_name'=>'JERRY')
 function lps_select_one($column, $table, $where){
     global $wpdb;
 

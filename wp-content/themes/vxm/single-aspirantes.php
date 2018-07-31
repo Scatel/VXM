@@ -41,7 +41,8 @@
 							'group_5b16f7026f5d8', // inicio de anualidad
 							'group_5b16f2ed36963', // password inicial
 							'group_5b46854b34e04', // privacidad
-							'group_5b490ae27dc08',
+							'group_5b490ae27dc08', // status
+							'group_5b4e51ad81c9a', // cursos
 							'group_5b4631ac7abc9'  // comentarios sobre el aspirante
 						),
 						'html_before_fields' => '<div class="grid-bottom">',

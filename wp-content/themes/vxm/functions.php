@@ -1145,7 +1145,12 @@ function validate_pass_reset( $error_code, $form, $data ) {
                 $pass_changed = get_post_meta( get_the_ID(), 'pass_changed', true);
                 update_post_meta(get_the_ID(), 'pass_changed', 'changed', 'not_changed');
 
-                update_field('field_5809034ffa525', '01', get_the_ID());
+                $status = get_field('status', get_the_ID());
+                if($status == '00'){
+                    update_field('field_5809034ffa525', '01', get_the_ID());
+                    // update_field('field_5809034ffa525', '01', get_the_ID());
+
+                }
             }
         }
 
